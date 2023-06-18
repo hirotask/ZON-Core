@@ -18,7 +18,7 @@ object MyEventListener {
                 val player = it.player
                 val zombie = it.zombie
 
-                player.playSound(Sound.ENTITY_ENDER_DRAGON_DEATH)
+                player.playSound(Sound.ENTITY_ENDER_DRAGON_DEATH, volume = 0.5F)
             }
         }
     }
