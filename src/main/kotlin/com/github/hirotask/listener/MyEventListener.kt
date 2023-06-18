@@ -18,7 +18,11 @@ object MyEventListener {
                 val dao = DAO()
                 dao.insertPlayer(player)
 
-                when (dao.getKills(player)) {
+                val killCount = dao.getKills(player)
+
+                player.sendMessage("Kills: $killCount")
+
+                when (killCount) {
                     50 -> {
                         player.sendMessage("50キル達成！")
                         player.inventory.addItem(ItemStack(Material.DIAMOND))
