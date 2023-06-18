@@ -33,6 +33,7 @@ dependencies {
     shadowImplementation(api("com.github.sya-ri:EasySpigotAPI:2.3.2") {
         exclude(group = "org.spigotmc", module = "spigot-api")
     })
+    shadowImplementation("org.mariadb.jdbc:mariadb-java-client:2.4.4")
 }
 
 configure<BukkitPluginDescription> {
