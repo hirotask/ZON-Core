@@ -30,9 +30,9 @@ configurations["implementation"].extendsFrom(shadowImplementation)
 dependencies {
     shadowImplementation(kotlin("stdlib"))
     compileOnly("org.spigotmc:spigot-api:$pluginVersion-R0.1-SNAPSHOT")
-    api("com.github.sya-ri:EasySpigotAPI:2.3.2") {
+    shadowImplementation(api("com.github.sya-ri:EasySpigotAPI:2.3.2") {
         exclude(group = "org.spigotmc", module = "spigot-api")
-    }
+    })
 }
 
 configure<BukkitPluginDescription> {
