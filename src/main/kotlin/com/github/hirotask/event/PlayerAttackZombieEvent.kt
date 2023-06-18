@@ -5,7 +5,7 @@ import org.bukkit.entity.Zombie
 import org.bukkit.event.Event
 import org.bukkit.event.HandlerList
 
-class PlayerAttackZombieEvent(val player: Player, val zombie: Zombie): Event() {
+class PlayerAttackZombieEvent(val player: Player, val zombie: Zombie) : Event() {
     companion object {
         val handlers = HandlerList()
     }

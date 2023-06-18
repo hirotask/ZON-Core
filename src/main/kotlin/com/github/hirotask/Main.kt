@@ -20,7 +20,6 @@ class Main : JavaPlugin() {
         // Eventの登録
         EventListener.register()
         MyEventListener.register()
-
     }
 
     override fun onDisable() {

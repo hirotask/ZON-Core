@@ -13,17 +13,16 @@ object EventListener {
         Main.INSTANCE.events {
             event<EntityDamageByEntityEvent> {
                 if (it.damager !is Player) return@event
-                if(it.entity !is Zombie) return@event
+                if (it.entity !is Zombie) return@event
 
                 val player = it.damager as Player
                 val zombie = it.entity as Zombie
 
-                if(zombie.health <= 0) {
+                if (zombie.health <= 0) {
                     Main.INSTANCE.server.pluginManager.callEvent(ZombieDeathByPlayerEvent(player, zombie))
                 } else {
                     Main.INSTANCE.server.pluginManager.callEvent(PlayerAttackZombieEvent(player, zombie))
                 }
-
             }
         }
     }
