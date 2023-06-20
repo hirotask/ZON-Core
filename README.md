@@ -1,7 +1,7 @@
 # ZON-KIlls
 [![EasySpigotAPI](https://img.shields.io/badge/EasySpigotAPI-%E2%AC%85-4D4.svg)](https://github.com/sya-ri/EasySpigotAPI)
 
-[!['デモ動画'](./docs/demo.png)]('https://youtu.be/BST5x0NHNbY')
+[!['デモ動画'](./docs/demo.png)](https://youtu.be/BST5x0NHNbY)
 
 ## 開発環境
 - [Intellij IDEA](https://www.jetbrains.com/idea/) などの統合開発環境
