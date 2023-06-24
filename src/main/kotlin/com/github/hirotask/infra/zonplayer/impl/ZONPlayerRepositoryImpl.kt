@@ -7,9 +7,9 @@ import org.bukkit.entity.Player
 
 class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
 
-    override fun getPlayerId(zonPlayer: ZONPlayer): Int {
+    override fun getPlayerId(player: Player): Int {
         database.connect()
-        val rs = database.select("SELECT mp_id FROM ms_player WHERE mp_uuid = ${zonPlayer.player.uniqueId}") ?: return -1
+        val rs = database.select("SELECT mp_id FROM ms_player WHERE mp_uuid = ${player.uniqueId}") ?: return -1
 
         var result = -1
         while (rs.next()) {

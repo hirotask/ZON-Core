@@ -5,7 +5,7 @@ import org.bukkit.entity.Player
 
 interface ZONPlayerRepository {
 
-    fun getPlayerId(zonPlayer: ZONPlayer): Int
+    fun getPlayerId(player: Player): Int
 
     fun updatePlayerName(zonPlayer: ZONPlayer, uuid: String): Int
 
