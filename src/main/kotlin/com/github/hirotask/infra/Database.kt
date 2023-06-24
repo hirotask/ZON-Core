@@ -18,7 +18,7 @@ class Database {
         private const val MAX_POOL = "250"
     }
 
-    var connection : Connection? = null
+    private var connection: Connection? = null
 
     val properties = Properties().let {
         it.setProperty("user", USERNAME)
@@ -30,7 +30,7 @@ class Database {
         try {
             Class.forName(DATABASE_DRIVER)
             connection = DriverManager.getConnection(DATABASE_URL, properties as Properties?) as Connection
-        } catch(e: ClassNotFoundException) {
+        } catch (e: ClassNotFoundException) {
             e.printStackTrace()
         } catch (e: SQLException) {
             e.printStackTrace()
@@ -38,7 +38,7 @@ class Database {
         return this.connection
     }
 
-    fun disconnect() : Boolean {
+    fun disconnect(): Boolean {
         try {
             connection?.close()
             connection = null
