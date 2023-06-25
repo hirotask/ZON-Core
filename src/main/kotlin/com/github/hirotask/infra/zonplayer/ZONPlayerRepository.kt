@@ -5,17 +5,15 @@ import org.bukkit.entity.Player
 
 interface ZONPlayerRepository {
 
-    fun getPlayerId(player: Player): Int
-
     fun updatePlayerName(zonPlayer: ZONPlayer, uuid: String): Int
 
-    fun addZombieKills(playerId: Int, amount: Int): Int
+    fun addZombieKills(zonPlayer: ZONPlayer): Int
 
-    fun addStatusPoint(playerId: Int, amount: Int): Int
+    fun addStatusPoint(zonPlayer: ZONPlayer, amount: Int): Int
 
-    fun getZombieKills(playerId: Int): Int
+    fun getZombieKills(zonPlayer: ZONPlayer): Int
 
-    fun getStatusPoint(playerId: Int): Int
+    fun getStatusPoint(zonPlayer: ZONPlayer): Int
 
     fun getZONPlayer(player: Player): ZONPlayer
 }

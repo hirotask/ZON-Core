@@ -12,6 +12,7 @@ plugins {
     id("dev.s7a.gradle.minecraft.server") version "1.2.0"
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("org.jmailen.kotlinter") version "3.8.0"
+    kotlin("kapt") version "1.8.22"
 }
 
 val gitVersion: Closure<String> by extra
@@ -34,6 +35,9 @@ dependencies {
         exclude(group = "org.spigotmc", module = "spigot-api")
     })
     shadowImplementation("org.mariadb.jdbc:mariadb-java-client:2.4.4")
+    shadowImplementation("com.google.dagger:dagger:2.46.1")
+    annotationProcessor("com.google.dagger:dagger-compiler:2.46.1")
+    kapt("com.google.dagger:dagger-compiler:2.46.1")
 }
 
 configure<BukkitPluginDescription> {

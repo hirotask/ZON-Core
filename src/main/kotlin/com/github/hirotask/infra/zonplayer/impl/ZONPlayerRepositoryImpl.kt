@@ -7,7 +7,7 @@ import org.bukkit.entity.Player
 
 class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
 
-    override fun getPlayerId(player: Player): Int {
+    private fun getPlayerId(player: Player): Int {
         database.connect()
         val rs = database.select("SELECT mp_id FROM ms_player WHERE mp_uuid = ${player.uniqueId}") ?: return -1
 
@@ -28,25 +28,27 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
         return result
     }
 
-    override fun addZombieKills(playerId: Int, amount: Int): Int {
+    override fun addZombieKills(zonPlayer: ZONPlayer): Int {
+        val id = getPlayerId(zonPlayer.player)
         database.connect()
-        val result = database.createOrUpdateOrDelete("INSERT INTO dt_player_kills(mp_id, dpk_diff) VALUES ($playerId, $amount)")
+        val result = database.createOrUpdateOrDelete("INSERT INTO dt_player_kills(mp_id) VALUES ($id)")
         database.disconnect()
 
         return result
     }
 
-    override fun addStatusPoint(playerId: Int, amount: Int): Int {
+    override fun addStatusPoint(zonPlayer: ZONPlayer, amount: Int): Int {
+        val id = getPlayerId(zonPlayer.player)
         database.connect()
-        val result = database.createOrUpdateOrDelete("INSERT INTO dt_status_points(mp_id, dsp_diff) VALUES ($playerId, $amount)")
+        val result = database.createOrUpdateOrDelete("INSERT INTO dt_status_points(mp_id, dsp_diff) VALUES ($id, $amount)")
         database.disconnect()
 
         return result
     }
 
-    override fun getZombieKills(playerId: Int): Int {
+    override fun getZombieKills(zonPlayer: ZONPlayer): Int {
         database.connect()
-        val rs = database.select("SELECT COUNT(*) count WHERE mp_id = $playerId") ?: return -1
+        val rs = database.select("SELECT COUNT(*) count FROM ms_players INNER JOIN dt_player_kills ON ms_players.mp_id = dt_player_kills.mp_id WHERE mp_name = ${zonPlayer.player.name}}") ?: return -1
 
         var result = -1
         while (rs.next()) {
@@ -58,9 +60,9 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
         return result
     }
 
-    override fun getStatusPoint(playerId: Int): Int {
+    override fun getStatusPoint(zonPlayer: ZONPlayer): Int {
         database.connect()
-        val rs = database.select("SELECT SUM(dsp_diff) diff WHERE mp_id = $playerId") ?: return -1
+        val rs = database.select("SELECT SUM(dsp_diff) diff FROM ms_players INNER JOIN dt_status_points ON ms_players.mp_id = dt_status_points.mp_id WHERE mp_name = ${zonPlayer.player.name}") ?: return -1
 
         var result = -1
         while (rs.next()) {
