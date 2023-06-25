@@ -1,6 +1,5 @@
 package com.github.hirotask.di
 
-import com.github.hirotask.Main
 import com.github.hirotask.infra.Database
 import com.github.hirotask.infra.zonplayer.ZONPlayerRepository
 import com.github.hirotask.infra.zonplayer.impl.ZONPlayerRepositoryImpl
@@ -12,8 +11,7 @@ import javax.inject.Singleton
 class DependencyModule {
     @Provides
     @Singleton
-    fun provideZONPlayerRepository() : ZONPlayerRepository{
+    fun provideZONPlayerRepository(): ZONPlayerRepository {
         return ZONPlayerRepositoryImpl(Database())
     }
-
 }

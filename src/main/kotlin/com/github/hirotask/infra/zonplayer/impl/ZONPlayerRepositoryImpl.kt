@@ -81,7 +81,7 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
         var kills = -1
         var statusPoint = -1
 
-        if(rs.row <= 0) {
+        if (rs.row <= 0) {
             return null
         }
 
@@ -93,11 +93,10 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
         database.disconnect()
 
         return ZONPlayer(
-                player= player,
-                zombieKillCount = kills,
-                statusPoint = statusPoint
+            player = player,
+            zombieKillCount = kills,
+            statusPoint = statusPoint
         )
-
     }
 
     override fun addZONPlayer(player: Player): Int {

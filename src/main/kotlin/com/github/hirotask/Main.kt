@@ -8,7 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin
 class Main : JavaPlugin() {
 
     companion object {
-        internal lateinit var INSTANCE : Main
+        internal lateinit var INSTANCE: Main
 
         const val PLUGIN_NAME = "ZON-Kills"
     }

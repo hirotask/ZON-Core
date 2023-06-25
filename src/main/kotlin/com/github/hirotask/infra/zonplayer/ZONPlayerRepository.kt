@@ -17,6 +17,5 @@ interface ZONPlayerRepository {
 
     fun getZONPlayer(player: Player): ZONPlayer?
 
-    fun addZONPlayer(player: Player) : Int
-
+    fun addZONPlayer(player: Player): Int
 }

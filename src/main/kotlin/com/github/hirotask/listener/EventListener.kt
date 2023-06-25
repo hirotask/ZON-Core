@@ -14,7 +14,7 @@ import javax.inject.Inject
 object EventListener {
 
     @Inject
-    private lateinit var zonPlayerService : ZONPlayerService
+    private lateinit var zonPlayerService: ZONPlayerService
 
     fun register() {
         Main.INSTANCE.events {
