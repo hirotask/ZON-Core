@@ -15,5 +15,8 @@ interface ZONPlayerRepository {
 
     fun getStatusPoint(zonPlayer: ZONPlayer): Int
 
-    fun getZONPlayer(player: Player): ZONPlayer
+    fun getZONPlayer(player: Player): ZONPlayer?
+
+    fun addZONPlayer(player: Player) : Int
+
 }

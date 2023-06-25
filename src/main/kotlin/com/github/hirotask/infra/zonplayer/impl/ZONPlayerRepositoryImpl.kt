@@ -74,12 +74,17 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
         return result
     }
 
-    override fun getZONPlayer(player: Player): ZONPlayer {
+    override fun getZONPlayer(player: Player): ZONPlayer? {
         database.connect()
         val rs = database.select("SELECT COUNT(*) kills, SUM(dsp_diff) status_point FROM ms_players INNER JOIN dt_player_kills ON ms_players.mp_id = dt_player_kills.mp_id INNER JOIN dt_status_points ON ms_players.mp_id = dt_status_points.mp_id WHERE mp_name = ${player.name}") ?: throw Exception()
 
         var kills = -1
         var statusPoint = -1
+
+        if(rs.row <= 0) {
+            return null
+        }
+
         while (rs.next()) {
             kills = rs.getInt("kills")
             statusPoint = rs.getInt("status_point")
@@ -93,5 +98,13 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
                 statusPoint = statusPoint
         )
 
+    }
+
+    override fun addZONPlayer(player: Player): Int {
+        database.connect()
+        val rs = database.createOrUpdateOrDelete("INSERT INTO ms_player(mp_name, mp_uuid) VALUES (${player.name}, ${player.uniqueId})")
+        database.disconnect()
+
+        return rs
     }
 }

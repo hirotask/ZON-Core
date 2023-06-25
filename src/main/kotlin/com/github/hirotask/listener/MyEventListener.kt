@@ -1,6 +1,7 @@
 package com.github.hirotask.listener
 
 import com.github.hirotask.Main
+import com.github.hirotask.domain.ZONPlayerService
 import com.github.hirotask.event.ZombieDeathByPlayerEvent
 import com.github.hirotask.infra.DAO
 import com.github.syari.spigot.api.event.events
@@ -8,17 +9,20 @@ import com.github.syari.spigot.api.sound.playSound
 import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.inventory.ItemStack
+import javax.inject.Inject
 
 object MyEventListener {
+
+    @Inject
+    private lateinit var zonPlayerService : ZONPlayerService
+
     fun register() {
         Main.INSTANCE.events {
             event<ZombieDeathByPlayerEvent> {
                 val player = it.player
+                val zonPlayer = zonPlayerService.getZONPlayer(player) ?: return@event
 
-                val dao = DAO()
-                dao.insertPlayer(player)
-
-                val killCount = dao.getKills(player)
+                val killCount = zonPlayerService.addZombieKills(zonPlayer)
 
                 player.sendMessage("Kills: $killCount")
 

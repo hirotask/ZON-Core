@@ -1,5 +1,6 @@
 package com.github.hirotask
 
+import com.github.hirotask.domain.ZONPlayer
 import com.github.hirotask.listener.EventListener
 import com.github.hirotask.listener.MyEventListener
 import org.bukkit.plugin.java.JavaPlugin
@@ -7,7 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin
 class Main : JavaPlugin() {
 
     companion object {
-        internal lateinit var INSTANCE: Main
+        internal lateinit var INSTANCE : Main
 
         const val PLUGIN_NAME = "ZON-Kills"
     }
@@ -15,6 +16,8 @@ class Main : JavaPlugin() {
     init {
         INSTANCE = this
     }
+
+    val zonPlayers = mutableListOf<ZONPlayer>()
 
     override fun onEnable() {
         // Eventの登録
