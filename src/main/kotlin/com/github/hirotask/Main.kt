@@ -21,8 +21,10 @@ class Main : JavaPlugin() {
 
     override fun onEnable() {
         // Eventの登録
-        EventListener.register()
-        MyEventListener.register()
+        val eventListener = EventListener()
+        val myEventListener = MyEventListener()
+        eventListener.register()
+        myEventListener.register()
     }
 
     override fun onDisable() {

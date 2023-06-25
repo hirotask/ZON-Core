@@ -11,10 +11,10 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import javax.inject.Inject
 
-object EventListener {
+class EventListener {
 
     @Inject
-    private lateinit var zonPlayerService: ZONPlayerService
+    lateinit var zonPlayerService: ZONPlayerService
 
     fun register() {
         Main.INSTANCE.events {

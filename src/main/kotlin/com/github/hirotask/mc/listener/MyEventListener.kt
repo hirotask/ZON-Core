@@ -10,10 +10,10 @@ import org.bukkit.Sound
 import org.bukkit.inventory.ItemStack
 import javax.inject.Inject
 
-object MyEventListener {
+class MyEventListener {
 
     @Inject
-    private lateinit var zonPlayerService: ZONPlayerService
+    lateinit var zonPlayerService: ZONPlayerService
 
     fun register() {
         Main.INSTANCE.events {
