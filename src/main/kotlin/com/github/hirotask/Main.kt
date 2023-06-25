@@ -1,8 +1,8 @@
 package com.github.hirotask
 
 import com.github.hirotask.domain.ZONPlayer
-import com.github.hirotask.listener.EventListener
-import com.github.hirotask.listener.MyEventListener
+import com.github.hirotask.mc.listener.EventListener
+import com.github.hirotask.mc.listener.MyEventListener
 import org.bukkit.plugin.java.JavaPlugin
 
 class Main : JavaPlugin() {

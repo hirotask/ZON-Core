@@ -1,8 +1,8 @@
-package com.github.hirotask.listener
+package com.github.hirotask.mc.listener
 
 import com.github.hirotask.Main
 import com.github.hirotask.domain.ZONPlayerService
-import com.github.hirotask.event.ZombieDeathByPlayerEvent
+import com.github.hirotask.mc.event.ZombieDeathByPlayerEvent
 import com.github.syari.spigot.api.event.events
 import com.github.syari.spigot.api.sound.playSound
 import org.bukkit.Material
