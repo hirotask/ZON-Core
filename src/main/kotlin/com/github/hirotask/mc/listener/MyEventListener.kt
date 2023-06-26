@@ -25,7 +25,7 @@ class MyEventListener {
         Main.INSTANCE.events {
             event<ZombieDeathByPlayerEvent> {
                 val player = it.player
-                val zonPlayer = zonPlayerService.getZONPlayer(player) ?: return@event
+                val zonPlayer = zonPlayerService.getZONPlayer(player)
 
                 val killCount = zonPlayerService.addZombieKills(zonPlayer)
 

@@ -6,7 +6,7 @@ interface ZONPlayerService {
 
     fun addZONPlayer(player: Player): Int
 
-    fun getZONPlayer(player: Player): ZONPlayer?
+    fun getZONPlayer(player: Player): ZONPlayer
 
     fun addZombieKills(zonPlayer: ZONPlayer): Int
 

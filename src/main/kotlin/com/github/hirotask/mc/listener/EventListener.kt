@@ -39,7 +39,8 @@ class EventListener {
             }
             event<PlayerJoinEvent> {
                 val player = it.player
-                if (zonPlayerService.getZONPlayer(player) == null) {
+                val zonPlayer = zonPlayerService.getZONPlayer(player)
+                if (zonPlayer.zombieKillCount == -1 && zonPlayer.statusPoint == -1) {
                     zonPlayerService.addZONPlayer(player)
                 }
             }

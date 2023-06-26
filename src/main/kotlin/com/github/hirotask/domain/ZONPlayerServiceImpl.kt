@@ -9,7 +9,7 @@ class ZONPlayerServiceImpl @Inject constructor(private val zonPlayerRepository: 
         return zonPlayerRepository.addZONPlayer(player)
     }
 
-    override fun getZONPlayer(player: Player): ZONPlayer? {
+    override fun getZONPlayer(player: Player): ZONPlayer {
         return zonPlayerRepository.getZONPlayer(player)
     }
 
