@@ -74,4 +74,8 @@ task<LaunchMinecraftServerTask>("buildAndLaunchServer") {
     agreeEula.set(true)
 }
 
+kapt {
+    generateStubs = true
+}
+
 task<SetupTask>("setup")

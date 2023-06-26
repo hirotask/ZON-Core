@@ -1,6 +1,7 @@
 package com.github.hirotask.mc.listener
 
 import com.github.hirotask.Main
+import com.github.hirotask.di.DaggerZONPlayerKillsComponent
 import com.github.hirotask.domain.ZONPlayerService
 import com.github.hirotask.mc.event.ZombieDeathByPlayerEvent
 import com.github.syari.spigot.api.event.events
@@ -14,6 +15,11 @@ class MyEventListener {
 
     @Inject
     lateinit var zonPlayerService: ZONPlayerService
+
+    init {
+        val zonplayerKillsComponent = DaggerZONPlayerKillsComponent.create()
+        zonplayerKillsComponent.inject(this)
+    }
 
     fun register() {
         Main.INSTANCE.events {

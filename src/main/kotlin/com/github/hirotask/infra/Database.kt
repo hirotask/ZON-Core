@@ -9,9 +9,9 @@ import java.util.Properties
 class Database {
     companion object {
         private const val DATABASE_DRIVER = "org.mariadb.jdbc.Driver"
-        private const val HOSTNAME = ""
-        private const val PORT = ""
-        private const val DBNAME = ""
+        private const val HOSTNAME = "mc_db"
+        private const val PORT = "3306"
+        private const val DBNAME = "zonkills"
         private const val DATABASE_URL = "jdbc:mariadb://$HOSTNAME:$PORT/$DBNAME"
         private const val USERNAME = "root"
         private const val PASSWORD = "root"
