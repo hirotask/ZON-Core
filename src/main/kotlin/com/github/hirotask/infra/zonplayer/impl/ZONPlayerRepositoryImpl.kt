@@ -6,6 +6,11 @@ import com.github.hirotask.infra.Database
 import com.github.hirotask.infra.zonplayer.ZONPlayerRepository
 import org.bukkit.entity.Player
 
+/**
+ * ZONPlayerRepositoryの実装クラス
+ *
+ * @property database
+ */
 class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
 
     private fun getPlayerId(player: Player): Int {
