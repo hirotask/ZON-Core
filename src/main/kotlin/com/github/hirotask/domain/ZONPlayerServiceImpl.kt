@@ -4,6 +4,11 @@ import com.github.hirotask.infra.zonplayer.ZONPlayerRepository
 import org.bukkit.entity.Player
 import javax.inject.Inject
 
+/**
+ * ZONPlayerServiceの実装クラス
+ *
+ * @property zonPlayerRepository
+ */
 class ZONPlayerServiceImpl @Inject constructor(private val zonPlayerRepository: ZONPlayerRepository) : ZONPlayerService {
     override fun addZONPlayer(player: Player): Int {
         return zonPlayerRepository.addZONPlayer(player)
