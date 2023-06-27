@@ -41,7 +41,7 @@ dependencies {
 }
 
 configure<BukkitPluginDescription> {
-    main = "com.github.hirotask.Main"
+    main = "com.github.hirotask.mc.Main"
     version = gitVersion()
     apiVersion = "1." + pluginVersion.split(".")[1]
 }

@@ -1,4 +1,4 @@
-package com.github.hirotask
+package com.github.hirotask.mc
 
 import com.github.hirotask.mc.listener.EventListener
 import com.github.hirotask.mc.listener.MyEventListener
