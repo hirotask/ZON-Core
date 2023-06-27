@@ -31,7 +31,7 @@ configurations["implementation"].extendsFrom(shadowImplementation)
 dependencies {
     shadowImplementation(kotlin("stdlib"))
     compileOnly("org.spigotmc:spigot-api:$pluginVersion-R0.1-SNAPSHOT")
-    shadowImplementation(api("com.github.sya-ri:EasySpigotAPI:2.3.2") {
+    shadowImplementation(api("com.github.sya-ri:EasySpigotAPI:2.4.0") {
         exclude(group = "org.spigotmc", module = "spigot-api")
     })
     shadowImplementation("org.mariadb.jdbc:mariadb-java-client:2.4.4")
