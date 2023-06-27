@@ -1,5 +1,6 @@
 package com.github.hirotask.di
 
+import com.github.hirotask.mc.Command
 import com.github.hirotask.mc.listener.EventListener
 import com.github.hirotask.mc.listener.MyEventListener
 import dagger.Component
@@ -10,4 +11,6 @@ import javax.inject.Singleton
 interface ZONPlayerKillsComponent {
     fun inject(eventListener: EventListener)
     fun inject(myEventListener: MyEventListener)
+
+    fun inject(command: Command)
 }

@@ -3,7 +3,6 @@ package com.github.hirotask.mc.listener
 import com.github.hirotask.di.DaggerZONPlayerKillsComponent
 import com.github.hirotask.domain.ZONPlayerService
 import com.github.hirotask.exc.ZONPlayerNotFoundException
-import com.github.hirotask.mc.Main
 import com.github.hirotask.mc.event.PlayerAttackZombieEvent
 import com.github.hirotask.mc.event.ZombieDeathByPlayerEvent
 import com.github.syari.spigot.api.event.events
@@ -14,7 +13,7 @@ import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.plugin.java.JavaPlugin
 import javax.inject.Inject
 
-class EventListener(private val plugin : JavaPlugin) {
+class EventListener(private val plugin: JavaPlugin) {
 
     @Inject
     lateinit var zonPlayerService: ZONPlayerService

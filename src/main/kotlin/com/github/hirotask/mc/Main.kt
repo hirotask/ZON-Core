@@ -16,6 +16,9 @@ class Main : JavaPlugin() {
         val myEventListener = MyEventListener(this)
         eventListener.register()
         myEventListener.register()
+        // Commandの登録
+        val command = Command(this)
+        command.register()
     }
 
     override fun onDisable() {

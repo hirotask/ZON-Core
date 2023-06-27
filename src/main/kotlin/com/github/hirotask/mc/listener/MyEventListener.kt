@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 import javax.inject.Inject
 
-class MyEventListener(private val plugin : JavaPlugin) {
+class MyEventListener(private val plugin: JavaPlugin) {
 
     @Inject
     lateinit var zonPlayerService: ZONPlayerService
