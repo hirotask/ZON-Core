@@ -27,11 +27,7 @@ class MyEventListener {
                 val player = it.player
                 val zonPlayer = zonPlayerService.getZONPlayer(player)
 
-                val killCount = zonPlayerService.addZombieKills(zonPlayer)
-
-                player.sendMessage("Kills: $killCount")
-
-                when (killCount) {
+                when (zonPlayerService.addZombieKills(zonPlayer)) {
                     50 -> {
                         player.sendMessage("50キル達成！")
                         player.inventory.addItem(ItemStack(Material.DIAMOND))
