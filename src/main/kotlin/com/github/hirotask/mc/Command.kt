@@ -1,7 +1,5 @@
 package com.github.hirotask.mc
 
-import com.github.hirotask.di.DaggerZONPlayerKillsComponent
-import com.github.hirotask.domain.ZONPlayerService
 import com.github.hirotask.exc.ZONPlayerNotFoundException
 import com.github.syari.spigot.api.command.command
 import com.github.syari.spigot.api.command.tab.CommandTabArgument.Companion.argument
@@ -10,21 +8,11 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.SkullMeta
-import org.bukkit.plugin.java.JavaPlugin
-import javax.inject.Inject
 
-class Command(private val plugin: JavaPlugin) {
-
-    @Inject
-    lateinit var zonPlayerService: ZONPlayerService
-
-    init {
-        val zonplayerKillsComponent = DaggerZONPlayerKillsComponent.create()
-        zonplayerKillsComponent.inject(this)
-    }
+class Command(private val main: Main) {
 
     fun register() {
-        plugin.command("zon") {
+        main.command("zon") {
             description = "ZONPlayerに関するコマンド"
             aliases = listOf("zonpl")
 
@@ -40,7 +28,7 @@ class Command(private val plugin: JavaPlugin) {
                     "menu" -> {
                         val player = sender as? Player ?: return@execute
                         try {
-                            val zonPlayer = zonPlayerService.getZONPlayer(player)
+                            val zonPlayer = main.zonPlayerService.getZONPlayer(player)
 
                             val playerSkull = ItemStack(Material.PLAYER_HEAD)
                             val playerSkullMeta = (playerSkull.itemMeta as SkullMeta).apply {
