@@ -81,28 +81,24 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
         val sql = "SELECT COUNT(*) kills, SUM(dsp_diff) status_point FROM ms_players INNER JOIN dt_player_kills ON ms_players.mp_id = dt_player_kills.mp_id INNER JOIN dt_status_points ON ms_players.mp_id = dt_status_points.mp_id WHERE mp_name = '${player.name}'"
         val rs = database.select(sql) ?: throw Exception()
 
-        var kills = -1
-        var statusPoint = -1
-
         if (rs.first()) {
-            if (rs.wasNull()) {
+            if (!rs.wasNull()) {
+                val kills = rs.getInt("kills")
+                val statusPoint = rs.getInt("status_point")
+                database.disconnect()
+
                 return ZONPlayer(
                     player = player,
-                    zombieKillCount = -1,
-                    statusPoint = -1
+                    zombieKillCount = kills,
+                    statusPoint = statusPoint
                 )
             }
-
-            kills = rs.getInt("kills")
-            statusPoint = rs.getInt("status_point")
         }
-
-        database.disconnect()
 
         return ZONPlayer(
             player = player,
-            zombieKillCount = kills,
-            statusPoint = statusPoint
+            zombieKillCount = -1,
+            statusPoint = -1
         )
     }
 
