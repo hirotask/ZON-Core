@@ -1,6 +1,5 @@
 package com.github.hirotask.mc.listener
 
-import com.github.hirotask.mc.Main
 import com.github.hirotask.di.DaggerZONPlayerKillsComponent
 import com.github.hirotask.domain.ZONPlayerService
 import com.github.hirotask.mc.event.ZombieDeathByPlayerEvent
@@ -9,9 +8,10 @@ import com.github.syari.spigot.api.sound.playSound
 import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.inventory.ItemStack
+import org.bukkit.plugin.java.JavaPlugin
 import javax.inject.Inject
 
-class MyEventListener {
+class MyEventListener(private val plugin : JavaPlugin) {
 
     @Inject
     lateinit var zonPlayerService: ZONPlayerService
@@ -22,7 +22,7 @@ class MyEventListener {
     }
 
     fun register() {
-        Main.INSTANCE.events {
+        plugin.events {
             event<ZombieDeathByPlayerEvent> {
                 val player = it.player
                 val zonPlayer = zonPlayerService.getZONPlayer(player)

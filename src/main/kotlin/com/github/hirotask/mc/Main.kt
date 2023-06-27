@@ -7,19 +7,13 @@ import org.bukkit.plugin.java.JavaPlugin
 class Main : JavaPlugin() {
 
     companion object {
-        internal lateinit var INSTANCE: Main
-
         const val PLUGIN_NAME = "ZON-Kills"
-    }
-
-    init {
-        INSTANCE = this
     }
 
     override fun onEnable() {
         // Eventの登録
-        val eventListener = EventListener()
-        val myEventListener = MyEventListener()
+        val eventListener = EventListener(this)
+        val myEventListener = MyEventListener(this)
         eventListener.register()
         myEventListener.register()
     }
