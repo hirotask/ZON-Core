@@ -1,5 +1,6 @@
 package com.github.hirotask.infra.zonplayer.impl
 
+import com.github.hirotask.ZONPlayerNotFoundException
 import com.github.hirotask.domain.ZONPlayer
 import com.github.hirotask.infra.Database
 import com.github.hirotask.infra.zonplayer.ZONPlayerRepository
@@ -95,11 +96,7 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
             }
         }
 
-        return ZONPlayer(
-            player = player,
-            zombieKillCount = -1,
-            statusPoint = -1
-        )
+        throw ZONPlayerNotFoundException("player: ${player.name} is not found in DB")
     }
 
     override fun addZONPlayer(player: Player): Int {
