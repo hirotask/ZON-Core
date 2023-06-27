@@ -25,6 +25,9 @@ class Command(private val plugin: JavaPlugin) {
 
     fun register() {
         plugin.command("zon") {
+            description = "ZONPlayerに関するコマンド"
+            aliases = listOf("zonpl")
+
             tab {
                 argument { // 引数が何も入力されていない場合の補完
                     add("menu")
