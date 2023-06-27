@@ -1,6 +1,6 @@
 package com.github.hirotask.infra.zonplayer.impl
 
-import com.github.hirotask.ZONPlayerNotFoundException
+import com.github.hirotask.exc.ZONPlayerNotFoundException
 import com.github.hirotask.domain.ZONPlayer
 import com.github.hirotask.infra.Database
 import com.github.hirotask.infra.zonplayer.ZONPlayerRepository

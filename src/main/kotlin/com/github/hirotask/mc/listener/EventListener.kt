@@ -1,7 +1,7 @@
 package com.github.hirotask.mc.listener
 
 import com.github.hirotask.Main
-import com.github.hirotask.ZONPlayerNotFoundException
+import com.github.hirotask.exc.ZONPlayerNotFoundException
 import com.github.hirotask.di.DaggerZONPlayerKillsComponent
 import com.github.hirotask.domain.ZONPlayerService
 import com.github.hirotask.mc.event.PlayerAttackZombieEvent
