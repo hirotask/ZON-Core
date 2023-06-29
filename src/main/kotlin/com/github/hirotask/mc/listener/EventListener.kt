@@ -10,6 +10,11 @@ import org.bukkit.entity.Zombie
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.player.PlayerJoinEvent
 
+/**
+ * SpigotAPIに実装されているイベントに対するリスナー
+ *
+ * @property main
+ */
 class EventListener(private val main: Main) {
 
     fun register() {

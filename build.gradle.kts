@@ -13,6 +13,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("org.jmailen.kotlinter") version "3.8.0"
     kotlin("kapt") version "1.8.22"
+    id("org.jetbrains.dokka") version "1.8.20"
 }
 
 val gitVersion: Closure<String> by extra
@@ -44,6 +45,10 @@ configure<BukkitPluginDescription> {
     main = "com.github.hirotask.mc.Main"
     version = gitVersion()
     apiVersion = "1." + pluginVersion.split(".")[1]
+}
+
+tasks.getByName<org.jetbrains.dokka.gradle.DokkaTask>("dokkaHtml") {
+    outputDirectory.set(buildDir.resolve("dokkaHtmlOutput"))
 }
 
 tasks.withType<ShadowJar> {

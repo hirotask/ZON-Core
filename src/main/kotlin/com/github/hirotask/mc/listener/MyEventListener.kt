@@ -8,6 +8,11 @@ import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.inventory.ItemStack
 
+/**
+ * 本プラグインで実装したイベントに対するリスナー
+ *
+ * @property main
+ */
 class MyEventListener(private val main: Main) {
 
     fun register() {
