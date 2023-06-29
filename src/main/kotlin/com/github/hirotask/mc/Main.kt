@@ -8,6 +8,10 @@ import com.github.syari.spigot.api.EasySpigotAPIOption
 import org.bukkit.plugin.java.JavaPlugin
 import javax.inject.Inject
 
+/**
+ * メインクラス
+ *
+ */
 class Main : JavaPlugin() {
 
     companion object {

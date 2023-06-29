@@ -5,6 +5,10 @@ import java.sql.DriverManager
 import java.sql.ResultSet
 import java.sql.SQLException
 
+/**
+ * データベース接続のためのクラス
+ *
+ */
 class Database {
     companion object {
         private const val DATABASE_DRIVER = "org.mariadb.jdbc.Driver"
@@ -18,6 +22,11 @@ class Database {
 
     private var connection: Connection? = null
 
+    /**
+     * データベースに接続する
+     *
+     * @return
+     */
     fun connect(): Connection? {
         try {
             Class.forName(DATABASE_DRIVER)
@@ -30,6 +39,11 @@ class Database {
         return this.connection
     }
 
+    /**
+     * データベースから切断する
+     *
+     * @return
+     */
     fun disconnect(): Boolean {
         try {
             connection?.close()
@@ -41,12 +55,24 @@ class Database {
         return false
     }
 
+    /**
+     * SELECT文を実行する
+     *
+     * @param query 実行するクエリ
+     * @return 実行結果
+     */
     fun select(query: String): ResultSet? {
         val statement = connection?.createStatement()
 
         return statement?.executeQuery(query)
     }
 
+    /**
+     * UPDATE, DELETE, INSERTを実行する
+     *
+     * @param query 実行するクエリ
+     * @return 実行後変更されたインデックス
+     */
     fun createOrUpdateOrDelete(query: String): Int {
         val statement = connection?.createStatement()
 

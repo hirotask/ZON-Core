@@ -5,7 +5,7 @@ import groovy.lang.Closure
 import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
 
 plugins {
-    kotlin("jvm") version "1.6.10"
+    kotlin("jvm") version "1.7.10"
     id("net.minecrell.plugin-yml.bukkit") version "0.5.1"
     id("com.github.ben-manes.versions") version "0.41.0"
     id("com.palantir.git-version") version "0.12.3"
@@ -13,6 +13,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("org.jmailen.kotlinter") version "3.8.0"
     kotlin("kapt") version "1.8.22"
+    id("org.jetbrains.dokka") version "1.8.20"
 }
 
 val gitVersion: Closure<String> by extra
@@ -44,6 +45,11 @@ configure<BukkitPluginDescription> {
     main = "com.github.hirotask.mc.Main"
     version = gitVersion()
     apiVersion = "1." + pluginVersion.split(".")[1]
+    author = "hirotask"
+}
+
+tasks.getByName<org.jetbrains.dokka.gradle.DokkaTask>("dokkaHtml") {
+    outputDirectory.set(buildDir.resolve("dokkaHtmlOutput"))
 }
 
 tasks.withType<ShadowJar> {

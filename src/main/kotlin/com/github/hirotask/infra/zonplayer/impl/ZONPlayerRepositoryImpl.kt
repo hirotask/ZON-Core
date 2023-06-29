@@ -6,6 +6,11 @@ import com.github.hirotask.infra.Database
 import com.github.hirotask.infra.zonplayer.ZONPlayerRepository
 import org.bukkit.entity.Player
 
+/**
+ * ZONPlayerRepositoryの実装クラス
+ *
+ * @property database
+ */
 class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
 
     private fun getPlayerId(player: Player): Int {
@@ -29,10 +34,11 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
         return result
     }
 
-    override fun addZombieKills(zonPlayer: ZONPlayer): Int {
+    override fun addZombieKills(zonPlayer: ZONPlayer, amount: Int): Int {
         val id = getPlayerId(zonPlayer.player)
+        val value = zonPlayer.zombieKillCount + amount
         database.connect()
-        val result = database.createOrUpdateOrDelete("INSERT INTO dt_player_kills(mp_id) VALUES ($id)")
+        val result = database.createOrUpdateOrDelete("INSERT INTO dt_player_kills(mp_id, dpk_value) VALUES ($id, $value)")
         database.disconnect()
 
         return result
@@ -40,8 +46,9 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
 
     override fun addStatusPoint(zonPlayer: ZONPlayer, amount: Int): Int {
         val id = getPlayerId(zonPlayer.player)
+        val value = zonPlayer.statusPoint + amount
         database.connect()
-        val result = database.createOrUpdateOrDelete("INSERT INTO dt_status_points(mp_id, dsp_diff) VALUES ($id, $amount)")
+        val result = database.createOrUpdateOrDelete("INSERT INTO dt_status_points(mp_id, dsp_value) VALUES ($id, $value)")
         database.disconnect()
 
         return result
@@ -49,12 +56,12 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
 
     override fun getZombieKills(zonPlayer: ZONPlayer): Int {
         database.connect()
-        val rs = database.select("SELECT COUNT(*) count FROM ms_players INNER JOIN dt_player_kills ON ms_players.mp_id = dt_player_kills.mp_id WHERE mp_name = '${zonPlayer.player.name}'")
+        val rs = database.select("SELECT dpk_value FROM ms_players INNER JOIN dt_player_kills ON ms_players.mp_id = dt_player_kills.mp_id WHERE mp_name = '${zonPlayer.player.name}' ORDER BY dpk_id DESC LIMIT 1")
             ?: return -1
 
         var result = -1
         while (rs.next()) {
-            result = rs.getInt("count")
+            result = rs.getInt("dpk_value")
         }
 
         database.disconnect()
@@ -64,12 +71,12 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
 
     override fun getStatusPoint(zonPlayer: ZONPlayer): Int {
         database.connect()
-        val rs = database.select("SELECT SUM(dsp_diff) diff FROM ms_players INNER JOIN dt_status_points ON ms_players.mp_id = dt_status_points.mp_id WHERE mp_name = '${zonPlayer.player.name}'")
+        val rs = database.select("SELECT dsp_value FROM ms_players INNER JOIN dt_status_points ON ms_players.mp_id = dt_status_points.mp_id WHERE mp_name = '${zonPlayer.player.name}' ORDER BY dsp_id DESC LIMIT 1")
             ?: return -1
 
         var result = -1
         while (rs.next()) {
-            result = rs.getInt("diff")
+            result = rs.getInt("dsp_value")
         }
 
         database.disconnect()
@@ -79,7 +86,7 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
 
     override fun getZONPlayer(player: Player): ZONPlayer {
         database.connect()
-        val sql = "SELECT COUNT(dpk_id) kills, SUM(dsp_diff) status_point FROM dt_player_kills LEFT JOIN dt_status_points ON dt_player_kills.mp_id = dt_status_points.mp_id LEFT JOIN ms_players ON dt_player_kills.mp_id = ms_players.mp_id WHERE mp_name = '${player.name}'"
+        val sql = "SELECT dpk_value, dsp_value FROM dt_player_kills INNER JOIN dt_status_points ON dt_player_kills.mp_id = dt_status_points.mp_id INNER JOIN ms_players ON dt_player_kills.mp_id = ms_players.mp_id WHERE mp_name = '${player.name}' ORDER BY dt_player_kills.created_at DESC,dt_status_points.created_at DESC LIMIT 1"
         val rs = database.select(sql) ?: throw Exception()
 
         var kills = 0
@@ -88,8 +95,8 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
             if (rs.wasNull()) {
                 throw ZONPlayerNotFoundException("player: ${player.name} is not found in DB")
             } else {
-                kills = rs.getInt("kills")
-                statusPoint = rs.getInt("status_point")
+                kills = rs.getInt("dpk_value")
+                statusPoint = rs.getInt("dsp_value")
             }
         }
         database.disconnect()

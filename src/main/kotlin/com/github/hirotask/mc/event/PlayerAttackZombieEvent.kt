@@ -6,6 +6,12 @@ import org.bukkit.event.Cancellable
 import org.bukkit.event.Event
 import org.bukkit.event.HandlerList
 
+/**
+ * プレイヤーがゾンビを攻撃した時に発火するイベント
+ *
+ * @property player
+ * @property zombie
+ */
 class PlayerAttackZombieEvent(val player: Player, val zombie: Zombie) : Event(), Cancellable {
     var cancel: Boolean = false
 
