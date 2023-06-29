@@ -20,7 +20,7 @@ interface ZONPlayerRepository {
      * @param zonPlayer
      * @return
      */
-    fun addZombieKills(zonPlayer: ZONPlayer): Int
+    fun addZombieKills(zonPlayer: ZONPlayer, amount : Int): Int
 
     /**
      * ステータスポイントを増加する
