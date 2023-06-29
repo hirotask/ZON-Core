@@ -25,6 +25,7 @@ class MyEventListener(private val main: Main) {
 
                 if (zombieKills > 0 && zombieKills % 100 == 0) {
                     main.zonPlayerService.addStatusPoint(zonPlayer, 1)
+                    zonPlayer.player.playSound(Sound.ENTITY_EXPERIENCE_ORB_PICKUP)
                 }
 
                 when (zombieKills) {
