@@ -24,14 +24,17 @@ class Command(private val main: Main) {
             tab {
                 argument { // 引数が何も入力されていない場合の補完
                     add("menu")
+                    add("addkills")
+                    add("addstatus")
                 }
             }
 
             execute { // コマンド実行時の処理
+                val player = sender as? Player ?: return@execute
+
                 when (args.lowerOrNull(0)) {
                     // 0 番目の引数が here だった時の処理
                     "menu" -> {
-                        val player = sender as? Player ?: return@execute
                         try {
                             val zonPlayer = main.zonPlayerService.getZONPlayer(player)
 
@@ -51,6 +54,30 @@ class Command(private val main: Main) {
                                 item(4, playerSkull)
                                 for (i in 5..8) item(i, Material.GRAY_STAINED_GLASS_PANE, " ")
                             }.open(player)
+                        } catch (e: ZONPlayerNotFoundException) {
+                            player.sendMessage("プレイヤーが取得できませんでした")
+                        }
+                    }
+                    "addkills" -> {
+                        val value = args.lowerOrNull(1) ?: return@execute
+                        val valueInt = value.toInt()
+
+                        try {
+                            val zonPlayer = main.zonPlayerService.getZONPlayer(player)
+                            main.zonPlayerService.addZombieKills(zonPlayer = zonPlayer, valueInt)
+                            player.sendMessage("キル数を${valueInt}追加しました")
+                        } catch (e: ZONPlayerNotFoundException) {
+                            player.sendMessage("プレイヤーが取得できませんでした")
+                        }
+                    }
+                    "addstatus" -> {
+                        val value = args.lowerOrNull(1) ?: return@execute
+                        val valueInt = value.toInt()
+
+                        try {
+                            val zonPlayer = main.zonPlayerService.getZONPlayer(player)
+                            main.zonPlayerService.addStatusPoint(zonPlayer = zonPlayer, valueInt)
+                            player.sendMessage("キル数を${valueInt}追加しました")
                         } catch (e: ZONPlayerNotFoundException) {
                             player.sendMessage("プレイヤーが取得できませんでした")
                         }
