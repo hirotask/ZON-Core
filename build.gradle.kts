@@ -5,7 +5,7 @@ import groovy.lang.Closure
 import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
 
 plugins {
-    kotlin("jvm") version "1.6.10"
+    kotlin("jvm") version "1.7.10"
     id("net.minecrell.plugin-yml.bukkit") version "0.5.1"
     id("com.github.ben-manes.versions") version "0.41.0"
     id("com.palantir.git-version") version "0.12.3"
@@ -45,6 +45,7 @@ configure<BukkitPluginDescription> {
     main = "com.github.hirotask.mc.Main"
     version = gitVersion()
     apiVersion = "1." + pluginVersion.split(".")[1]
+    author = "hirotask"
 }
 
 tasks.getByName<org.jetbrains.dokka.gradle.DokkaTask>("dokkaHtml") {
