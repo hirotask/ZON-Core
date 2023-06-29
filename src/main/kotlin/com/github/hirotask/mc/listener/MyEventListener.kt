@@ -4,8 +4,11 @@ import com.github.hirotask.mc.Main
 import com.github.hirotask.mc.event.ZombieDeathByPlayerEvent
 import com.github.syari.spigot.api.event.events
 import com.github.syari.spigot.api.sound.playSound
+import org.bukkit.Color
+import org.bukkit.FireworkEffect
 import org.bukkit.Material
 import org.bukkit.Sound
+import org.bukkit.entity.Firework
 import org.bukkit.inventory.ItemStack
 
 /**
@@ -25,18 +28,18 @@ class MyEventListener(private val main: Main) {
 
                 if (zombieKills > 0 && zombieKills % 100 == 0) {
                     main.zonPlayerService.addStatusPoint(zonPlayer, 1)
-                    zonPlayer.player.playSound(Sound.ENTITY_EXPERIENCE_ORB_PICKUP)
+                    val firework: Firework = zonPlayer.player.world.spawn(zonPlayer.player.location, Firework::class.java)
+                    val data = firework.fireworkMeta.apply {
+                        addEffect(FireworkEffect.builder().withColor(Color.PURPLE).withColor(Color.GREEN).with(FireworkEffect.Type.BALL_LARGE).withFlicker().build())
+                        power = 1
+                    }
+                    firework.fireworkMeta = data
                 }
 
                 when (zombieKills) {
                     50 -> {
                         player.sendMessage("50キル達成！")
                         player.inventory.addItem(ItemStack(Material.DIAMOND))
-                        player.playSound(Sound.ENTITY_ENDER_DRAGON_DEATH, volume = 0.5F)
-                    }
-                    100 -> {
-                        player.sendMessage("100キル達成！")
-                        player.inventory.addItem(ItemStack(Material.NETHER_STAR))
                         player.playSound(Sound.ENTITY_ENDER_DRAGON_DEATH, volume = 0.5F)
                     }
                 }

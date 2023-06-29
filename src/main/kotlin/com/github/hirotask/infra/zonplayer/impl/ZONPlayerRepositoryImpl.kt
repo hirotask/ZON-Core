@@ -56,7 +56,7 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
 
     override fun getZombieKills(zonPlayer: ZONPlayer): Int {
         database.connect()
-        val rs = database.select("SELECT dpk_value count FROM ms_players INNER JOIN dt_player_kills ON ms_players.mp_id = dt_player_kills.mp_id WHERE mp_name = '${zonPlayer.player.name}' ORDER BY dpk_id DESC LIMIT 1")
+        val rs = database.select("SELECT dpk_value FROM ms_players INNER JOIN dt_player_kills ON ms_players.mp_id = dt_player_kills.mp_id WHERE mp_name = '${zonPlayer.player.name}' ORDER BY dpk_id DESC LIMIT 1")
             ?: return -1
 
         var result = -1
@@ -71,7 +71,7 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
 
     override fun getStatusPoint(zonPlayer: ZONPlayer): Int {
         database.connect()
-        val rs = database.select("SELECT dsp_value diff FROM ms_players INNER JOIN dt_status_points ON ms_players.mp_id = dt_status_points.mp_id WHERE mp_name = '${zonPlayer.player.name}' ORDER BY dsp_id DESC LIMIT 1")
+        val rs = database.select("SELECT dsp_value FROM ms_players INNER JOIN dt_status_points ON ms_players.mp_id = dt_status_points.mp_id WHERE mp_name = '${zonPlayer.player.name}' ORDER BY dsp_id DESC LIMIT 1")
             ?: return -1
 
         var result = -1
@@ -86,7 +86,7 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
 
     override fun getZONPlayer(player: Player): ZONPlayer {
         database.connect()
-        val sql = "SELECT dpk_value, dsp_value FROM dt_player_kills LEFT JOIN dt_status_points ON dt_player_kills.mp_id = dt_status_points.mp_id LEFT JOIN ms_players ON dt_player_kills.mp_id = ms_players.mp_id WHERE mp_name = '${player.name}' ORDER BY dpk_id DESC LIMIT 1"
+        val sql = "SELECT dpk_value, dsp_value FROM dt_player_kills INNER JOIN dt_status_points ON dt_player_kills.mp_id = dt_status_points.mp_id INNER JOIN ms_players ON dt_player_kills.mp_id = ms_players.mp_id WHERE mp_name = '${player.name}' ORDER BY dt_player_kills.created_at DESC,dt_status_points.created_at DESC LIMIT 1"
         val rs = database.select(sql) ?: throw Exception()
 
         var kills = 0
