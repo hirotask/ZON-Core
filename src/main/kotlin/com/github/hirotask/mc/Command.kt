@@ -4,6 +4,7 @@ import com.github.hirotask.exc.ZONPlayerNotFoundException
 import com.github.syari.spigot.api.command.command
 import com.github.syari.spigot.api.command.tab.CommandTabArgument.Companion.argument
 import com.github.syari.spigot.api.inventory.inventory
+import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -86,7 +87,9 @@ class Command(private val main: Main) {
                     null -> {
                         sender.sendMessage(
                             """
-                                §a/$label menu 自分のステータスを表示します
+                                ${ChatColor.GREEN}/$label menu ${ChatColor.WHITE}自分のステータスを表示します
+                                ${ChatColor.GREEN}/$label addkills <数値> ${ChatColor.WHITE}キル数を増加させます
+                                ${ChatColor.GREEN}/$label addstatus <数値> ${ChatColor.WHITE}ステータスポイントを増加させます
                             """.trimIndent()
                         )
                     }
