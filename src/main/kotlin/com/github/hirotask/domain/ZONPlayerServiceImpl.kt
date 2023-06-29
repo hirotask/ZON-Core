@@ -18,8 +18,8 @@ class ZONPlayerServiceImpl @Inject constructor(private val zonPlayerRepository: 
         return zonPlayerRepository.getZONPlayer(player)
     }
 
-    override fun addZombieKills(zonPlayer: ZONPlayer): Int {
-        zonPlayerRepository.addZombieKills(zonPlayer)
+    override fun addZombieKills(zonPlayer: ZONPlayer, amount: Int): Int {
+        zonPlayerRepository.addZombieKills(zonPlayer, amount)
         zonPlayer.zombieKillCount = zonPlayerRepository.getZombieKills(zonPlayer)
         return zonPlayer.zombieKillCount
     }

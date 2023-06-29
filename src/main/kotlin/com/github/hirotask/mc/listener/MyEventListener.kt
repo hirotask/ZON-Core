@@ -21,9 +21,9 @@ class MyEventListener(private val main: Main) {
                 val player = it.player
                 val zonPlayer = main.zonPlayerService.getZONPlayer(player)
 
-                val zombieKills = main.zonPlayerService.addZombieKills(zonPlayer)
+                val zombieKills = main.zonPlayerService.addZombieKills(zonPlayer, 1)
 
-                if(zombieKills > 0 && zombieKills % 100 == 0) {
+                if (zombieKills > 0 && zombieKills % 100 == 0) {
                     main.zonPlayerService.addStatusPoint(zonPlayer, 1)
                 }
 

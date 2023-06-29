@@ -26,7 +26,7 @@ interface ZONPlayerService {
      * @param zonPlayer ZONPlayer
      * @return 追加したインデックス
      */
-    fun addZombieKills(zonPlayer: ZONPlayer): Int
+    fun addZombieKills(zonPlayer: ZONPlayer, amount: Int): Int
 
     /**
      * ステータスポイントを追加する
