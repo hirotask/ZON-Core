@@ -21,7 +21,13 @@ class MyEventListener(private val main: Main) {
                 val player = it.player
                 val zonPlayer = main.zonPlayerService.getZONPlayer(player)
 
-                when (main.zonPlayerService.addZombieKills(zonPlayer)) {
+                val zombieKills = main.zonPlayerService.addZombieKills(zonPlayer)
+
+                if(zombieKills > 0 && zombieKills % 100 == 0) {
+                    main.zonPlayerService.addStatusPoint(zonPlayer, 1)
+                }
+
+                when (zombieKills) {
                     50 -> {
                         player.sendMessage("50キル達成！")
                         player.inventory.addItem(ItemStack(Material.DIAMOND))
