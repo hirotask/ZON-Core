@@ -6,7 +6,7 @@ build_image() {
   ## ソースコードからSkillMasterをビルド
   ./gradlew build
 
-  cp -f build/libs/ZON-Kills.jar localDependencies/ZON-Kills.jar
+  cp -f build/libs/ZON-Kills.jar docker/paper/localDependencies/ZON-Kills.jar
 
   ## dockerイメージのビルド（初回は数十分かかります）
   docker-compose build -m 2g

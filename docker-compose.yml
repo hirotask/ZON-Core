@@ -2,9 +2,9 @@ version: '3.7'
 
 services:
   papera:
-    image: itzg/minecraft-server:java17-alpine
-    volumes:
-      - ./localDependencies:/data/plugins
+    build:
+        context: ./docker/paper
+        dockerfile: Dockerfile
     environment:
       - TYPE=PAPER
       - VERSION=1.19.2
@@ -19,10 +19,13 @@ services:
     depends_on:
       - db
   db:
-    image: mariadb:latest
+    build:
+      context: ./docker/db
+      dockerfile: Dockerfile
     container_name: mc_db
     volumes:
-      - ./db_data:/var/lib/mysql
+      - ./docker/db/data:/var/lib/mysql
+      - ./docker/db/init:/docker-entrypoint-initdb.d
     ports:
       - "13306:3306"
     restart: always

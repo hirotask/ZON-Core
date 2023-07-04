@@ -1,5 +1,6 @@
 /.idea/
 .gradle/
 build/
-db_data/
-localDependencies/
+docker/db/data
+docker/paper/localDependencies/*
+!docker/paper/localDependencies/bStats
