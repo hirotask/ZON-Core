@@ -55,42 +55,61 @@ class Command(private val main: Main) {
                                 for (i in 0..3) item(i, Material.GRAY_STAINED_GLASS_PANE, " ")
                                 item(4, playerSkull) {
                                     onClick {
-                                        val status = main.zonPlayerService.getPlayerStatus(zonPlayer)
                                         inventory("ステータス強化", 1) {
                                             item(0, Material.GRAY_STAINED_GLASS_PANE)
-                                            item(1, Material.RED_WOOL, display = "HP: ${status.hp}", lore = listOf("1ステータスポイントで強化する")) {
+                                            item(1, Material.RED_WOOL, display = "HP: ${zonPlayer.zonplayerStatus.hp}", lore = listOf("1ステータスポイントで強化する")) {
                                                 onClick {
-                                                    player.sendMessage("HPを強化しました")
-                                                    main.zonPlayerService.addHP(zonPlayer, 1)
-                                                    main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                                    try {
+                                                        main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                                        main.zonPlayerService.addHP(zonPlayer, 1)
+                                                        player.sendMessage("HPを強化しました")
+                                                    } catch (e: ValidNumberException) {
+                                                        player.sendMessage("ステータスポイントが足りませんでした")
+                                                    }
                                                 }
                                             }
-                                            item(2, Material.YELLOW_WOOL, display = "HP再生速度: ${status.hpRegen}", lore = listOf("1ステータスポイントで強化する")) {
+                                            item(2, Material.YELLOW_WOOL, display = "HP再生速度: ${zonPlayer.zonplayerStatus.hpRegen}", lore = listOf("1ステータスポイントで強化する")) {
                                                 onClick {
-                                                    player.sendMessage("HP再生速度を強化しました")
-                                                    main.zonPlayerService.addHPRegen(zonPlayer, 1)
-                                                    main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                                    try {
+                                                        main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                                        main.zonPlayerService.addHPRegen(zonPlayer, 1)
+                                                        player.sendMessage("HP再生速度を強化しました")
+                                                    } catch (e: ValidNumberException) {
+                                                        player.sendMessage("ステータスポイントが足りませんでした")
+                                                    }
                                                 }
                                             }
-                                            item(3, Material.GREEN_WOOL, display = "MP: ${status.mp}", lore = listOf("1ステータスポイントで強化する")) {
+                                            item(3, Material.GREEN_WOOL, display = "MP: ${zonPlayer.zonplayerStatus.mp}", lore = listOf("1ステータスポイントで強化する")) {
                                                 onClick {
-                                                    player.sendMessage("MPを強化しました")
-                                                    main.zonPlayerService.addMP(zonPlayer, 1)
-                                                    main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                                    try {
+                                                        main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                                        main.zonPlayerService.addMP(zonPlayer, 1)
+                                                        player.sendMessage("MPを強化しました")
+                                                    } catch (e: ValidNumberException) {
+                                                        player.sendMessage("ステータスポイントが足りませんでした")
+                                                    }
                                                 }
                                             }
-                                            item(4, Material.CYAN_WOOL, display = "MP再生速度: ${status.mpRegen}", lore = listOf("1ステータスポイントで強化する")) {
+                                            item(4, Material.CYAN_WOOL, display = "MP再生速度: ${zonPlayer.zonplayerStatus.mpRegen}", lore = listOf("1ステータスポイントで強化する")) {
                                                 onClick {
-                                                    player.sendMessage("MP再生速度を強化しました")
-                                                    main.zonPlayerService.addMPRegen(zonPlayer, 1)
-                                                    main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                                    try {
+                                                        main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                                        main.zonPlayerService.addMPRegen(zonPlayer, 1)
+                                                        player.sendMessage("MP再生速度を強化しました")
+                                                    } catch (e: ValidNumberException) {
+                                                        player.sendMessage("ステータスポイントが足りませんでした")
+                                                    }
                                                 }
                                             }
-                                            item(5, Material.MAGENTA_WOOL, display = "攻撃力: ${status.strength}", lore = listOf("1ステータスポイントで強化する")) {
+                                            item(5, Material.MAGENTA_WOOL, display = "攻撃力: ${zonPlayer.zonplayerStatus.strength}", lore = listOf("1ステータスポイントで強化する")) {
                                                 onClick {
-                                                    player.sendMessage("攻撃力を強化しました")
-                                                    main.zonPlayerService.addStrength(zonPlayer, 1)
-                                                    main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                                    try {
+                                                        main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                                        main.zonPlayerService.addStrength(zonPlayer, 1)
+                                                        player.sendMessage("攻撃力を強化しました")
+                                                    } catch (e: ValidNumberException) {
+                                                        player.sendMessage("ステータスポイントが足りませんでした")
+                                                    }
                                                 }
                                             }
                                             for (i in 6..8) item(i, Material.GRAY_STAINED_GLASS_PANE)
@@ -101,8 +120,6 @@ class Command(private val main: Main) {
                             }.open(player)
                         } catch (e: ZONPlayerNotFoundException) {
                             player.sendMessage("プレイヤーが取得できませんでした")
-                        } catch (e: ValidNumberException) {
-                            player.sendMessage("ステータスポイントが足りませんでした")
                         }
                     }
                     "addkills" -> {
@@ -124,7 +141,7 @@ class Command(private val main: Main) {
                         try {
                             val zonPlayer = main.zonPlayerService.getZONPlayer(player)
                             main.zonPlayerService.addStatusPoint(zonPlayer = zonPlayer, valueInt)
-                            player.sendMessage("キル数を${valueInt}追加しました")
+                            player.sendMessage("ステータスポイントを${valueInt}追加しました")
                         } catch (e: ZONPlayerNotFoundException) {
                             player.sendMessage("プレイヤーが取得できませんでした")
                         }

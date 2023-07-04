@@ -20,7 +20,21 @@ class ZONPlayerServiceImpl @Inject constructor(
     }
 
     override fun getZONPlayer(player: Player): ZONPlayer {
-        return zonPlayerRepository.getZONPlayer(player)
+        val zonPlayer = zonPlayerRepository.getZONPlayer(player)
+        zonPlayer.statusPoint = zonPlayerRepository.getStatusPoint(zonPlayer)
+        zonPlayer.zombieKillCount = zonPlayerRepository.getZombieKills(zonPlayer)
+        try {
+            zonPlayer.zonplayerStatus = zonPlayerStatusRepository.getZONPlayerStatus(zonPlayer)
+        } catch (e: ZONPlayerStatusNotFoundException) {
+            zonPlayer.zonplayerStatus = ZONPlayerStatus(
+                hp = zonPlayerStatusRepository.getHP(zonPlayer),
+                hpRegen = zonPlayerStatusRepository.getHPRegen(zonPlayer),
+                mp = zonPlayerStatusRepository.getMP(zonPlayer),
+                mpRegen = zonPlayerStatusRepository.getMPRegen(zonPlayer),
+                strength = zonPlayerStatusRepository.getStrength(zonPlayer)
+            )
+        }
+        return zonPlayer
     }
 
     override fun addZombieKills(zonPlayer: ZONPlayer, amount: Int): Int {
@@ -33,21 +47,6 @@ class ZONPlayerServiceImpl @Inject constructor(
         zonPlayerRepository.addStatusPoint(zonPlayer, amount)
         zonPlayer.statusPoint = zonPlayerRepository.getStatusPoint(zonPlayer)
         return zonPlayer.statusPoint
-    }
-
-    override fun getPlayerStatus(zonPlayer: ZONPlayer): ZONPlayerStatus {
-        try {
-            zonPlayer.zonplayerStatus = zonPlayerStatusRepository.getZONPlayerStatus(zonPlayer)
-        } catch (e: ZONPlayerStatusNotFoundException) {
-            zonPlayer.zonplayerStatus = ZONPlayerStatus(
-                hp = 0,
-                hpRegen = 0,
-                mp = 0,
-                mpRegen = 0,
-                strength = 0
-            )
-        }
-        return zonPlayer.zonplayerStatus
     }
 
     override fun addHP(zonPlayer: ZONPlayer, amount: Int): Int {

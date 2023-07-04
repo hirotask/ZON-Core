@@ -37,8 +37,6 @@ interface ZONPlayerService {
      */
     fun addStatusPoint(zonPlayer: ZONPlayer, amount: Int): Int
 
-    fun getPlayerStatus(zonPlayer: ZONPlayer): ZONPlayerStatus
-
     fun addHP(zonPlayer: ZONPlayer, amount: Int): Int
 
     fun addHPRegen(zonPlayer: ZONPlayer, amount: Int): Int
