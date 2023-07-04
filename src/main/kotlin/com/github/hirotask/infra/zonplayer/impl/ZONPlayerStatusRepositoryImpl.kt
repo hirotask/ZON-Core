@@ -24,36 +24,41 @@ class ZONPlayerStatusRepositoryImpl(val database: Database) : ZONPlayerStatusRep
 
     override fun getZONPlayerStatus(zonPlayer: ZONPlayer): ZONPlayerStatus {
         database.connect()
-        val sql = ""
+        val sql = """
+            SELECT dh_hp, dhr_hp_regen, dm_mp, dmr_mp_regen, ds_strength FROM ms_players
+            INNER JOIN dt_strength ON ms_players.mp_id = dt_strength.mp_id
+            INNER JOIN dt_hp ON ms_players.mp_id = dt_hp.mp_id
+            INNER JOIN dt_hp_regen ON ms_players.mp_id = dt_hp_regen.mp_id
+            INNER JOIN dt_mp ON ms_players.mp_id = dt_mp.mp_id
+            INNER JOIN dt_mp_regen ON ms_players.mp_id = dt_mp_regen.mp_id
+            WHERE mp_name = '${zonPlayer.player.name}'
+            ORDER BY dt_strength.created_at DESC, dt_hp.created_at DESC, dt_hp_regen.created_at DESC, dt_mp.created_at DESC, dt_mp_regen.created_at DESC;
+        """.trimIndent()
 
         val rs = database.select(sql) ?: throw Exception()
 
-        var hp = -1
-        var hpRegen = -1
-        var mp = -1
-        var mpRegen = -1
-        var strength = -1
         if (rs.first()) {
-            if (rs.wasNull()) {
-                throw ZONPlayerStatusNotFoundException("player(${zonPlayer.player.name})'s status is not found in DB")
-            } else {
-                hp = rs.getInt("hp")
-                hpRegen = rs.getInt("hp_regen")
-                mp = rs.getInt("mp")
-                mpRegen = rs.getInt("mp_regen")
-                strength = rs.getInt("strength")
-            }
+            val hp = rs.getInt("dh_hp")
+            val hpRegen = rs.getInt("dhr_hp_regen")
+            val mp = rs.getInt("dm_mp")
+            val mpRegen = rs.getInt("dmr_mp_regen")
+            val strength = rs.getInt("ds_strength")
+
+            database.disconnect()
+
+            return ZONPlayerStatus(
+                    hp = hp,
+                    hpRegen = hpRegen,
+                    mp = mp,
+                    mpRegen = mpRegen,
+                    strength = strength
+            )
+
+        } else {
+            throw ZONPlayerStatusNotFoundException("player(${zonPlayer.player.name})'s status is not found in DB")
         }
 
-        database.disconnect()
 
-        return ZONPlayerStatus(
-            hp = hp,
-            hpRegen = hpRegen,
-            mp = mp,
-            mpRegen = mpRegen,
-            strength = strength
-        )
     }
 
     override fun getHP(zonPlayer: ZONPlayer): Int {

@@ -90,30 +90,26 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
         val sql = "SELECT dpk_value, dsp_value FROM dt_player_kills INNER JOIN dt_status_points ON dt_player_kills.mp_id = dt_status_points.mp_id INNER JOIN ms_players ON dt_player_kills.mp_id = ms_players.mp_id WHERE mp_name = '${player.name}' ORDER BY dt_player_kills.created_at DESC,dt_status_points.created_at DESC LIMIT 1"
         val rs = database.select(sql) ?: throw Exception()
 
-        var kills = 0
-        var statusPoint = 0
         if (rs.first()) {
-            if (rs.wasNull()) {
-                throw ZONPlayerNotFoundException("player: ${player.name} is not found in DB")
-            } else {
-                kills = rs.getInt("dpk_value")
-                statusPoint = rs.getInt("dsp_value")
-            }
-        }
-        database.disconnect()
+            val kills = rs.getInt("dpk_value")
+            val statusPoint = rs.getInt("dsp_value")
+            database.disconnect()
 
-        return ZONPlayer(
-            player = player,
-            zombieKillCount = kills,
-            statusPoint = statusPoint,
-            zonplayerStatus = ZONPlayerStatus(
-                hp = 0,
-                hpRegen = 0,
-                mp = 0,
-                mpRegen = 0,
-                strength = 0
-            ),
-        )
+            return ZONPlayer(
+                    player = player,
+                    zombieKillCount = kills,
+                    statusPoint = statusPoint,
+                    zonplayerStatus = ZONPlayerStatus(
+                            hp = 0,
+                            hpRegen = 0,
+                            mp = 0,
+                            mpRegen = 0,
+                            strength = 0
+                    ),
+            )
+        } else {
+            throw ZONPlayerNotFoundException("player: ${player.name} is not found in DB")
+        }
     }
 
     override fun addZONPlayer(player: Player): Int {
