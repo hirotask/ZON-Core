@@ -1,6 +1,7 @@
 package com.github.hirotask.infra.zonplayer.impl
 
 import com.github.hirotask.domain.ZONPlayer
+import com.github.hirotask.domain.ZONPlayerStatus
 import com.github.hirotask.exc.ZONPlayerNotFoundException
 import com.github.hirotask.infra.Database
 import com.github.hirotask.infra.zonplayer.ZONPlayerRepository
@@ -57,7 +58,7 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
     override fun getZombieKills(zonPlayer: ZONPlayer): Int {
         database.connect()
         val rs = database.select("SELECT dpk_value FROM ms_players INNER JOIN dt_player_kills ON ms_players.mp_id = dt_player_kills.mp_id WHERE mp_name = '${zonPlayer.player.name}' ORDER BY dpk_id DESC LIMIT 1")
-            ?: return -1
+                ?: return -1
 
         var result = -1
         while (rs.next()) {
@@ -72,7 +73,7 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
     override fun getStatusPoint(zonPlayer: ZONPlayer): Int {
         database.connect()
         val rs = database.select("SELECT dsp_value FROM ms_players INNER JOIN dt_status_points ON ms_players.mp_id = dt_status_points.mp_id WHERE mp_name = '${zonPlayer.player.name}' ORDER BY dsp_id DESC LIMIT 1")
-            ?: return -1
+                ?: return -1
 
         var result = -1
         while (rs.next()) {
@@ -102,9 +103,16 @@ class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
         database.disconnect()
 
         return ZONPlayer(
-            player = player,
-            zombieKillCount = kills,
-            statusPoint = statusPoint
+                player = player,
+                zombieKillCount = kills,
+                statusPoint = statusPoint,
+                zonplayerStatus = ZONPlayerStatus(
+                        hp = 0,
+                        hpRegen = 0,
+                        mp = 0,
+                        mpRegen = 0,
+                        strength = 0
+                ),
         )
     }
 
