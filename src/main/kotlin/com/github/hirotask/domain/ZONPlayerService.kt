@@ -36,4 +36,16 @@ interface ZONPlayerService {
      * @return 追加したインデックス
      */
     fun addStatusPoint(zonPlayer: ZONPlayer, amount: Int): Int
+
+    fun getPlayerStatus(zonPlayer : ZONPlayer) : ZONPlayerStatus
+
+    fun addHP(zonPlayer: ZONPlayer, amount : Int) : Int
+
+    fun addHPRegen(zonPlayer: ZONPlayer, amount: Int) : Int
+
+    fun addMP(zonPlayer: ZONPlayer, amount: Int) : Int
+
+    fun addMPRegen(zonPlayer: ZONPlayer, amount: Int) : Int
+
+    fun addStrength(zonPlayer: ZONPlayer, amount: Int) : Int
 }
