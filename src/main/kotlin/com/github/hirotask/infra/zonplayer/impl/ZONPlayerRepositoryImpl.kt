@@ -12,7 +12,7 @@ import org.bukkit.entity.Player
  *
  * @property database
  */
-class ZONPlayerRepositoryImpl(val database: Database) : ZONPlayerRepository {
+class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerRepository {
 
     private fun getPlayerId(player: Player): Int {
         database.connect()

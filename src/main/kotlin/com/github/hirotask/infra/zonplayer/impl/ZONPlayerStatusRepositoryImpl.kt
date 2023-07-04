@@ -7,7 +7,7 @@ import com.github.hirotask.infra.Database
 import com.github.hirotask.infra.zonplayer.ZONPlayerStatusRepository
 import org.bukkit.entity.Player
 
-class ZONPlayerStatusRepositoryImpl(val database: Database) : ZONPlayerStatusRepository {
+class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerStatusRepository {
 
     private fun getPlayerId(player: Player): Int {
         database.connect()
