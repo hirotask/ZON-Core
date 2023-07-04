@@ -1,5 +1,6 @@
 package com.github.hirotask.domain
 
+import com.github.hirotask.exc.ZONPlayerStatusNotFoundException
 import com.github.hirotask.infra.zonplayer.ZONPlayerRepository
 import com.github.hirotask.infra.zonplayer.ZONPlayerStatusRepository
 import org.bukkit.entity.Player
@@ -35,7 +36,17 @@ class ZONPlayerServiceImpl @Inject constructor(
     }
 
     override fun getPlayerStatus(zonPlayer: ZONPlayer): ZONPlayerStatus {
-        zonPlayer.zonplayerStatus = zonPlayerStatusRepository.getZONPlayerStatus(zonPlayer)
+        try {
+            zonPlayer.zonplayerStatus = zonPlayerStatusRepository.getZONPlayerStatus(zonPlayer)
+        } catch (e: ZONPlayerStatusNotFoundException) {
+            zonPlayer.zonplayerStatus = ZONPlayerStatus(
+                hp = 0,
+                hpRegen = 0,
+                mp = 0,
+                mpRegen = 0,
+                strength = 0
+            )
+        }
         return zonPlayer.zonplayerStatus
     }
 
