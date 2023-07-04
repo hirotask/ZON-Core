@@ -48,11 +48,11 @@ class ZONPlayerStatusRepositoryImpl(val database: Database) : ZONPlayerStatusRep
         database.disconnect()
 
         return ZONPlayerStatus(
-                hp = hp,
-                hpRegen = hpRegen,
-                mp = mp,
-                mpRegen = mpRegen,
-                strength = strength
+            hp = hp,
+            hpRegen = hpRegen,
+            mp = mp,
+            mpRegen = mpRegen,
+            strength = strength
         )
     }
 

@@ -9,4 +9,4 @@ import org.bukkit.entity.Player
  * @property zombieKillCount ゾンビキル数
  * @property statusPoint ステータスポイント
  */
-data class ZONPlayer(val player: Player, var zombieKillCount: Int, var statusPoint: Int, val zonplayerStatus : ZONPlayerStatus)
+data class ZONPlayer(val player: Player, var zombieKillCount: Int, var statusPoint: Int, val zonplayerStatus: ZONPlayerStatus)
