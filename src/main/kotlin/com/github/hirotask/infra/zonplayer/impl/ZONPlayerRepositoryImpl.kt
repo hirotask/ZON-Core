@@ -2,6 +2,7 @@ package com.github.hirotask.infra.zonplayer.impl
 
 import com.github.hirotask.domain.ZONPlayer
 import com.github.hirotask.domain.ZONPlayerStatus
+import com.github.hirotask.exc.ValidNumberException
 import com.github.hirotask.exc.ZONPlayerNotFoundException
 import com.github.hirotask.infra.Database
 import com.github.hirotask.infra.zonplayer.ZONPlayerRepository
@@ -38,6 +39,9 @@ class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerReposit
     override fun addZombieKills(zonPlayer: ZONPlayer, amount: Int): Int {
         val id = getPlayerId(zonPlayer.player)
         val value = zonPlayer.zombieKillCount + amount
+        if (value < 0) {
+            throw ValidNumberException("ゾンビキル数は0以上でなければなりません")
+        }
         database.connect()
         val result = database.createOrUpdateOrDelete("INSERT INTO dt_player_kills(mp_id, dpk_value) VALUES ($id, $value)")
         database.disconnect()
@@ -48,6 +52,10 @@ class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerReposit
     override fun addStatusPoint(zonPlayer: ZONPlayer, amount: Int): Int {
         val id = getPlayerId(zonPlayer.player)
         val value = zonPlayer.statusPoint + amount
+        if (value < 0) {
+            throw ValidNumberException("ステータスポイントは0以上でなければなりません")
+        }
+
         database.connect()
         val result = database.createOrUpdateOrDelete("INSERT INTO dt_status_points(mp_id, dsp_value) VALUES ($id, $value)")
         database.disconnect()
@@ -60,7 +68,7 @@ class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerReposit
         val rs = database.select("SELECT dpk_value FROM ms_players INNER JOIN dt_player_kills ON ms_players.mp_id = dt_player_kills.mp_id WHERE mp_name = '${zonPlayer.player.name}' ORDER BY dpk_id DESC LIMIT 1")
             ?: return -1
 
-        var result = -1
+        var result = 0
         while (rs.next()) {
             result = rs.getInt("dpk_value")
         }
@@ -75,7 +83,7 @@ class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerReposit
         val rs = database.select("SELECT dsp_value FROM ms_players INNER JOIN dt_status_points ON ms_players.mp_id = dt_status_points.mp_id WHERE mp_name = '${zonPlayer.player.name}' ORDER BY dsp_id DESC LIMIT 1")
             ?: return -1
 
-        var result = -1
+        var result = 0
         while (rs.next()) {
             result = rs.getInt("dsp_value")
         }
@@ -87,25 +95,23 @@ class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerReposit
 
     override fun getZONPlayer(player: Player): ZONPlayer {
         database.connect()
-        val sql = "SELECT dpk_value, dsp_value FROM dt_player_kills INNER JOIN dt_status_points ON dt_player_kills.mp_id = dt_status_points.mp_id INNER JOIN ms_players ON dt_player_kills.mp_id = ms_players.mp_id WHERE mp_name = '${player.name}' ORDER BY dt_player_kills.created_at DESC,dt_status_points.created_at DESC LIMIT 1"
+        val sql = "SELECT * FROM ms_players WHERE mp_name = '${player.name}' LIMIT 1"
         val rs = database.select(sql) ?: throw Exception()
 
         if (rs.first()) {
-            val kills = rs.getInt("dpk_value")
-            val statusPoint = rs.getInt("dsp_value")
             database.disconnect()
 
             return ZONPlayer(
-                    player = player,
-                    zombieKillCount = kills,
-                    statusPoint = statusPoint,
-                    zonplayerStatus = ZONPlayerStatus(
-                            hp = 0,
-                            hpRegen = 0,
-                            mp = 0,
-                            mpRegen = 0,
-                            strength = 0
-                    ),
+                player = player,
+                zombieKillCount = 0,
+                statusPoint = 0,
+                zonplayerStatus = ZONPlayerStatus(
+                    hp = 0,
+                    hpRegen = 0,
+                    mp = 0,
+                    mpRegen = 0,
+                    strength = 0
+                ),
             )
         } else {
             throw ZONPlayerNotFoundException("player: ${player.name} is not found in DB")

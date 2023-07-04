@@ -1,5 +1,6 @@
 package com.github.hirotask.domain
 
+import com.github.hirotask.exc.ZONPlayerStatusNotFoundException
 import com.github.hirotask.infra.zonplayer.ZONPlayerRepository
 import com.github.hirotask.infra.zonplayer.ZONPlayerStatusRepository
 import org.bukkit.entity.Player
@@ -11,15 +12,29 @@ import javax.inject.Inject
  * @property zonPlayerRepository
  */
 class ZONPlayerServiceImpl @Inject constructor(
-        private val zonPlayerRepository: ZONPlayerRepository,
-        private val zonPlayerStatusRepository: ZONPlayerStatusRepository
+    private val zonPlayerRepository: ZONPlayerRepository,
+    private val zonPlayerStatusRepository: ZONPlayerStatusRepository
 ) : ZONPlayerService {
     override fun addZONPlayer(player: Player): Int {
         return zonPlayerRepository.addZONPlayer(player)
     }
 
     override fun getZONPlayer(player: Player): ZONPlayer {
-        return zonPlayerRepository.getZONPlayer(player)
+        val zonPlayer = zonPlayerRepository.getZONPlayer(player)
+        zonPlayer.statusPoint = zonPlayerRepository.getStatusPoint(zonPlayer)
+        zonPlayer.zombieKillCount = zonPlayerRepository.getZombieKills(zonPlayer)
+        try {
+            zonPlayer.zonplayerStatus = zonPlayerStatusRepository.getZONPlayerStatus(zonPlayer)
+        } catch (e: ZONPlayerStatusNotFoundException) {
+            zonPlayer.zonplayerStatus = ZONPlayerStatus(
+                hp = zonPlayerStatusRepository.getHP(zonPlayer),
+                hpRegen = zonPlayerStatusRepository.getHPRegen(zonPlayer),
+                mp = zonPlayerStatusRepository.getMP(zonPlayer),
+                mpRegen = zonPlayerStatusRepository.getMPRegen(zonPlayer),
+                strength = zonPlayerStatusRepository.getStrength(zonPlayer)
+            )
+        }
+        return zonPlayer
     }
 
     override fun addZombieKills(zonPlayer: ZONPlayer, amount: Int): Int {
@@ -32,10 +47,6 @@ class ZONPlayerServiceImpl @Inject constructor(
         zonPlayerRepository.addStatusPoint(zonPlayer, amount)
         zonPlayer.statusPoint = zonPlayerRepository.getStatusPoint(zonPlayer)
         return zonPlayer.statusPoint
-    }
-
-    override fun getPlayerStatus(zonPlayer: ZONPlayer): ZONPlayerStatus {
-        return zonPlayerStatusRepository.getZONPlayerStatus(zonPlayer)
     }
 
     override fun addHP(zonPlayer: ZONPlayer, amount: Int): Int {
