@@ -69,7 +69,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
         """.trimIndent()
 
         val rs = database.select(sql) ?: throw Exception()
-        var hp = -1
+        var hp = 0
         if (rs.first()) {
             hp = rs.getInt("dh_hp")
         }
@@ -90,7 +90,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
         """.trimIndent()
 
         val rs = database.select(sql) ?: throw Exception()
-        var hpRegen = -1
+        var hpRegen = 0
         if (rs.first()) {
             hpRegen = rs.getInt("dhr_hp_regen")
         }
@@ -111,7 +111,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
         """.trimIndent()
 
         val rs = database.select(sql) ?: throw Exception()
-        var mp = -1
+        var mp = 0
         if (rs.first()) {
             mp = rs.getInt("dm_mp")
         }
@@ -132,7 +132,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
         """.trimIndent()
 
         val rs = database.select(sql) ?: throw Exception()
-        var mpRegen = -1
+        var mpRegen = 0
         if (rs.first()) {
             mpRegen = rs.getInt("dmr_mp_regen")
         }
@@ -153,7 +153,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
         """.trimIndent()
 
         val rs = database.select(sql) ?: throw Exception()
-        var strength = -1
+        var strength = 0
         if (rs.first()) {
             strength = rs.getInt("ds_strength")
         }
