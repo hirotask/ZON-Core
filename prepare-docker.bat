@@ -6,7 +6,7 @@ call rd /s /q build
 
 call gradlew build || goto :onerror
 
-copy build\libs\ZON-Kills.jar localDependencies\ZON-Kills.jar
+copy build\libs\ZON-Kills.jar docker\paper\localDependencies\ZON-Kills.jar
 
 call docker-compose build -m 2g || goto :onerror
 call docker-compose down
