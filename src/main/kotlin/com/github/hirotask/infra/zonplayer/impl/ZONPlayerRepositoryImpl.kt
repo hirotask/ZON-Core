@@ -96,16 +96,16 @@ class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerReposit
             database.disconnect()
 
             return ZONPlayer(
-                    player = player,
-                    zombieKillCount = kills,
-                    statusPoint = statusPoint,
-                    zonplayerStatus = ZONPlayerStatus(
-                            hp = 0,
-                            hpRegen = 0,
-                            mp = 0,
-                            mpRegen = 0,
-                            strength = 0
-                    ),
+                player = player,
+                zombieKillCount = kills,
+                statusPoint = statusPoint,
+                zonplayerStatus = ZONPlayerStatus(
+                    hp = 0,
+                    hpRegen = 0,
+                    mp = 0,
+                    mpRegen = 0,
+                    strength = 0
+                ),
             )
         } else {
             throw ZONPlayerNotFoundException("player: ${player.name} is not found in DB")

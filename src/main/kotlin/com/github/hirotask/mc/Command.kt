@@ -52,7 +52,39 @@ class Command(private val main: Main) {
 
                             inventory("ステータス", 1) {
                                 for (i in 0..3) item(i, Material.GRAY_STAINED_GLASS_PANE, " ")
-                                item(4, playerSkull)
+                                item(4, playerSkull) {
+
+                                    val status = main.zonPlayerService.getPlayerStatus(zonPlayer)
+                                    inventory("ステータス強化", 1) {
+                                        item(0, Material.GRAY_STAINED_GLASS_PANE)
+                                        item(1, Material.RED_WOOL, display = "HP: ${status.hp}", lore = listOf("1ステータスポイントで強化する")) {
+                                            player.sendMessage("HPを強化しました")
+                                            main.zonPlayerService.addHP(zonPlayer, 1)
+                                            main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                        }
+                                        item(2, Material.YELLOW_WOOL, display = "HP再生速度: ${status.hpRegen}", lore = listOf("1ステータスポイントで強化する")) {
+                                            player.sendMessage("HP再生速度を強化しました")
+                                            main.zonPlayerService.addHPRegen(zonPlayer, 1)
+                                            main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                        }
+                                        item(3, Material.GREEN_WOOL, display = "MP: ${status.mp}", lore = listOf("1ステータスポイントで強化する")) {
+                                            player.sendMessage("MPを強化しました")
+                                            main.zonPlayerService.addMP(zonPlayer, 1)
+                                            main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                        }
+                                        item(4, Material.CYAN_WOOL, display = "MP再生速度: ${status.mpRegen}", lore = listOf("1ステータスポイントで強化する")) {
+                                            player.sendMessage("MP再生速度を強化しました")
+                                            main.zonPlayerService.addMPRegen(zonPlayer, 1)
+                                            main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                        }
+                                        item(5, Material.MAGENTA_WOOL, display = "攻撃力: ${status.strength}", lore = listOf("1ステータスポイントで強化する")) {
+                                            player.sendMessage("攻撃力を強化しました")
+                                            main.zonPlayerService.addStrength(zonPlayer, 1)
+                                            main.zonPlayerService.addStatusPoint(zonPlayer, -1)
+                                        }
+                                        for (i in 6..8) item(i, Material.GRAY_STAINED_GLASS_PANE)
+                                    }.open(player)
+                                }
                                 for (i in 5..8) item(i, Material.GRAY_STAINED_GLASS_PANE, " ")
                             }.open(player)
                         } catch (e: ZONPlayerNotFoundException) {

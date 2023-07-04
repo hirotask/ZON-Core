@@ -47,18 +47,15 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
             database.disconnect()
 
             return ZONPlayerStatus(
-                    hp = hp,
-                    hpRegen = hpRegen,
-                    mp = mp,
-                    mpRegen = mpRegen,
-                    strength = strength
+                hp = hp,
+                hpRegen = hpRegen,
+                mp = mp,
+                mpRegen = mpRegen,
+                strength = strength
             )
-
         } else {
             throw ZONPlayerStatusNotFoundException("player(${zonPlayer.player.name})'s status is not found in DB")
         }
-
-
     }
 
     override fun getHP(zonPlayer: ZONPlayer): Int {

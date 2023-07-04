@@ -11,8 +11,8 @@ import javax.inject.Inject
  * @property zonPlayerRepository
  */
 class ZONPlayerServiceImpl @Inject constructor(
-        private val zonPlayerRepository: ZONPlayerRepository,
-        private val zonPlayerStatusRepository: ZONPlayerStatusRepository
+    private val zonPlayerRepository: ZONPlayerRepository,
+    private val zonPlayerStatusRepository: ZONPlayerStatusRepository
 ) : ZONPlayerService {
     override fun addZONPlayer(player: Player): Int {
         return zonPlayerRepository.addZONPlayer(player)
@@ -35,7 +35,8 @@ class ZONPlayerServiceImpl @Inject constructor(
     }
 
     override fun getPlayerStatus(zonPlayer: ZONPlayer): ZONPlayerStatus {
-        return zonPlayerStatusRepository.getZONPlayerStatus(zonPlayer)
+        zonPlayer.zonplayerStatus = zonPlayerStatusRepository.getZONPlayerStatus(zonPlayer)
+        return zonPlayer.zonplayerStatus
     }
 
     override fun addHP(zonPlayer: ZONPlayer, amount: Int): Int {
