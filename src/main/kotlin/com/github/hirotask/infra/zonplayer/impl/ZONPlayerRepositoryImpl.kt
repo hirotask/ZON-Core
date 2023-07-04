@@ -68,7 +68,7 @@ class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerReposit
         val rs = database.select("SELECT dpk_value FROM ms_players INNER JOIN dt_player_kills ON ms_players.mp_id = dt_player_kills.mp_id WHERE mp_name = '${zonPlayer.player.name}' ORDER BY dpk_id DESC LIMIT 1")
             ?: return -1
 
-        var result = -1
+        var result = 0
         while (rs.next()) {
             result = rs.getInt("dpk_value")
         }
@@ -83,7 +83,7 @@ class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerReposit
         val rs = database.select("SELECT dsp_value FROM ms_players INNER JOIN dt_status_points ON ms_players.mp_id = dt_status_points.mp_id WHERE mp_name = '${zonPlayer.player.name}' ORDER BY dsp_id DESC LIMIT 1")
             ?: return -1
 
-        var result = -1
+        var result = 0
         while (rs.next()) {
             result = rs.getInt("dsp_value")
         }
