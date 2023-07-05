@@ -8,5 +8,10 @@ import org.bukkit.entity.Player
  */
 interface InitZONPlayerUseCase {
 
+    /**
+     * ユースケースを実行する
+     *
+     * @param player ログインしたプレイヤー
+     */
     fun invoke(player: Player)
 }

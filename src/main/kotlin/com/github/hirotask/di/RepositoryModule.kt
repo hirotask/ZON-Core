@@ -9,7 +9,7 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 /**
- * DaggerにおけるProvidesの設定を行うモジュール
+ * RepositoryのDIを設定するモジュール
  *
  * @suppress
  */

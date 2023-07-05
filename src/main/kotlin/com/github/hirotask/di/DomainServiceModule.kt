@@ -9,7 +9,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 /**
- * DaggerにおけるBindの設定を行うモジュール
+ * DomainServiceのDIを設定するモジュール
  *
  * @suppress
  */
