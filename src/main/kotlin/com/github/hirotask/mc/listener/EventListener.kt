@@ -12,7 +12,6 @@ import org.bukkit.event.player.PlayerJoinEvent
 /**
  * SpigotAPIに実装されているイベントに対するリスナー
  *
- * @property main
  */
 object EventListener {
 

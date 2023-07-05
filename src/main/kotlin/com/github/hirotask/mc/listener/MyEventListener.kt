@@ -14,7 +14,6 @@ import org.bukkit.inventory.ItemStack
 /**
  * 本プラグインで実装したイベントに対するリスナー
  *
- * @property main
  */
 object MyEventListener {
 
