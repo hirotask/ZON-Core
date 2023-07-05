@@ -23,17 +23,13 @@ class ZONPlayerServiceImpl @Inject constructor(
         val zonPlayer = zonPlayerRepository.getZONPlayer(player)
         zonPlayer.statusPoint = zonPlayerRepository.getStatusPoint(zonPlayer)
         zonPlayer.zombieKillCount = zonPlayerRepository.getZombieKills(zonPlayer)
-        try {
-            zonPlayer.zonplayerStatus = zonPlayerStatusRepository.getZONPlayerStatus(zonPlayer)
-        } catch (e: ZONPlayerStatusNotFoundException) {
-            zonPlayer.zonplayerStatus = ZONPlayerStatus(
+        zonPlayer.zonplayerStatus = ZONPlayerStatus(
                 hp = zonPlayerStatusRepository.getHP(zonPlayer),
                 hpRegen = zonPlayerStatusRepository.getHPRegen(zonPlayer),
                 mp = zonPlayerStatusRepository.getMP(zonPlayer),
                 mpRegen = zonPlayerStatusRepository.getMPRegen(zonPlayer),
                 strength = zonPlayerStatusRepository.getStrength(zonPlayer)
-            )
-        }
+        )
         return zonPlayer
     }
 
