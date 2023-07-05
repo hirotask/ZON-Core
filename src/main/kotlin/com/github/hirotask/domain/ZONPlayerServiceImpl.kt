@@ -1,6 +1,5 @@
 package com.github.hirotask.domain
 
-import com.github.hirotask.exc.ZONPlayerStatusNotFoundException
 import com.github.hirotask.infra.zonplayer.ZONPlayerRepository
 import com.github.hirotask.infra.zonplayer.ZONPlayerStatusRepository
 import org.bukkit.entity.Player
