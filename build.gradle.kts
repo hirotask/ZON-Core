@@ -27,7 +27,7 @@ val shadowImplementation: Configuration by configurations.creating
 configurations["implementation"].extendsFrom(shadowImplementation)
 
 dependencies {
-    shadowImplementation(kotlin("stdlib"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-wasm:1.7.10")
     compileOnly("org.spigotmc:spigot-api:$pluginVersion-R0.1-SNAPSHOT")
     shadowImplementation(api("com.github.sya-ri:EasySpigotAPI:2.4.0") {
         exclude(group = "org.spigotmc", module = "spigot-api")
@@ -43,6 +43,7 @@ configure<BukkitPluginDescription> {
     version = gitVersion()
     apiVersion = "1." + pluginVersion.split(".")[1]
     author = "hirotask"
+    depend = listOf("kotlin-stdlib", "kotlin-reflect")
 }
 
 tasks.getByName<org.jetbrains.dokka.gradle.DokkaTask>("dokkaHtml") {
