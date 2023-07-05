@@ -7,6 +7,12 @@ import com.github.syari.spigot.api.inventory.CustomInventory
 import com.github.syari.spigot.api.inventory.inventory
 import org.bukkit.Material
 
+/**
+ * ステータス強化インベントリの生成を行うクラス
+ *
+ * @property zonPlayer 対象となるプレイヤー
+ * @property main Mainインスタンス
+ */
 class ReinForceInventory(private val zonPlayer: ZONPlayer, private val main: Main) : ZONCustomInventory {
     override val inventoryTitle: String = "ステータス強化"
 

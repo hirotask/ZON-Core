@@ -7,6 +7,12 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.SkullMeta
 
+/**
+ * ZONPlayerのステータス表示用インベントリを生成するクラス
+ *
+ * @property zonPlayer 対象となるプレイヤー
+ * @property onSkullClickInv プレイヤーヘッドをクリックしたときに開くインベントリ
+ */
 class StatusInventory(private val zonPlayer: ZONPlayer, private val onSkullClickInv: ZONCustomInventory) : ZONCustomInventory {
     override val inventoryTitle = "ステータス"
     override fun create(): CustomInventory {
