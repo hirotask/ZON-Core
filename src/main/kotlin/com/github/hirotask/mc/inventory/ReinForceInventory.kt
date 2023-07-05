@@ -54,7 +54,7 @@ class ReinForceInventory(private val player: Player, private val main: Main) : Z
             item(4, Material.CYAN_WOOL, display = "MP再生速度: ${zonPlayer.zonplayerStatus.mpRegen}", lore = listOf("1ステータスポイントで強化する")) {
                 onClick {
                     try {
-                        main.reinforceStatusUseCase.reinforceHPRegen(player)
+                        main.reinforceStatusUseCase.reinforceMPRegen(player)
                         player.sendMessage("MP再生速度を強化しました")
                     } catch (e: InvalidNumberException) {
                         player.sendMessage("ステータスポイントが足りませんでした")
