@@ -6,12 +6,12 @@ import com.github.hirotask.usecase.AddStatusPointUseCase
 import com.github.hirotask.usecase.AddZombieKillsUseCase
 import com.github.hirotask.usecase.InitZONPlayerUseCase
 import com.github.hirotask.usecase.ReinforceStatusUseCase
-import com.github.hirotask.usecase.ZONPlayerActionUseCase
+import com.github.hirotask.usecase.GetZONPlayerUseCase
 import com.github.hirotask.usecase.impl.AddStatusPointUseCaseImpl
 import com.github.hirotask.usecase.impl.AddZombieKillsUseCaseImpl
 import com.github.hirotask.usecase.impl.InitZONPlayerUseCaseImpl
 import com.github.hirotask.usecase.impl.ReinforceStatusUseCaseImpl
-import com.github.hirotask.usecase.impl.ZONPlayerActionUseCaseImpl
+import com.github.hirotask.usecase.impl.GetZONPlayerUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton
@@ -28,7 +28,7 @@ interface BindModule {
     fun bindsZONPlayerService(impl: ZONPlayerServiceImpl): ZONPlayerService
 
     @Binds
-    fun bindsZONPlayerActionUseCase(impl: ZONPlayerActionUseCaseImpl) : ZONPlayerActionUseCase
+    fun bindsZONPlayerActionUseCase(impl: GetZONPlayerUseCaseImpl) : GetZONPlayerUseCase
 
     @Binds
     fun bindsAddStatusPointUseCase(impl : AddStatusPointUseCaseImpl) : AddStatusPointUseCase
