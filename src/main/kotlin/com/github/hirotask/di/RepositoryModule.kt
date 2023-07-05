@@ -14,7 +14,7 @@ import javax.inject.Singleton
  * @suppress
  */
 @Module
-class ProvidesModule {
+class RepositoryModule {
     @Provides
     @Singleton
     fun provideZONPlayerRepository(): ZONPlayerRepository {

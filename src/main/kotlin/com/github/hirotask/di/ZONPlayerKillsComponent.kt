@@ -9,7 +9,7 @@ import javax.inject.Singleton
  * @suppress
  */
 @Singleton
-@Component(modules = [ProvidesModule::class, BindModule::class])
+@Component(modules = [UseCaseModule::class])
 interface ZONPlayerKillsComponent {
     fun inject(main: Main)
 }

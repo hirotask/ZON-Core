@@ -1,31 +1,20 @@
 package com.github.hirotask.di
 
-import com.github.hirotask.domain.ZONPlayerService
-import com.github.hirotask.domain.ZONPlayerServiceImpl
 import com.github.hirotask.usecase.AddStatusPointUseCase
 import com.github.hirotask.usecase.AddZombieKillsUseCase
+import com.github.hirotask.usecase.GetZONPlayerUseCase
 import com.github.hirotask.usecase.InitZONPlayerUseCase
 import com.github.hirotask.usecase.ReinforceStatusUseCase
-import com.github.hirotask.usecase.GetZONPlayerUseCase
 import com.github.hirotask.usecase.impl.AddStatusPointUseCaseImpl
 import com.github.hirotask.usecase.impl.AddZombieKillsUseCaseImpl
+import com.github.hirotask.usecase.impl.GetZONPlayerUseCaseImpl
 import com.github.hirotask.usecase.impl.InitZONPlayerUseCaseImpl
 import com.github.hirotask.usecase.impl.ReinforceStatusUseCaseImpl
-import com.github.hirotask.usecase.impl.GetZONPlayerUseCaseImpl
 import dagger.Binds
 import dagger.Module
-import javax.inject.Singleton
 
-/**
- * DaggerにおけるBindの設定を行うモジュール
- *
- * @suppress
- */
 @Module
-interface BindModule {
-    @Binds
-    @Singleton
-    fun bindsZONPlayerService(impl: ZONPlayerServiceImpl): ZONPlayerService
+interface UseCaseModule {
 
     @Binds
     fun bindsZONPlayerActionUseCase(impl: GetZONPlayerUseCaseImpl) : GetZONPlayerUseCase
@@ -41,5 +30,4 @@ interface BindModule {
 
     @Binds
     fun bindsReinforceStatusUseCase(impl: ReinforceStatusUseCaseImpl): ReinforceStatusUseCase
-
 }
