@@ -13,25 +13,26 @@ plugins {
     id("org.jetbrains.dokka") version "1.8.20"
 }
 
-val gitVersion: Closure<String> by extra
-
-val pluginVersion: String by project.ext
-
 repositories {
     mavenCentral()
     maven(url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     maven(url = "https://oss.sonatype.org/content/groups/public/")
 }
 
+val gitVersion: Closure<String> by extra
+
+val pluginVersion: String by project.ext
+val kotlinVersion: String by project.ext
+
 val shadowImplementation: Configuration by configurations.creating
 configurations["implementation"].extendsFrom(shadowImplementation)
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-wasm:1.7.10")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-wasm:$kotlinVersion")
     compileOnly("org.spigotmc:spigot-api:$pluginVersion-R0.1-SNAPSHOT")
-    shadowImplementation(api("com.github.sya-ri:EasySpigotAPI:2.4.0") {
+    api("com.github.sya-ri:EasySpigotAPI:2.4.0") {
         exclude(group = "org.spigotmc", module = "spigot-api")
-    })
+    }
     shadowImplementation("org.mariadb.jdbc:mariadb-java-client:2.4.4")
     shadowImplementation("com.google.dagger:dagger:2.46.1")
     annotationProcessor("com.google.dagger:dagger-compiler:2.46.1")
@@ -43,7 +44,7 @@ configure<BukkitPluginDescription> {
     version = gitVersion()
     apiVersion = "1." + pluginVersion.split(".")[1]
     author = "hirotask"
-    depend = listOf("kotlin-stdlib", "kotlin-reflect")
+    depend = listOf("kotlin-stdlib", "kotlin-reflect", "EasySpigotAPI")
 }
 
 tasks.getByName<org.jetbrains.dokka.gradle.DokkaTask>("dokkaHtml") {
@@ -53,9 +54,6 @@ tasks.getByName<org.jetbrains.dokka.gradle.DokkaTask>("dokkaHtml") {
 tasks.withType<ShadowJar> {
     configurations = listOf(shadowImplementation)
     archiveClassifier.set("")
-    relocate("kotlin", "com.github.hirotask.libs.kotlin")
-    relocate("org.intellij.lang.annotations", "com.github.hirotask.libs.org.intellij.lang.annotations")
-    relocate("org.jetbrains.annotations", "com.github.hirotask.libs.org.jetbrains.annotations")
 }
 
 tasks.named("build") {
