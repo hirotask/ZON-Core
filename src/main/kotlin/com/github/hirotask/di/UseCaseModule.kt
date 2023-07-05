@@ -14,6 +14,11 @@ import com.github.hirotask.usecase.impl.ReinforceStatusUseCaseImpl
 import dagger.Module
 import dagger.Provides
 
+/**
+ * UseCaseのDIを設定するモジュール
+ *
+ * @suppress
+ */
 @Module
 class UseCaseModule {
 
