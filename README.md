@@ -11,6 +11,11 @@
 - Gradle 7.3.3
 - Paper 1.19.2
 
+## 前提プラグイン
+- [EasySpigotAPI-2.4.0](https://github.com/sya-ri/EasySpigotAPI/releases/tag/v2.4.0)
+- kotlin-stdlib-1.7.10
+- kotlin-reflect-1.7.10
+
 ## テストサーバーの起動方法
 
 ### テストサーバーの起動(DBを使用しない場合) `buildAndLaunchServer`
