@@ -36,8 +36,8 @@ $dokka.location:com.github.hirotask.domain/ZONPlayerStatus/mp/#/PointingToDeclar
 $dokka.location:com.github.hirotask.domain/ZONPlayerStatus/mpRegen/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.domain/-z-o-n-player-status/mp-regen.html
 $dokka.location:com.github.hirotask.domain/ZONPlayerStatus/strength/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.domain/-z-o-n-player-status/strength.html
 $dokka.location:com.github.hirotask.exc////PointingToDeclaration/-z-o-n--kills/com.github.hirotask.exc/index.html
-$dokka.location:com.github.hirotask.exc/ValidNumberException///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.exc/-valid-number-exception/index.html
-$dokka.location:com.github.hirotask.exc/ValidNumberException/ValidNumberException/#kotlin.String?/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.exc/-valid-number-exception/-valid-number-exception.html
+$dokka.location:com.github.hirotask.exc/InvalidNumberException///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.exc/-invalid-number-exception/index.html
+$dokka.location:com.github.hirotask.exc/InvalidNumberException/InvalidNumberException/#kotlin.String?/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.exc/-invalid-number-exception/-invalid-number-exception.html
 $dokka.location:com.github.hirotask.exc/ZONPlayerNotFoundException///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.exc/-z-o-n-player-not-found-exception/index.html
 $dokka.location:com.github.hirotask.exc/ZONPlayerNotFoundException/ZONPlayerNotFoundException/#kotlin.String?/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.exc/-z-o-n-player-not-found-exception/-z-o-n-player-not-found-exception.html
 $dokka.location:com.github.hirotask.exc/ZONPlayerStatusNotFoundException///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.exc/-z-o-n-player-status-not-found-exception/index.html
@@ -115,24 +115,70 @@ $dokka.location:com.github.hirotask.mc.event/ZombieDeathByPlayerEvent/isCancelle
 $dokka.location:com.github.hirotask.mc.event/ZombieDeathByPlayerEvent/player/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.event/-zombie-death-by-player-event/player.html
 $dokka.location:com.github.hirotask.mc.event/ZombieDeathByPlayerEvent/setCancelled/#kotlin.Boolean/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.event/-zombie-death-by-player-event/set-cancelled.html
 $dokka.location:com.github.hirotask.mc.event/ZombieDeathByPlayerEvent/zombie/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.event/-zombie-death-by-player-event/zombie.html
+$dokka.location:com.github.hirotask.mc.inventory////PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.inventory/index.html
+$dokka.location:com.github.hirotask.mc.inventory/ReinForceInventory///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.inventory/-rein-force-inventory/index.html
+$dokka.location:com.github.hirotask.mc.inventory/ReinForceInventory/ReinForceInventory/#org.bukkit.entity.Player#com.github.hirotask.mc.Main/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.inventory/-rein-force-inventory/-rein-force-inventory.html
+$dokka.location:com.github.hirotask.mc.inventory/ReinForceInventory/create/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.inventory/-rein-force-inventory/create.html
+$dokka.location:com.github.hirotask.mc.inventory/ReinForceInventory/inventoryTitle/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.inventory/-rein-force-inventory/inventory-title.html
+$dokka.location:com.github.hirotask.mc.inventory/StatusInventory///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.inventory/-status-inventory/index.html
+$dokka.location:com.github.hirotask.mc.inventory/StatusInventory/StatusInventory/#org.bukkit.entity.Player#com.github.hirotask.mc.Main#com.github.hirotask.mc.inventory.ZONCustomInventory/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.inventory/-status-inventory/-status-inventory.html
+$dokka.location:com.github.hirotask.mc.inventory/StatusInventory/create/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.inventory/-status-inventory/create.html
+$dokka.location:com.github.hirotask.mc.inventory/StatusInventory/inventoryTitle/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.inventory/-status-inventory/inventory-title.html
+$dokka.location:com.github.hirotask.mc.inventory/ZONCustomInventory///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.inventory/-z-o-n-custom-inventory/index.html
+$dokka.location:com.github.hirotask.mc.inventory/ZONCustomInventory/create/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.inventory/-z-o-n-custom-inventory/create.html
+$dokka.location:com.github.hirotask.mc.inventory/ZONCustomInventory/inventoryTitle/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.inventory/-z-o-n-custom-inventory/inventory-title.html
 $dokka.location:com.github.hirotask.mc.listener////PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.listener/index.html
 $dokka.location:com.github.hirotask.mc.listener/EventListener///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.listener/-event-listener/index.html
-$dokka.location:com.github.hirotask.mc.listener/EventListener/EventListener/#com.github.hirotask.mc.Main/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.listener/-event-listener/-event-listener.html
-$dokka.location:com.github.hirotask.mc.listener/EventListener/register/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.listener/-event-listener/register.html
+$dokka.location:com.github.hirotask.mc.listener/EventListener/register/#com.github.hirotask.mc.Main/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.listener/-event-listener/register.html
 $dokka.location:com.github.hirotask.mc.listener/MyEventListener///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.listener/-my-event-listener/index.html
-$dokka.location:com.github.hirotask.mc.listener/MyEventListener/MyEventListener/#com.github.hirotask.mc.Main/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.listener/-my-event-listener/-my-event-listener.html
-$dokka.location:com.github.hirotask.mc.listener/MyEventListener/register/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.listener/-my-event-listener/register.html
+$dokka.location:com.github.hirotask.mc.listener/MyEventListener/register/#com.github.hirotask.mc.Main/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc.listener/-my-event-listener/register.html
 $dokka.location:com.github.hirotask.mc////PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/index.html
 $dokka.location:com.github.hirotask.mc/Command///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-command/index.html
 $dokka.location:com.github.hirotask.mc/Command/Command/#com.github.hirotask.mc.Main/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-command/-command.html
 $dokka.location:com.github.hirotask.mc/Command/register/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-command/register.html
-$dokka.location:com.github.hirotask.mc/Main.Companion///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-main/-companion/index.html
-$dokka.location:com.github.hirotask.mc/Main.Companion/PLUGIN_NAME/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-main/-companion/-p-l-u-g-i-n_-n-a-m-e.html
 $dokka.location:com.github.hirotask.mc/Main///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-main/index.html
 $dokka.location:com.github.hirotask.mc/Main/Main/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-main/-main.html
-$dokka.location:com.github.hirotask.mc/Main/onDisable/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-main/on-disable.html
+$dokka.location:com.github.hirotask.mc/Main/addStatusPointUseCase/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-main/add-status-point-use-case.html
+$dokka.location:com.github.hirotask.mc/Main/addZombieKillsUseCase/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-main/add-zombie-kills-use-case.html
+$dokka.location:com.github.hirotask.mc/Main/getZonPlayerUseCase/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-main/get-zon-player-use-case.html
+$dokka.location:com.github.hirotask.mc/Main/initZONPlayerUseCase/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-main/init-z-o-n-player-use-case.html
 $dokka.location:com.github.hirotask.mc/Main/onEnable/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-main/on-enable.html
-$dokka.location:com.github.hirotask.mc/Main/zonPlayerService/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-main/zon-player-service.html
+$dokka.location:com.github.hirotask.mc/Main/reinforceStatusUseCase/#/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.mc/-main/reinforce-status-use-case.html
+$dokka.location:com.github.hirotask.usecase.impl////PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/index.html
+$dokka.location:com.github.hirotask.usecase.impl/AddStatusPointUseCaseImpl///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-add-status-point-use-case-impl/index.html
+$dokka.location:com.github.hirotask.usecase.impl/AddStatusPointUseCaseImpl/AddStatusPointUseCaseImpl/#com.github.hirotask.domain.ZONPlayerService#com.github.hirotask.usecase.GetZONPlayerUseCase/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-add-status-point-use-case-impl/-add-status-point-use-case-impl.html
+$dokka.location:com.github.hirotask.usecase.impl/AddStatusPointUseCaseImpl/invoke/#org.bukkit.entity.Player#kotlin.Int/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-add-status-point-use-case-impl/invoke.html
+$dokka.location:com.github.hirotask.usecase.impl/AddZombieKillsUseCaseImpl///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-add-zombie-kills-use-case-impl/index.html
+$dokka.location:com.github.hirotask.usecase.impl/AddZombieKillsUseCaseImpl/AddZombieKillsUseCaseImpl/#com.github.hirotask.domain.ZONPlayerService#com.github.hirotask.usecase.GetZONPlayerUseCase/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-add-zombie-kills-use-case-impl/-add-zombie-kills-use-case-impl.html
+$dokka.location:com.github.hirotask.usecase.impl/AddZombieKillsUseCaseImpl/invoke/#org.bukkit.entity.Player#kotlin.Int/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-add-zombie-kills-use-case-impl/invoke.html
+$dokka.location:com.github.hirotask.usecase.impl/GetZONPlayerUseCaseImpl///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-get-z-o-n-player-use-case-impl/index.html
+$dokka.location:com.github.hirotask.usecase.impl/GetZONPlayerUseCaseImpl/GetZONPlayerUseCaseImpl/#com.github.hirotask.domain.ZONPlayerService/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-get-z-o-n-player-use-case-impl/-get-z-o-n-player-use-case-impl.html
+$dokka.location:com.github.hirotask.usecase.impl/GetZONPlayerUseCaseImpl/invoke/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-get-z-o-n-player-use-case-impl/invoke.html
+$dokka.location:com.github.hirotask.usecase.impl/InitZONPlayerUseCaseImpl///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-init-z-o-n-player-use-case-impl/index.html
+$dokka.location:com.github.hirotask.usecase.impl/InitZONPlayerUseCaseImpl/InitZONPlayerUseCaseImpl/#com.github.hirotask.domain.ZONPlayerService/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-init-z-o-n-player-use-case-impl/-init-z-o-n-player-use-case-impl.html
+$dokka.location:com.github.hirotask.usecase.impl/InitZONPlayerUseCaseImpl/invoke/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-init-z-o-n-player-use-case-impl/invoke.html
+$dokka.location:com.github.hirotask.usecase.impl/ReinforceStatusUseCaseImpl///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-reinforce-status-use-case-impl/index.html
+$dokka.location:com.github.hirotask.usecase.impl/ReinforceStatusUseCaseImpl/ReinforceStatusUseCaseImpl/#com.github.hirotask.domain.ZONPlayerService#com.github.hirotask.usecase.GetZONPlayerUseCase/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-reinforce-status-use-case-impl/-reinforce-status-use-case-impl.html
+$dokka.location:com.github.hirotask.usecase.impl/ReinforceStatusUseCaseImpl/reinforceHP/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-reinforce-status-use-case-impl/reinforce-h-p.html
+$dokka.location:com.github.hirotask.usecase.impl/ReinforceStatusUseCaseImpl/reinforceHPRegen/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-reinforce-status-use-case-impl/reinforce-h-p-regen.html
+$dokka.location:com.github.hirotask.usecase.impl/ReinforceStatusUseCaseImpl/reinforceMP/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-reinforce-status-use-case-impl/reinforce-m-p.html
+$dokka.location:com.github.hirotask.usecase.impl/ReinforceStatusUseCaseImpl/reinforceMPRegen/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-reinforce-status-use-case-impl/reinforce-m-p-regen.html
+$dokka.location:com.github.hirotask.usecase.impl/ReinforceStatusUseCaseImpl/reinforceStrength/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase.impl/-reinforce-status-use-case-impl/reinforce-strength.html
+$dokka.location:com.github.hirotask.usecase////PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/index.html
+$dokka.location:com.github.hirotask.usecase/AddStatusPointUseCase///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-add-status-point-use-case/index.html
+$dokka.location:com.github.hirotask.usecase/AddStatusPointUseCase/invoke/#org.bukkit.entity.Player#kotlin.Int/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-add-status-point-use-case/invoke.html
+$dokka.location:com.github.hirotask.usecase/AddZombieKillsUseCase///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-add-zombie-kills-use-case/index.html
+$dokka.location:com.github.hirotask.usecase/AddZombieKillsUseCase/invoke/#org.bukkit.entity.Player#kotlin.Int/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-add-zombie-kills-use-case/invoke.html
+$dokka.location:com.github.hirotask.usecase/GetZONPlayerUseCase///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-get-z-o-n-player-use-case/index.html
+$dokka.location:com.github.hirotask.usecase/GetZONPlayerUseCase/invoke/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-get-z-o-n-player-use-case/invoke.html
+$dokka.location:com.github.hirotask.usecase/InitZONPlayerUseCase///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-init-z-o-n-player-use-case/index.html
+$dokka.location:com.github.hirotask.usecase/InitZONPlayerUseCase/invoke/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-init-z-o-n-player-use-case/invoke.html
+$dokka.location:com.github.hirotask.usecase/ReinforceStatusUseCase///PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-reinforce-status-use-case/index.html
+$dokka.location:com.github.hirotask.usecase/ReinforceStatusUseCase/reinforceHP/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-reinforce-status-use-case/reinforce-h-p.html
+$dokka.location:com.github.hirotask.usecase/ReinforceStatusUseCase/reinforceHPRegen/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-reinforce-status-use-case/reinforce-h-p-regen.html
+$dokka.location:com.github.hirotask.usecase/ReinforceStatusUseCase/reinforceMP/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-reinforce-status-use-case/reinforce-m-p.html
+$dokka.location:com.github.hirotask.usecase/ReinforceStatusUseCase/reinforceMPRegen/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-reinforce-status-use-case/reinforce-m-p-regen.html
+$dokka.location:com.github.hirotask.usecase/ReinforceStatusUseCase/reinforceStrength/#org.bukkit.entity.Player/PointingToDeclaration/-z-o-n--kills/com.github.hirotask.usecase/-reinforce-status-use-case/reinforce-strength.html
 com.github.hirotask.domain
 com.github.hirotask.exc
 com.github.hirotask.infra
@@ -140,5 +186,8 @@ com.github.hirotask.infra.zonplayer
 com.github.hirotask.infra.zonplayer.impl
 com.github.hirotask.mc
 com.github.hirotask.mc.event
+com.github.hirotask.mc.inventory
 com.github.hirotask.mc.listener
+com.github.hirotask.usecase
+com.github.hirotask.usecase.impl
 
