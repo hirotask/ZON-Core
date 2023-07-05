@@ -15,9 +15,9 @@ import org.bukkit.event.player.PlayerJoinEvent
  *
  * @property main
  */
-class EventListener(private val main: Main) {
+object EventListener {
 
-    fun register() {
+    fun register(main: Main) {
         main.events {
             event<EntityDamageByEntityEvent> {
                 if (it.damager !is Player) return@event

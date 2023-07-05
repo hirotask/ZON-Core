@@ -31,10 +31,8 @@ class Main : JavaPlugin() {
         EasySpigotAPIOption.useCustomInventory(this)
 
         // Eventの登録
-        val eventListener = EventListener(this)
-        val myEventListener = MyEventListener(this)
-        eventListener.register()
-        myEventListener.register()
+        EventListener.register(this)
+        MyEventListener.register(this)
         // Commandの登録
         val command = Command(this)
         command.register()
