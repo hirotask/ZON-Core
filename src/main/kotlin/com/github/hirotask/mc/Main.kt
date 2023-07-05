@@ -14,10 +14,6 @@ import javax.inject.Inject
  */
 class Main : JavaPlugin() {
 
-    companion object {
-        const val PLUGIN_NAME = "ZON-Kills"
-    }
-
     @Inject
     lateinit var zonPlayerService: ZONPlayerService
 
@@ -38,7 +34,4 @@ class Main : JavaPlugin() {
         command.register()
     }
 
-    override fun onDisable() {
-        super.onDisable()
-    }
 }
