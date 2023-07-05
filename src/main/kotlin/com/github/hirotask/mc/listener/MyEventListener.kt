@@ -16,9 +16,9 @@ import org.bukkit.inventory.ItemStack
  *
  * @property main
  */
-class MyEventListener(private val main: Main) {
+object MyEventListener {
 
-    fun register() {
+    fun register(main: Main) {
         main.events {
             event<ZombieDeathByPlayerEvent> {
                 val player = it.player
