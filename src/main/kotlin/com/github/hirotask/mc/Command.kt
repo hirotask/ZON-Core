@@ -1,6 +1,6 @@
 package com.github.hirotask.mc
 
-import com.github.hirotask.exc.ValidNumberException
+import com.github.hirotask.exc.InvalidNumberException
 import com.github.hirotask.exc.ZONPlayerNotFoundException
 import com.github.syari.spigot.api.command.command
 import com.github.syari.spigot.api.command.tab.CommandTabArgument.Companion.argument
@@ -63,7 +63,7 @@ class Command(private val main: Main) {
                                                         main.zonPlayerService.addStatusPoint(zonPlayer, -1)
                                                         main.zonPlayerService.addHP(zonPlayer, 1)
                                                         player.sendMessage("HPを強化しました")
-                                                    } catch (e: ValidNumberException) {
+                                                    } catch (e: InvalidNumberException) {
                                                         player.sendMessage("ステータスポイントが足りませんでした")
                                                     }
                                                 }
@@ -74,7 +74,7 @@ class Command(private val main: Main) {
                                                         main.zonPlayerService.addStatusPoint(zonPlayer, -1)
                                                         main.zonPlayerService.addHPRegen(zonPlayer, 1)
                                                         player.sendMessage("HP再生速度を強化しました")
-                                                    } catch (e: ValidNumberException) {
+                                                    } catch (e: InvalidNumberException) {
                                                         player.sendMessage("ステータスポイントが足りませんでした")
                                                     }
                                                 }
@@ -85,7 +85,7 @@ class Command(private val main: Main) {
                                                         main.zonPlayerService.addStatusPoint(zonPlayer, -1)
                                                         main.zonPlayerService.addMP(zonPlayer, 1)
                                                         player.sendMessage("MPを強化しました")
-                                                    } catch (e: ValidNumberException) {
+                                                    } catch (e: InvalidNumberException) {
                                                         player.sendMessage("ステータスポイントが足りませんでした")
                                                     }
                                                 }
@@ -96,7 +96,7 @@ class Command(private val main: Main) {
                                                         main.zonPlayerService.addStatusPoint(zonPlayer, -1)
                                                         main.zonPlayerService.addMPRegen(zonPlayer, 1)
                                                         player.sendMessage("MP再生速度を強化しました")
-                                                    } catch (e: ValidNumberException) {
+                                                    } catch (e: InvalidNumberException) {
                                                         player.sendMessage("ステータスポイントが足りませんでした")
                                                     }
                                                 }
@@ -107,7 +107,7 @@ class Command(private val main: Main) {
                                                         main.zonPlayerService.addStatusPoint(zonPlayer, -1)
                                                         main.zonPlayerService.addStrength(zonPlayer, 1)
                                                         player.sendMessage("攻撃力を強化しました")
-                                                    } catch (e: ValidNumberException) {
+                                                    } catch (e: InvalidNumberException) {
                                                         player.sendMessage("ステータスポイントが足りませんでした")
                                                     }
                                                 }

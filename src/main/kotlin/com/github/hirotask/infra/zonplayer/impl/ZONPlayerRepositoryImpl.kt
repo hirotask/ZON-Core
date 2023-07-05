@@ -2,7 +2,7 @@ package com.github.hirotask.infra.zonplayer.impl
 
 import com.github.hirotask.domain.ZONPlayer
 import com.github.hirotask.domain.ZONPlayerStatus
-import com.github.hirotask.exc.ValidNumberException
+import com.github.hirotask.exc.InvalidNumberException
 import com.github.hirotask.exc.ZONPlayerNotFoundException
 import com.github.hirotask.infra.Database
 import com.github.hirotask.infra.zonplayer.ZONPlayerRepository
@@ -40,7 +40,7 @@ class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerReposit
         val id = getPlayerId(zonPlayer.player)
         val value = zonPlayer.zombieKillCount + amount
         if (value < 0) {
-            throw ValidNumberException("ゾンビキル数は0以上でなければなりません")
+            throw InvalidNumberException("ゾンビキル数は0以上でなければなりません")
         }
         database.connect()
         val result = database.createOrUpdateOrDelete("INSERT INTO dt_player_kills(mp_id, dpk_value) VALUES ($id, $value)")
@@ -53,7 +53,7 @@ class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerReposit
         val id = getPlayerId(zonPlayer.player)
         val value = zonPlayer.statusPoint + amount
         if (value < 0) {
-            throw ValidNumberException("ステータスポイントは0以上でなければなりません")
+            throw InvalidNumberException("ステータスポイントは0以上でなければなりません")
         }
 
         database.connect()
