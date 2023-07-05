@@ -17,10 +17,10 @@ import dagger.Module
 interface UseCaseModule {
 
     @Binds
-    fun bindsZONPlayerActionUseCase(impl: GetZONPlayerUseCaseImpl) : GetZONPlayerUseCase
+    fun bindsZONPlayerActionUseCase(impl: GetZONPlayerUseCaseImpl): GetZONPlayerUseCase
 
     @Binds
-    fun bindsAddStatusPointUseCase(impl : AddStatusPointUseCaseImpl) : AddStatusPointUseCase
+    fun bindsAddStatusPointUseCase(impl: AddStatusPointUseCaseImpl): AddStatusPointUseCase
 
     @Binds
     fun bindsAddZombieKillsUseCase(impl: AddZombieKillsUseCaseImpl): AddZombieKillsUseCase

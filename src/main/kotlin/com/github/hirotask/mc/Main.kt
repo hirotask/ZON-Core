@@ -5,9 +5,9 @@ import com.github.hirotask.mc.listener.EventListener
 import com.github.hirotask.mc.listener.MyEventListener
 import com.github.hirotask.usecase.AddStatusPointUseCase
 import com.github.hirotask.usecase.AddZombieKillsUseCase
+import com.github.hirotask.usecase.GetZONPlayerUseCase
 import com.github.hirotask.usecase.InitZONPlayerUseCase
 import com.github.hirotask.usecase.ReinforceStatusUseCase
-import com.github.hirotask.usecase.GetZONPlayerUseCase
 import com.github.syari.spigot.api.EasySpigotAPIOption
 import org.bukkit.plugin.java.JavaPlugin
 import javax.inject.Inject

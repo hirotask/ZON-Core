@@ -4,5 +4,5 @@ import org.bukkit.entity.Player
 
 interface AddZombieKillsUseCase {
 
-    fun invoke(player : Player, value: Int) : Int
+    fun invoke(player: Player, value: Int): Int
 }

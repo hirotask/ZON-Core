@@ -57,7 +57,7 @@ class Command(private val main: Main) {
                         val valueInt = value.toInt()
 
                         try {
-                            main.addStatusPointUseCase.invoke(player,valueInt)
+                            main.addStatusPointUseCase.invoke(player, valueInt)
                             player.sendMessage("ステータスポイントを${valueInt}追加しました")
                         } catch (e: ZONPlayerNotFoundException) {
                             player.sendMessage("プレイヤーが取得できませんでした")

@@ -1,6 +1,5 @@
 package com.github.hirotask.mc.listener
 
-import com.github.hirotask.exc.ZONPlayerNotFoundException
 import com.github.hirotask.mc.Main
 import com.github.hirotask.mc.event.PlayerAttackZombieEvent
 import com.github.hirotask.mc.event.ZombieDeathByPlayerEvent

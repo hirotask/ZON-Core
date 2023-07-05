@@ -16,5 +16,4 @@ interface DomainServiceModule {
     @Binds
     @Singleton
     fun bindsZONPlayerService(impl: ZONPlayerServiceImpl): ZONPlayerService
-
 }

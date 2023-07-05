@@ -72,7 +72,6 @@ class ReinForceInventory(private val player: Player, private val main: Main) : Z
                 }
             }
             for (i in 6..8) item(i, Material.GRAY_STAINED_GLASS_PANE)
-
         }
     }
 }

@@ -7,8 +7,8 @@ import org.bukkit.entity.Player
 import javax.inject.Inject
 
 class GetZONPlayerUseCaseImpl @Inject constructor(
-        private val zonPlayerService: ZONPlayerService
-): GetZONPlayerUseCase {
+    private val zonPlayerService: ZONPlayerService
+) : GetZONPlayerUseCase {
     override fun invoke(player: Player): ZONPlayer {
         return zonPlayerService.getZONPlayer(player)
     }

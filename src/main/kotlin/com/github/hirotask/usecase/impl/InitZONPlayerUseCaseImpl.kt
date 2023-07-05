@@ -7,7 +7,7 @@ import org.bukkit.entity.Player
 import javax.inject.Inject
 
 class InitZONPlayerUseCaseImpl @Inject constructor(
-        private val zonPlayerService: ZONPlayerService
+    private val zonPlayerService: ZONPlayerService
 ) : InitZONPlayerUseCase {
     override fun invoke(player: Player) {
         try {
@@ -16,5 +16,4 @@ class InitZONPlayerUseCaseImpl @Inject constructor(
             zonPlayerService.addZONPlayer(player)
         }
     }
-
 }

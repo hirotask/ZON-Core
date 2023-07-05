@@ -22,7 +22,7 @@ object MyEventListener {
         main.events {
             event<ZombieDeathByPlayerEvent> {
                 val player = it.player
-                val zombieKills = main.addZombieKillsUseCase.invoke(player,1)
+                val zombieKills = main.addZombieKillsUseCase.invoke(player, 1)
 
                 if (zombieKills > 0 && zombieKills % 100 == 0) {
                     main.addStatusPointUseCase.invoke(player, 1)
