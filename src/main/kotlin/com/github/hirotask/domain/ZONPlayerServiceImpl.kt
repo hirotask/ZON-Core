@@ -23,13 +23,11 @@ class ZONPlayerServiceImpl @Inject constructor(
         val zonPlayer = zonPlayerRepository.getZONPlayer(player)
         zonPlayer.statusPoint = zonPlayerRepository.getStatusPoint(zonPlayer)
         zonPlayer.zombieKillCount = zonPlayerRepository.getZombieKills(zonPlayer)
-        zonPlayer.zonplayerStatus = ZONPlayerStatus(
-                hp = zonPlayerStatusRepository.getHP(zonPlayer),
-                hpRegen = zonPlayerStatusRepository.getHPRegen(zonPlayer),
-                mp = zonPlayerStatusRepository.getMP(zonPlayer),
-                mpRegen = zonPlayerStatusRepository.getMPRegen(zonPlayer),
-                strength = zonPlayerStatusRepository.getStrength(zonPlayer)
-        )
+        zonPlayer.zonplayerStatus.hp = zonPlayerStatusRepository.getHP(zonPlayer)
+        zonPlayer.zonplayerStatus.hpRegen = zonPlayerStatusRepository.getHPRegen(zonPlayer)
+        zonPlayer.zonplayerStatus.mp = zonPlayerStatusRepository.getMP(zonPlayer)
+        zonPlayer.zonplayerStatus.mpRegen = zonPlayerStatusRepository.getMPRegen(zonPlayer)
+        zonPlayer.zonplayerStatus.strength = zonPlayerStatusRepository.getStrength(zonPlayer)
         return zonPlayer
     }
 
