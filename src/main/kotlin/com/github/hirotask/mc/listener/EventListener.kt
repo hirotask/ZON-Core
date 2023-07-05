@@ -1,6 +1,5 @@
 package com.github.hirotask.mc.listener
 
-import com.github.hirotask.exc.ZONPlayerNotFoundException
 import com.github.hirotask.mc.Main
 import com.github.hirotask.mc.event.PlayerAttackZombieEvent
 import com.github.hirotask.mc.event.ZombieDeathByPlayerEvent
@@ -34,11 +33,7 @@ object EventListener {
             }
             event<PlayerJoinEvent> {
                 val player = it.player
-                try {
-                    main.zonPlayerService.getZONPlayer(player)
-                } catch (e: ZONPlayerNotFoundException) {
-                    main.zonPlayerService.addZONPlayer(player)
-                }
+                main.initZONPlayerUseCase.invoke(player)
             }
         }
     }

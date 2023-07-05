@@ -22,13 +22,11 @@ object MyEventListener {
         main.events {
             event<ZombieDeathByPlayerEvent> {
                 val player = it.player
-                val zonPlayer = main.zonPlayerService.getZONPlayer(player)
-
-                val zombieKills = main.zonPlayerService.addZombieKills(zonPlayer, 1)
+                val zombieKills = main.addZombieKillsUseCase.invoke(player, 1)
 
                 if (zombieKills > 0 && zombieKills % 100 == 0) {
-                    main.zonPlayerService.addStatusPoint(zonPlayer, 1)
-                    val firework: Firework = zonPlayer.player.world.spawn(zonPlayer.player.location, Firework::class.java)
+                    main.addStatusPointUseCase.invoke(player, 1)
+                    val firework: Firework = player.world.spawn(player.location, Firework::class.java)
                     val data = firework.fireworkMeta.apply {
                         addEffect(FireworkEffect.builder().withColor(Color.PURPLE).withColor(Color.GREEN).with(FireworkEffect.Type.BALL_LARGE).withFlicker().build())
                         power = 1

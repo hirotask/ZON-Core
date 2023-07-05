@@ -35,9 +35,8 @@ class Command(private val main: Main) {
                     // 0 番目の引数が here だった時の処理
                     "menu" -> {
                         try {
-                            val zonPlayer = main.zonPlayerService.getZONPlayer(player)
-                            val inv = StatusInventory(zonPlayer, ReinForceInventory(zonPlayer, main))
-                            inv.create().open(zonPlayer.player)
+                            val inv = StatusInventory(player, main, ReinForceInventory(player, main))
+                            inv.create().open(player)
                         } catch (e: ZONPlayerNotFoundException) {
                             player.sendMessage("プレイヤーが取得できませんでした")
                         }
@@ -47,8 +46,7 @@ class Command(private val main: Main) {
                         val valueInt = value.toInt()
 
                         try {
-                            val zonPlayer = main.zonPlayerService.getZONPlayer(player)
-                            main.zonPlayerService.addZombieKills(zonPlayer = zonPlayer, valueInt)
+                            main.addZombieKillsUseCase.invoke(player, valueInt)
                             player.sendMessage("キル数を${valueInt}追加しました")
                         } catch (e: ZONPlayerNotFoundException) {
                             player.sendMessage("プレイヤーが取得できませんでした")
@@ -59,8 +57,7 @@ class Command(private val main: Main) {
                         val valueInt = value.toInt()
 
                         try {
-                            val zonPlayer = main.zonPlayerService.getZONPlayer(player)
-                            main.zonPlayerService.addStatusPoint(zonPlayer = zonPlayer, valueInt)
+                            main.addStatusPointUseCase.invoke(player, valueInt)
                             player.sendMessage("ステータスポイントを${valueInt}追加しました")
                         } catch (e: ZONPlayerNotFoundException) {
                             player.sendMessage("プレイヤーが取得できませんでした")
