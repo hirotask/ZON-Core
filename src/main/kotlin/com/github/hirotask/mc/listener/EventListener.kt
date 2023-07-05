@@ -34,11 +34,7 @@ object EventListener {
             }
             event<PlayerJoinEvent> {
                 val player = it.player
-                try {
-                    main.zonPlayerService.getZONPlayer(player)
-                } catch (e: ZONPlayerNotFoundException) {
-                    main.zonPlayerService.addZONPlayer(player)
-                }
+                main.initZONPlayerUseCase.invoke(player)
             }
         }
     }
