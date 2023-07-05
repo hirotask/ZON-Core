@@ -7,7 +7,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.SkullMeta
 
-class StatusInventory(private val zonPlayer : ZONPlayer, private val onSkullClickInv : ZONCustomInventory) : ZONCustomInventory {
+class StatusInventory(private val zonPlayer: ZONPlayer, private val onSkullClickInv: ZONCustomInventory) : ZONCustomInventory {
     override val inventoryTitle = "ステータス"
     override fun create(): CustomInventory {
         val playerSkull = ItemStack(Material.PLAYER_HEAD)
@@ -15,8 +15,8 @@ class StatusInventory(private val zonPlayer : ZONPlayer, private val onSkullClic
             ownerProfile = zonPlayer.player.playerProfile
             setDisplayName(zonPlayer.player.name)
             lore = listOf(
-                    "ゾンビキル数：${zonPlayer.zombieKillCount}",
-                    "ステータスポイント：${zonPlayer.statusPoint}"
+                "ゾンビキル数：${zonPlayer.zombieKillCount}",
+                "ステータスポイント：${zonPlayer.statusPoint}"
             )
         }
         playerSkull.itemMeta = playerSkullMeta

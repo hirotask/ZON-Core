@@ -11,12 +11,12 @@ interface ZONCustomInventory {
     /**
      * インベントリのタイトル
      */
-    val inventoryTitle : String
+    val inventoryTitle: String
 
     /**
      * インベントリを作成する
      *
      * @return 作成したインベントリ
      */
-    fun create() : CustomInventory
+    fun create(): CustomInventory
 }

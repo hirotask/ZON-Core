@@ -33,5 +33,4 @@ class Main : JavaPlugin() {
         val command = Command(this)
         command.register()
     }
-
 }
