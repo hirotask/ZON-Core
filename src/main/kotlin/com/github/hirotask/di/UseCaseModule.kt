@@ -1,5 +1,6 @@
 package com.github.hirotask.di
 
+import com.github.hirotask.domain.ZONPlayerService
 import com.github.hirotask.usecase.AddStatusPointUseCase
 import com.github.hirotask.usecase.AddZombieKillsUseCase
 import com.github.hirotask.usecase.GetZONPlayerUseCase
@@ -10,24 +11,43 @@ import com.github.hirotask.usecase.impl.AddZombieKillsUseCaseImpl
 import com.github.hirotask.usecase.impl.GetZONPlayerUseCaseImpl
 import com.github.hirotask.usecase.impl.InitZONPlayerUseCaseImpl
 import com.github.hirotask.usecase.impl.ReinforceStatusUseCaseImpl
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 
 @Module
-interface UseCaseModule {
+class UseCaseModule {
 
-    @Binds
-    fun bindsZONPlayerActionUseCase(impl: GetZONPlayerUseCaseImpl): GetZONPlayerUseCase
+    @Provides
+    fun provideGetZONPlayerUseCase(zonPlayerService: ZONPlayerService): GetZONPlayerUseCase {
+        return GetZONPlayerUseCaseImpl(zonPlayerService)
+    }
 
-    @Binds
-    fun bindsAddStatusPointUseCase(impl: AddStatusPointUseCaseImpl): AddStatusPointUseCase
+    @Provides
+    fun provideAddStatusPointUseCase(
+        zonPlayerService: ZONPlayerService,
+        getZonPlayerUseCase: GetZONPlayerUseCase
+    ): AddStatusPointUseCase {
+        return AddStatusPointUseCaseImpl(zonPlayerService, getZonPlayerUseCase)
+    }
 
-    @Binds
-    fun bindsAddZombieKillsUseCase(impl: AddZombieKillsUseCaseImpl): AddZombieKillsUseCase
+    @Provides
+    fun provideAddZombieKillsUseCase(
+        zonPlayerService: ZONPlayerService,
+        getZonPlayerUseCase: GetZONPlayerUseCase
+    ): AddZombieKillsUseCase {
+        return AddZombieKillsUseCaseImpl(zonPlayerService, getZonPlayerUseCase)
+    }
 
-    @Binds
-    fun bindsInitZONPlayerUseCase(impl: InitZONPlayerUseCaseImpl): InitZONPlayerUseCase
+    @Provides
+    fun provideInitZONPlayerUseCase(zonPlayerService: ZONPlayerService): InitZONPlayerUseCase {
+        return InitZONPlayerUseCaseImpl(zonPlayerService)
+    }
 
-    @Binds
-    fun bindsReinforceStatusUseCase(impl: ReinforceStatusUseCaseImpl): ReinforceStatusUseCase
+    @Provides
+    fun provideReinforceStatusUseCase(
+        zonPlayerService: ZONPlayerService,
+        getZonPlayerUseCase: GetZONPlayerUseCase
+    ): ReinforceStatusUseCase {
+        return ReinforceStatusUseCaseImpl(zonPlayerService, getZonPlayerUseCase)
+    }
 }

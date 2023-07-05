@@ -2,8 +2,10 @@ package com.github.hirotask.di
 
 import com.github.hirotask.domain.ZONPlayerService
 import com.github.hirotask.domain.ZONPlayerServiceImpl
-import dagger.Binds
+import com.github.hirotask.infra.zonplayer.ZONPlayerRepository
+import com.github.hirotask.infra.zonplayer.ZONPlayerStatusRepository
 import dagger.Module
+import dagger.Provides
 import javax.inject.Singleton
 
 /**
@@ -12,8 +14,13 @@ import javax.inject.Singleton
  * @suppress
  */
 @Module
-interface DomainServiceModule {
-    @Binds
+class DomainServiceModule {
+    @Provides
     @Singleton
-    fun bindsZONPlayerService(impl: ZONPlayerServiceImpl): ZONPlayerService
+    fun provideZONPlayerService(
+        zonPlayerRepository: ZONPlayerRepository,
+        zonPlayerStatusRepository: ZONPlayerStatusRepository
+    ): ZONPlayerService {
+        return ZONPlayerServiceImpl(zonPlayerRepository, zonPlayerStatusRepository)
+    }
 }
