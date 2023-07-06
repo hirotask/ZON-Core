@@ -1,4 +1,4 @@
-package com.github.hirotask.mc.inventory
+package com.github.hirotask.kills.inventory
 
 import com.github.syari.spigot.api.inventory.CustomInventory
 

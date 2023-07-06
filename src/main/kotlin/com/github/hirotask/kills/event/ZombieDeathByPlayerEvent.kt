@@ -1,4 +1,4 @@
-package com.github.hirotask.mc.event
+package com.github.hirotask.kills.event
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.Zombie
@@ -7,12 +7,12 @@ import org.bukkit.event.Event
 import org.bukkit.event.HandlerList
 
 /**
- * プレイヤーがゾンビを攻撃した時に発火するイベント
+ * ゾンビがプレイヤーによって倒されたときに発火するイベント
  *
  * @property player
  * @property zombie
  */
-class PlayerAttackZombieEvent(val player: Player, val zombie: Zombie) : Event(), Cancellable {
+class ZombieDeathByPlayerEvent(val player: Player, val zombie: Zombie) : Event(), Cancellable {
     var cancel: Boolean = false
 
     override fun getHandlers(): HandlerList {

@@ -1,13 +1,13 @@
-package com.github.hirotask.mc
+package com.github.hirotask.kills
 
 import com.github.hirotask.core.usecase.AddStatusPointUseCase
 import com.github.hirotask.core.usecase.AddZombieKillsUseCase
 import com.github.hirotask.core.usecase.GetZONPlayerUseCase
 import com.github.hirotask.core.usecase.InitZONPlayerUseCase
 import com.github.hirotask.core.usecase.ReinforceStatusUseCase
-import com.github.hirotask.mc.di.DaggerZONPlayerKillsComponent
-import com.github.hirotask.mc.listener.EventListener
-import com.github.hirotask.mc.listener.MyEventListener
+import com.github.hirotask.kills.di.DaggerZONPlayerKillsComponent
+import com.github.hirotask.kills.listener.EventListener
+import com.github.hirotask.kills.listener.MyEventListener
 import com.github.syari.spigot.api.EasySpigotAPIOption
 import org.bukkit.plugin.java.JavaPlugin
 import javax.inject.Inject

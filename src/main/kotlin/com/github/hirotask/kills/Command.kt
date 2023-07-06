@@ -1,8 +1,8 @@
-package com.github.hirotask.mc
+package com.github.hirotask.kills
 
 import com.github.hirotask.core.exc.ZONPlayerNotFoundException
-import com.github.hirotask.mc.inventory.ReinForceInventory
-import com.github.hirotask.mc.inventory.StatusInventory
+import com.github.hirotask.kills.inventory.ReinForceInventory
+import com.github.hirotask.kills.inventory.StatusInventory
 import com.github.syari.spigot.api.command.command
 import com.github.syari.spigot.api.command.tab.CommandTabArgument.Companion.argument
 import org.bukkit.ChatColor

@@ -1,8 +1,8 @@
-package com.github.hirotask.mc.listener
+package com.github.hirotask.kills.listener
 
-import com.github.hirotask.mc.Main
-import com.github.hirotask.mc.event.PlayerAttackZombieEvent
-import com.github.hirotask.mc.event.ZombieDeathByPlayerEvent
+import com.github.hirotask.kills.Main
+import com.github.hirotask.kills.event.PlayerAttackZombieEvent
+import com.github.hirotask.kills.event.ZombieDeathByPlayerEvent
 import com.github.syari.spigot.api.event.events
 import org.bukkit.entity.Player
 import org.bukkit.entity.Zombie

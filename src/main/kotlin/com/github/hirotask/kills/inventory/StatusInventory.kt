@@ -1,6 +1,6 @@
-package com.github.hirotask.mc.inventory
+package com.github.hirotask.kills.inventory
 
-import com.github.hirotask.mc.Main
+import com.github.hirotask.kills.Main
 import com.github.syari.spigot.api.inventory.CustomInventory
 import com.github.syari.spigot.api.inventory.inventory
 import org.bukkit.Material
