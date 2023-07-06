@@ -1,7 +1,6 @@
 package com.github.hirotask.core.usecase
 
 import com.github.hirotask.core.domain.ZONPlayer
-import org.bukkit.entity.Player
 
 /**
  * ZONPlayerを取得するだけのユースケース

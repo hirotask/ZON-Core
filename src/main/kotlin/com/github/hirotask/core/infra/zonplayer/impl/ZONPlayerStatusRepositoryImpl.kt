@@ -5,13 +5,12 @@ import com.github.hirotask.core.domain.ZONPlayerStatus
 import com.github.hirotask.core.exc.ZONPlayerStatusNotFoundException
 import com.github.hirotask.core.infra.Database
 import com.github.hirotask.core.infra.zonplayer.ZONPlayerStatusRepository
-import org.bukkit.entity.Player
 
 class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerStatusRepository {
 
     private fun getPlayerId(playerName: String, playerUUID: String): Int {
         database.connect()
-        val rs = database.select("SELECT mp_id FROM ms_players WHERE mp_name = '${playerName}' AND mp_uuid = '${playerUUID}'") ?: return -1
+        val rs = database.select("SELECT mp_id FROM ms_players WHERE mp_name = '$playerName' AND mp_uuid = '$playerUUID'") ?: return -1
 
         var result = -1
         while (rs.next()) {

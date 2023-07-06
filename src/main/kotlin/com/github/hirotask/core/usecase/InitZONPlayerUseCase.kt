@@ -1,7 +1,5 @@
 package com.github.hirotask.core.usecase
 
-import org.bukkit.entity.Player
-
 /**
  * 初回ログイン時のZONPlayer作成に関するユースケース
  *

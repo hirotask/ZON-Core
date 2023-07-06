@@ -2,7 +2,6 @@ package com.github.hirotask.core.domain
 
 import com.github.hirotask.core.infra.zonplayer.ZONPlayerRepository
 import com.github.hirotask.core.infra.zonplayer.ZONPlayerStatusRepository
-import org.bukkit.entity.Player
 import javax.inject.Inject
 
 /**
@@ -11,8 +10,8 @@ import javax.inject.Inject
  * @property zonPlayerRepository
  */
 class ZONPlayerServiceImpl @Inject constructor(
-        private val zonPlayerRepository: ZONPlayerRepository,
-        private val zonPlayerStatusRepository: ZONPlayerStatusRepository
+    private val zonPlayerRepository: ZONPlayerRepository,
+    private val zonPlayerStatusRepository: ZONPlayerStatusRepository
 ) : ZONPlayerService {
     override fun addZONPlayer(playerName: String, playerUUId: String): Int {
         return zonPlayerRepository.addZONPlayer(playerName, playerUUId)

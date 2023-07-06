@@ -6,8 +6,8 @@ import com.github.hirotask.core.usecase.ReinforceStatusUseCase
 import javax.inject.Inject
 
 class ReinforceStatusUseCaseImpl @Inject constructor(
-        private val zonPlayerService: ZONPlayerService,
-        private val getZonPlayerUseCase: GetZONPlayerUseCase
+    private val zonPlayerService: ZONPlayerService,
+    private val getZonPlayerUseCase: GetZONPlayerUseCase
 ) : ReinforceStatusUseCase {
     override fun reinforceHP(playerName: String, playerUUID: String) {
         val zonPlayer = getZonPlayerUseCase.invoke(playerName, playerUUID)

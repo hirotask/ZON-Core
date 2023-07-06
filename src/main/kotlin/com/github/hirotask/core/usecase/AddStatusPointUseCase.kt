@@ -1,7 +1,5 @@
 package com.github.hirotask.core.usecase
 
-import org.bukkit.entity.Player
-
 /**
  * ステータスポイントを追加するユースケース
  *

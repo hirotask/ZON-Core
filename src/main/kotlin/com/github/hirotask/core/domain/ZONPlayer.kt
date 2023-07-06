@@ -1,6 +1,5 @@
 package com.github.hirotask.core.domain
 
-
 /**
  * ZONPlayerドメイン
  *
@@ -8,4 +7,4 @@ package com.github.hirotask.core.domain
  * @property zombieKillCount ゾンビキル数
  * @property statusPoint ステータスポイント
  */
-data class ZONPlayer(val playerName: String, val playerUUID : String, var zombieKillCount: Int, var statusPoint: Int, val zonplayerStatus: ZONPlayerStatus)
+data class ZONPlayer(val playerName: String, val playerUUID: String, var zombieKillCount: Int, var statusPoint: Int, val zonplayerStatus: ZONPlayerStatus)

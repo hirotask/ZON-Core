@@ -1,7 +1,5 @@
 package com.github.hirotask.core.domain
 
-import org.bukkit.entity.Player
-
 /**
  * ZONPlayerドメインのビジネスロジックに関わるクラス
  *

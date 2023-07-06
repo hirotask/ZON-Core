@@ -1,7 +1,5 @@
 package com.github.hirotask.core.usecase
 
-import org.bukkit.entity.Player
-
 /**
  * ステータス強化に関するユースケース
  *

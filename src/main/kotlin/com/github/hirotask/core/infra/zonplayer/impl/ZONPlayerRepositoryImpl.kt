@@ -6,7 +6,6 @@ import com.github.hirotask.core.exc.InvalidNumberException
 import com.github.hirotask.core.exc.ZONPlayerNotFoundException
 import com.github.hirotask.core.infra.Database
 import com.github.hirotask.core.infra.zonplayer.ZONPlayerRepository
-import org.bukkit.entity.Player
 
 /**
  * ZONPlayerRepositoryの実装クラス
@@ -66,7 +65,7 @@ class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerReposit
     override fun getZombieKills(zonPlayer: ZONPlayer): Int {
         database.connect()
         val rs = database.select("SELECT dpk_value FROM ms_players INNER JOIN dt_player_kills ON ms_players.mp_id = dt_player_kills.mp_id WHERE mp_name = '${zonPlayer.playerName}' ORDER BY dpk_id DESC LIMIT 1")
-                ?: return -1
+            ?: return -1
 
         var result = 0
         while (rs.next()) {
@@ -81,7 +80,7 @@ class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerReposit
     override fun getStatusPoint(zonPlayer: ZONPlayer): Int {
         database.connect()
         val rs = database.select("SELECT dsp_value FROM ms_players INNER JOIN dt_status_points ON ms_players.mp_id = dt_status_points.mp_id WHERE mp_name = '${zonPlayer.playerName}' ORDER BY dsp_id DESC LIMIT 1")
-                ?: return -1
+            ?: return -1
 
         var result = 0
         while (rs.next()) {
@@ -102,17 +101,17 @@ class ZONPlayerRepositoryImpl(private val database: Database) : ZONPlayerReposit
             database.disconnect()
 
             return ZONPlayer(
-                    playerName = playerName,
-                    playerUUID = playerUUID,
-                    zombieKillCount = 0,
-                    statusPoint = 0,
-                    zonplayerStatus = ZONPlayerStatus(
-                            hp = 0,
-                            hpRegen = 0,
-                            mp = 0,
-                            mpRegen = 0,
-                            strength = 0
-                    ),
+                playerName = playerName,
+                playerUUID = playerUUID,
+                zombieKillCount = 0,
+                statusPoint = 0,
+                zonplayerStatus = ZONPlayerStatus(
+                    hp = 0,
+                    hpRegen = 0,
+                    mp = 0,
+                    mpRegen = 0,
+                    strength = 0
+                ),
             )
         } else {
             throw ZONPlayerNotFoundException("player: $playerName is not found in DB")

@@ -29,16 +29,16 @@ class UseCaseModule {
 
     @Provides
     fun provideAddStatusPointUseCase(
-            zonPlayerService: ZONPlayerService,
-            getZonPlayerUseCase: GetZONPlayerUseCase
+        zonPlayerService: ZONPlayerService,
+        getZonPlayerUseCase: GetZONPlayerUseCase
     ): AddStatusPointUseCase {
         return AddStatusPointUseCaseImpl(zonPlayerService, getZonPlayerUseCase)
     }
 
     @Provides
     fun provideAddZombieKillsUseCase(
-            zonPlayerService: ZONPlayerService,
-            getZonPlayerUseCase: GetZONPlayerUseCase
+        zonPlayerService: ZONPlayerService,
+        getZonPlayerUseCase: GetZONPlayerUseCase
     ): AddZombieKillsUseCase {
         return AddZombieKillsUseCaseImpl(zonPlayerService, getZonPlayerUseCase)
     }
@@ -50,8 +50,8 @@ class UseCaseModule {
 
     @Provides
     fun provideReinforceStatusUseCase(
-            zonPlayerService: ZONPlayerService,
-            getZonPlayerUseCase: GetZONPlayerUseCase
+        zonPlayerService: ZONPlayerService,
+        getZonPlayerUseCase: GetZONPlayerUseCase
     ): ReinforceStatusUseCase {
         return ReinforceStatusUseCaseImpl(zonPlayerService, getZonPlayerUseCase)
     }

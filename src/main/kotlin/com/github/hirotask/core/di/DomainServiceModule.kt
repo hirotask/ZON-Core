@@ -18,8 +18,8 @@ class DomainServiceModule {
     @Provides
     @Singleton
     fun provideZONPlayerService(
-            zonPlayerRepository: ZONPlayerRepository,
-            zonPlayerStatusRepository: ZONPlayerStatusRepository
+        zonPlayerRepository: ZONPlayerRepository,
+        zonPlayerStatusRepository: ZONPlayerStatusRepository
     ): ZONPlayerService {
         return ZONPlayerServiceImpl(zonPlayerRepository, zonPlayerStatusRepository)
     }
