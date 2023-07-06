@@ -1,6 +1,6 @@
 package com.github.hirotask.mc
 
-import com.github.hirotask.exc.ZONPlayerNotFoundException
+import com.github.hirotask.core.exc.ZONPlayerNotFoundException
 import com.github.hirotask.mc.inventory.ReinForceInventory
 import com.github.hirotask.mc.inventory.StatusInventory
 import com.github.syari.spigot.api.command.command

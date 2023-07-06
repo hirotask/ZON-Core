@@ -1,6 +1,6 @@
 package com.github.hirotask.mc.inventory
 
-import com.github.hirotask.exc.InvalidNumberException
+import com.github.hirotask.core.exc.InvalidNumberException
 import com.github.hirotask.mc.Main
 import com.github.syari.spigot.api.inventory.CustomInventory
 import com.github.syari.spigot.api.inventory.inventory
