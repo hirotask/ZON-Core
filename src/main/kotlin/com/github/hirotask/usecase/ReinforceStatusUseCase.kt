@@ -13,33 +13,33 @@ interface ReinforceStatusUseCase {
      *
      * @param player 強化するプレイヤー
      */
-    fun reinforceHP(player: Player)
+    fun reinforceHP(playerName: String, playerUUID: String)
 
     /**
      * HP再生速度を強化する
      *
      * @param player 強化するプレイヤー
      */
-    fun reinforceHPRegen(player: Player)
+    fun reinforceHPRegen(playerName: String, playerUUID: String)
 
     /**
      * MPを強化する
      *
      * @param player 強化するプレイヤー
      */
-    fun reinforceMP(player: Player)
+    fun reinforceMP(playerName: String, playerUUID: String)
 
     /**
      * MP再生速度を強化する
      *
      * @param player 強化するプレイヤー
      */
-    fun reinforceMPRegen(player: Player)
+    fun reinforceMPRegen(playerName: String, playerUUID: String)
 
     /**
      * 攻撃力を強化する
      *
      * @param player 強化するプレイヤー
      */
-    fun reinforceStrength(player: Player)
+    fun reinforceStrength(playerName: String, playerUUID: String)
 }

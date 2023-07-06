@@ -9,7 +9,7 @@ import javax.inject.Inject
 class GetZONPlayerUseCaseImpl @Inject constructor(
     private val zonPlayerService: ZONPlayerService
 ) : GetZONPlayerUseCase {
-    override fun invoke(player: Player): ZONPlayer {
-        return zonPlayerService.getZONPlayer(player)
+    override fun invoke(playerName: String, playerUUID: String): ZONPlayer {
+        return zonPlayerService.getZONPlayer(playerName, playerUUID)
     }
 }

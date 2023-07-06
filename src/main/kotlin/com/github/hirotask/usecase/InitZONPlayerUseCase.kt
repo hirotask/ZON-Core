@@ -13,5 +13,5 @@ interface InitZONPlayerUseCase {
      *
      * @param player ログインしたプレイヤー
      */
-    fun invoke(player: Player)
+    fun invoke(playerName: String, playerUUID: String)
 }
