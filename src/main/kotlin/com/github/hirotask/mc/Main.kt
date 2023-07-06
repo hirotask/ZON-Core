@@ -5,7 +5,7 @@ import com.github.hirotask.core.usecase.AddZombieKillsUseCase
 import com.github.hirotask.core.usecase.GetZONPlayerUseCase
 import com.github.hirotask.core.usecase.InitZONPlayerUseCase
 import com.github.hirotask.core.usecase.ReinforceStatusUseCase
-import com.github.hirotask.core.di.DaggerZONPlayerKillsComponent
+import com.github.hirotask.mc.di.DaggerZONPlayerKillsComponent
 import com.github.hirotask.mc.listener.EventListener
 import com.github.hirotask.mc.listener.MyEventListener
 import com.github.syari.spigot.api.EasySpigotAPIOption
