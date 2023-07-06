@@ -9,9 +9,9 @@ import org.bukkit.entity.Player
 
 class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerStatusRepository {
 
-    private fun getPlayerId(player: Player): Int {
+    private fun getPlayerId(playerName: String, playerUUID: String): Int {
         database.connect()
-        val rs = database.select("SELECT mp_id FROM ms_players WHERE mp_uuid = '${player.uniqueId}'") ?: return -1
+        val rs = database.select("SELECT mp_id FROM ms_players WHERE mp_name = '${playerName}' AND mp_uuid = '${playerUUID}'") ?: return -1
 
         var result = -1
         while (rs.next()) {
@@ -31,7 +31,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
             INNER JOIN dt_hp_regen ON ms_players.mp_id = dt_hp_regen.mp_id
             INNER JOIN dt_mp ON ms_players.mp_id = dt_mp.mp_id
             INNER JOIN dt_mp_regen ON ms_players.mp_id = dt_mp_regen.mp_id
-            WHERE mp_name = '${zonPlayer.player.name}'
+            WHERE mp_name = '${zonPlayer.playerName}'
             ORDER BY dt_strength.created_at DESC, dt_hp.created_at DESC, dt_hp_regen.created_at DESC, dt_mp.created_at DESC, dt_mp_regen.created_at DESC;
         """.trimIndent()
 
@@ -54,7 +54,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
                 strength = strength
             )
         } else {
-            throw ZONPlayerStatusNotFoundException("player(${zonPlayer.player.name})'s status is not found in DB")
+            throw ZONPlayerStatusNotFoundException("player(${zonPlayer.playerName})'s status is not found in DB")
         }
     }
 
@@ -64,7 +64,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
         val sql = """
             SELECT dh_hp FROM ms_players
                 INNER JOIN dt_hp ON ms_players.mp_id = dt_hp.mp_id
-                WHERE mp_name = '${zonPlayer.player.name}'
+                WHERE mp_name = '${zonPlayer.playerName}'
                 ORDER BY created_at DESC LIMIT 1
         """.trimIndent()
 
@@ -85,7 +85,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
         val sql = """
             SELECT dhr_hp_regen FROM ms_players
                 INNER JOIN dt_hp_regen ON ms_players.mp_id = dt_hp_regen.mp_id
-                WHERE mp_name = '${zonPlayer.player.name}'
+                WHERE mp_name = '${zonPlayer.playerName}'
                 ORDER BY created_at DESC LIMIT 1
         """.trimIndent()
 
@@ -106,7 +106,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
         val sql = """
             SELECT dm_mp FROM ms_players
                 INNER JOIN dt_mp ON ms_players.mp_id = dt_mp.mp_id
-                WHERE mp_name = '${zonPlayer.player.name}'
+                WHERE mp_name = '${zonPlayer.playerName}'
                 ORDER BY created_at DESC LIMIT 1
         """.trimIndent()
 
@@ -127,7 +127,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
         val sql = """
             SELECT dmr_mp_regen FROM ms_players
                 INNER JOIN dt_mp_regen ON ms_players.mp_id = dt_mp_regen.mp_id
-                WHERE mp_name = '${zonPlayer.player.name}'
+                WHERE mp_name = '${zonPlayer.playerName}'
                 ORDER BY created_at DESC LIMIT 1
         """.trimIndent()
 
@@ -148,7 +148,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
         val sql = """
             SELECT ds_strength FROM ms_players
                 INNER JOIN dt_strength ON ms_players.mp_id = dt_strength.mp_id
-                WHERE mp_name = '${zonPlayer.player.name}'
+                WHERE mp_name = '${zonPlayer.playerName}'
                 ORDER BY created_at DESC LIMIT 1
         """.trimIndent()
 
@@ -164,7 +164,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
     }
 
     override fun addHP(zonPlayer: ZONPlayer, amount: Int): Int {
-        val id = getPlayerId(zonPlayer.player)
+        val id = getPlayerId(zonPlayer.playerName, zonPlayer.playerUUID)
         val value = zonPlayer.zonplayerStatus.hp + amount
         database.connect()
         val result = database.createOrUpdateOrDelete("INSERT INTO dt_hp(mp_id, dh_hp) VALUES ($id, $value)")
@@ -174,7 +174,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
     }
 
     override fun addHPRegen(zonPlayer: ZONPlayer, amount: Int): Int {
-        val id = getPlayerId(zonPlayer.player)
+        val id = getPlayerId(zonPlayer.playerName, zonPlayer.playerUUID)
         val value = zonPlayer.zonplayerStatus.hpRegen + amount
         database.connect()
         val result = database.createOrUpdateOrDelete("INSERT INTO dt_hp_regen(mp_id, dhr_hp_regen) VALUES ($id, $value)")
@@ -184,7 +184,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
     }
 
     override fun addMP(zonPlayer: ZONPlayer, amount: Int): Int {
-        val id = getPlayerId(zonPlayer.player)
+        val id = getPlayerId(zonPlayer.playerName, zonPlayer.playerUUID)
         val value = zonPlayer.zonplayerStatus.mp + amount
         database.connect()
         val result = database.createOrUpdateOrDelete("INSERT INTO dt_mp(mp_id, dm_mp) VALUES ($id, $value)")
@@ -194,7 +194,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
     }
 
     override fun addMPRegen(zonPlayer: ZONPlayer, amount: Int): Int {
-        val id = getPlayerId(zonPlayer.player)
+        val id = getPlayerId(zonPlayer.playerName, zonPlayer.playerUUID)
         val value = zonPlayer.zonplayerStatus.mpRegen + amount
         database.connect()
         val result = database.createOrUpdateOrDelete("INSERT INTO dt_mp_regen(mp_id, dmr_mp_regen) VALUES ($id, $value)")
@@ -204,7 +204,7 @@ class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerS
     }
 
     override fun addStrength(zonPlayer: ZONPlayer, amount: Int): Int {
-        val id = getPlayerId(zonPlayer.player)
+        val id = getPlayerId(zonPlayer.playerName, zonPlayer.playerUUID)
         val value = zonPlayer.zonplayerStatus.strength + amount
         database.connect()
         val result = database.createOrUpdateOrDelete("INSERT INTO dt_strength(mp_id, ds_strength) VALUES ($id, $value)")
