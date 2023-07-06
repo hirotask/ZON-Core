@@ -21,10 +21,10 @@ object MyEventListener {
         main.events {
             event<ZombieDeathByPlayerEvent> {
                 val player = it.player
-                val zombieKills = main.addZombieKillsUseCase.invoke(player, 1)
+                val zombieKills = main.addZombieKillsUseCase.invoke(player.name, player.uniqueId.toString(), 1)
 
                 if (zombieKills > 0 && zombieKills % 100 == 0) {
-                    main.addStatusPointUseCase.invoke(player, 1)
+                    main.addStatusPointUseCase.invoke(player.name, player.uniqueId.toString(), 1)
                     val firework: Firework = player.world.spawn(player.location, Firework::class.java)
                     val data = firework.fireworkMeta.apply {
                         addEffect(FireworkEffect.builder().withColor(Color.PURPLE).withColor(Color.GREEN).with(FireworkEffect.Type.BALL_LARGE).withFlicker().build())

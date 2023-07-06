@@ -32,7 +32,7 @@ object EventListener {
             }
             event<PlayerJoinEvent> {
                 val player = it.player
-                main.initZONPlayerUseCase.invoke(player)
+                main.initZONPlayerUseCase.invoke(player.name, player.uniqueId.toString())
             }
         }
     }
