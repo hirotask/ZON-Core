@@ -1,7 +1,6 @@
 package com.github.hirotask.infra.zonplayer
 
 import com.github.hirotask.domain.ZONPlayer
-import org.bukkit.entity.Player
 
 interface ZONPlayerRepository {
 
@@ -50,16 +49,16 @@ interface ZONPlayerRepository {
     /**
      * ZONPlayerを取得する
      *
-     * @param player
+     * @param playerName プレイヤー名
      * @return
      */
-    fun getZONPlayer(player: Player): ZONPlayer
+    fun getZONPlayer(playerName: String, playerUUID: String): ZONPlayer
 
     /**
      * ZONPlayerを登録する
      *
-     * @param player
+     * @param playerName プレイヤー名
      * @return
      */
-    fun addZONPlayer(player: Player): Int
+    fun addZONPlayer(playerName: String, playerUUID: String): Int
 }

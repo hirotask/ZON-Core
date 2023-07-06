@@ -15,5 +15,5 @@ interface GetZONPlayerUseCase {
      * @param player Player
      * @return ZONPlayer
      */
-    fun invoke(player: Player): ZONPlayer
+    fun invoke(playerName: String, playerUUID: String): ZONPlayer
 }

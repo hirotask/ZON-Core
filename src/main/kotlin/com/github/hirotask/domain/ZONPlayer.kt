@@ -1,12 +1,11 @@
 package com.github.hirotask.domain
 
-import org.bukkit.entity.Player
 
 /**
  * ZONPlayerドメイン
  *
- * @property player Player
+ * @property playerName プレイヤー名
  * @property zombieKillCount ゾンビキル数
  * @property statusPoint ステータスポイント
  */
-data class ZONPlayer(val player: Player, var zombieKillCount: Int, var statusPoint: Int, val zonplayerStatus: ZONPlayerStatus)
+data class ZONPlayer(val playerName: String, val playerUUID : String, var zombieKillCount: Int, var statusPoint: Int, val zonplayerStatus: ZONPlayerStatus)

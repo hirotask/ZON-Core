@@ -18,7 +18,7 @@ class StatusInventory(private val player: Player, private val main: Main, privat
     override val inventoryTitle = "ステータス"
     override fun create(): CustomInventory {
 
-        val zonPlayer = main.getZonPlayerUseCase.invoke(player)
+        val zonPlayer = main.getZonPlayerUseCase.invoke(player.name, player.uniqueId.toString())
 
         val playerSkull = ItemStack(Material.PLAYER_HEAD)
         val playerSkullMeta = (playerSkull.itemMeta as SkullMeta).apply {

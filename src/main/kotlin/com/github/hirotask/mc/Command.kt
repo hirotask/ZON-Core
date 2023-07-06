@@ -46,7 +46,7 @@ class Command(private val main: Main) {
                         val valueInt = value.toInt()
 
                         try {
-                            main.addZombieKillsUseCase.invoke(player, valueInt)
+                            main.addZombieKillsUseCase.invoke(player.name, player.uniqueId.toString(), valueInt)
                             player.sendMessage("キル数を${valueInt}追加しました")
                         } catch (e: ZONPlayerNotFoundException) {
                             player.sendMessage("プレイヤーが取得できませんでした")
@@ -57,7 +57,7 @@ class Command(private val main: Main) {
                         val valueInt = value.toInt()
 
                         try {
-                            main.addStatusPointUseCase.invoke(player, valueInt)
+                            main.addStatusPointUseCase.invoke(player.name, player.uniqueId.toString(), valueInt)
                             player.sendMessage("ステータスポイントを${valueInt}追加しました")
                         } catch (e: ZONPlayerNotFoundException) {
                             player.sendMessage("プレイヤーが取得できませんでした")

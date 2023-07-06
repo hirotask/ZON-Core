@@ -17,14 +17,14 @@ class ReinForceInventory(private val player: Player, private val main: Main) : Z
     override val inventoryTitle: String = "ステータス強化"
 
     override fun create(): CustomInventory {
-        val zonPlayer = main.getZonPlayerUseCase.invoke(player)
+        val zonPlayer = main.getZonPlayerUseCase.invoke(player.name, player.uniqueId.toString())
 
         return inventory(inventoryTitle, 1) {
             item(0, Material.GRAY_STAINED_GLASS_PANE)
             item(1, Material.RED_WOOL, display = "HP: ${zonPlayer.zonplayerStatus.hp}", lore = listOf("1ステータスポイントで強化する")) {
                 onClick {
                     try {
-                        main.reinforceStatusUseCase.reinforceHP(player)
+                        main.reinforceStatusUseCase.reinforceHP(player.name, player.uniqueId.toString())
                         player.sendMessage("HPを強化しました")
                     } catch (e: InvalidNumberException) {
                         player.sendMessage("ステータスポイントが足りませんでした")
@@ -34,7 +34,7 @@ class ReinForceInventory(private val player: Player, private val main: Main) : Z
             item(2, Material.YELLOW_WOOL, display = "HP再生速度: ${zonPlayer.zonplayerStatus.hpRegen}", lore = listOf("1ステータスポイントで強化する")) {
                 onClick {
                     try {
-                        main.reinforceStatusUseCase.reinforceHPRegen(player)
+                        main.reinforceStatusUseCase.reinforceHPRegen(player.name, player.uniqueId.toString())
                         player.sendMessage("HP再生速度を強化しました")
                     } catch (e: InvalidNumberException) {
                         player.sendMessage("ステータスポイントが足りませんでした")
@@ -44,7 +44,7 @@ class ReinForceInventory(private val player: Player, private val main: Main) : Z
             item(3, Material.GREEN_WOOL, display = "MP: ${zonPlayer.zonplayerStatus.mp}", lore = listOf("1ステータスポイントで強化する")) {
                 onClick {
                     try {
-                        main.reinforceStatusUseCase.reinforceMP(player)
+                        main.reinforceStatusUseCase.reinforceMP(player.name, player.uniqueId.toString())
                         player.sendMessage("MPを強化しました")
                     } catch (e: InvalidNumberException) {
                         player.sendMessage("ステータスポイントが足りませんでした")
@@ -54,7 +54,7 @@ class ReinForceInventory(private val player: Player, private val main: Main) : Z
             item(4, Material.CYAN_WOOL, display = "MP再生速度: ${zonPlayer.zonplayerStatus.mpRegen}", lore = listOf("1ステータスポイントで強化する")) {
                 onClick {
                     try {
-                        main.reinforceStatusUseCase.reinforceMPRegen(player)
+                        main.reinforceStatusUseCase.reinforceMPRegen(player.name, player.uniqueId.toString())
                         player.sendMessage("MP再生速度を強化しました")
                     } catch (e: InvalidNumberException) {
                         player.sendMessage("ステータスポイントが足りませんでした")
@@ -64,7 +64,7 @@ class ReinForceInventory(private val player: Player, private val main: Main) : Z
             item(5, Material.MAGENTA_WOOL, display = "攻撃力: ${zonPlayer.zonplayerStatus.strength}", lore = listOf("1ステータスポイントで強化する")) {
                 onClick {
                     try {
-                        main.reinforceStatusUseCase.reinforceStrength(player)
+                        main.reinforceStatusUseCase.reinforceStrength(player.name, player.uniqueId.toString())
                         player.sendMessage("攻撃力を強化しました")
                     } catch (e: InvalidNumberException) {
                         player.sendMessage("ステータスポイントが足りませんでした")

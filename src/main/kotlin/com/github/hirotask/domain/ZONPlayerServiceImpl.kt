@@ -14,12 +14,12 @@ class ZONPlayerServiceImpl @Inject constructor(
     private val zonPlayerRepository: ZONPlayerRepository,
     private val zonPlayerStatusRepository: ZONPlayerStatusRepository
 ) : ZONPlayerService {
-    override fun addZONPlayer(player: Player): Int {
-        return zonPlayerRepository.addZONPlayer(player)
+    override fun addZONPlayer(playerName: String, playerUUId: String): Int {
+        return zonPlayerRepository.addZONPlayer(playerName, playerUUId)
     }
 
-    override fun getZONPlayer(player: Player): ZONPlayer {
-        val zonPlayer = zonPlayerRepository.getZONPlayer(player)
+    override fun getZONPlayer(playerName: String, playerUUID: String): ZONPlayer {
+        val zonPlayer = zonPlayerRepository.getZONPlayer(playerName, playerUUID)
         zonPlayer.statusPoint = zonPlayerRepository.getStatusPoint(zonPlayer)
         zonPlayer.zombieKillCount = zonPlayerRepository.getZombieKills(zonPlayer)
         zonPlayer.zonplayerStatus.hp = zonPlayerStatusRepository.getHP(zonPlayer)

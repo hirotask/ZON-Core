@@ -14,7 +14,7 @@ interface ZONPlayerService {
      * @param player Player
      * @return 追加したデータソースのインデックス
      */
-    fun addZONPlayer(player: Player): Int
+    fun addZONPlayer(playerName: String, playerUUId: String): Int
 
     /**
      * ZONPlayerを取得する
@@ -22,7 +22,7 @@ interface ZONPlayerService {
      * @param player Player
      * @return 取得したZONPlayer
      */
-    fun getZONPlayer(player: Player): ZONPlayer
+    fun getZONPlayer(playerName: String, playerUUID: String): ZONPlayer
 
     /**
      * ゾンビキル数を1増加する

@@ -10,8 +10,8 @@ class AddZombieKillsUseCaseImpl @Inject constructor(
     private val zonPlayerService: ZONPlayerService,
     private val getZonPlayerUseCase: GetZONPlayerUseCase
 ) : AddZombieKillsUseCase {
-    override fun invoke(player: Player, value: Int): Int {
-        val zonPlayer = getZonPlayerUseCase.invoke(player)
+    override fun invoke(playerName: String, playerUUID: String, value: Int): Int {
+        val zonPlayer = getZonPlayerUseCase.invoke(playerName, playerUUID)
         return zonPlayerService.addZombieKills(zonPlayer = zonPlayer, value)
     }
 }

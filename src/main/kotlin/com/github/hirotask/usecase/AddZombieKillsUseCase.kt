@@ -1,7 +1,5 @@
 package com.github.hirotask.usecase
 
-import org.bukkit.entity.Player
-
 /**
  * ゾンビキル数を追加するユースケース
  *
@@ -11,9 +9,9 @@ interface AddZombieKillsUseCase {
     /**
      * ユースケースを実行する
      *
-     * @param player Player
+     * @param playerName プレイヤー名
      * @param value ゾンビキル数増加量
      * @return 現在のゾンビキル数
      */
-    fun invoke(player: Player, value: Int): Int
+    fun invoke(playerName: String, playerUUID: String, value: Int): Int
 }

@@ -9,11 +9,11 @@ import javax.inject.Inject
 class InitZONPlayerUseCaseImpl @Inject constructor(
     private val zonPlayerService: ZONPlayerService
 ) : InitZONPlayerUseCase {
-    override fun invoke(player: Player) {
+    override fun invoke(playerName: String, playerUUID: String) {
         try {
-            zonPlayerService.getZONPlayer(player)
+            zonPlayerService.getZONPlayer(playerName, playerUUID)
         } catch (e: ZONPlayerNotFoundException) {
-            zonPlayerService.addZONPlayer(player)
+            zonPlayerService.addZONPlayer(playerName, playerUUID)
         }
     }
 }
