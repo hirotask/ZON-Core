@@ -31,7 +31,8 @@ jobs:
           draft: true
           generate_release_notes: true
           files: |
-            build/libs/*.jar
+            core/build/libs/*.jar
+            mc-1.19.2/build/libs/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy Document
