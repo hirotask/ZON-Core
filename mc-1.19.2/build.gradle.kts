@@ -14,6 +14,7 @@ val gitVersion: Closure<String> by extra
 
 group = "com.github.hirotask.mc"
 version = gitVersion()
+base.archivesName.set("ZON-Kills")
 
 val shadowApi: Configuration by configurations.creating
 configurations["api"].extendsFrom(shadowApi)
