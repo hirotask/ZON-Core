@@ -1,12 +1,14 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import groovy.lang.Closure
+import kr.entree.spigradle.data.Load
+import kr.entree.spigradle.kotlin.*
 
 plugins {
     kotlin("jvm")
     kotlin("kapt")
     id("org.jmailen.kotlinter")
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("net.minecrell.plugin-yml.bukkit") version "0.5.3"
+    id("kr.entree.spigradle") version "2.4.3"
 }
 val gitVersion: Closure<String> by extra
 
@@ -20,27 +22,30 @@ val pluginVersion: String by project.ext
 
 repositories {
     mavenCentral()
+    protocolLib()
+    jitpack()
     maven(url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     maven(url = "https://oss.sonatype.org/content/groups/public/")
 }
 
 dependencies {
     shadowApi(project(":core"))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-wasm:1.7.10")
-    compileOnly("org.spigotmc:spigot-api:$pluginVersion-R0.1-SNAPSHOT")
+    implementation(kotlin("stdlib-jdk8"))
+    annotationProcessor("com.google.dagger:dagger-compiler:2.46.1")
+    kapt("com.google.dagger:dagger-compiler:2.46.1")
+    compileOnly(spigot(version = pluginVersion))
     api("com.github.sya-ri:EasySpigotAPI:2.4.0") {
         exclude(group = "org.spigotmc", module = "spigot-api")
     }
 }
 
-bukkit {
-    main = "com.github.hirotask.mc.Main"
+spigot {
     version = gitVersion()
     apiVersion = "1." + pluginVersion.split(".")[1]
-    author = "hirotask"
-    depend = listOf("kotlin-stdlib", "kotlin-reflect", "EasySpigotAPI")
+    authors = listOf("hirotask")
+    depends = listOf("kotlin-stdlib", "kotlin-reflect", "EasySpigotAPI")
+    load = Load.STARTUP
 }
-
 
 tasks.withType<ShadowJar> {
     configurations = listOf(shadowApi)
