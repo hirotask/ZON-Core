@@ -1,8 +1,8 @@
 package com.github.hirotask.core.di
 
-import com.github.hirotask.core.infra.Database
 import com.github.hirotask.core.domain.repository.ZONPlayerRepository
 import com.github.hirotask.core.domain.repository.ZONPlayerStatusRepository
+import com.github.hirotask.core.infra.Database
 import com.github.hirotask.core.infra.zonplayer.impl.ZONPlayerRepositoryImpl
 import com.github.hirotask.core.infra.zonplayer.impl.ZONPlayerStatusRepositoryImpl
 import dagger.Module

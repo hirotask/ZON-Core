@@ -1,9 +1,9 @@
 package com.github.hirotask.core.di
 
-import com.github.hirotask.core.domain.services.ZONPlayerService
-import com.github.hirotask.core.domain.services.ZONPlayerServiceImpl
 import com.github.hirotask.core.domain.repository.ZONPlayerRepository
 import com.github.hirotask.core.domain.repository.ZONPlayerStatusRepository
+import com.github.hirotask.core.domain.services.ZONPlayerService
+import com.github.hirotask.core.domain.services.ZONPlayerServiceImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

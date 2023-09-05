@@ -2,9 +2,9 @@ package com.github.hirotask.core.infra.zonplayer.impl
 
 import com.github.hirotask.core.domain.ZONPlayer
 import com.github.hirotask.core.domain.ZONPlayerStatus
+import com.github.hirotask.core.domain.repository.ZONPlayerStatusRepository
 import com.github.hirotask.core.exc.ZONPlayerStatusNotFoundException
 import com.github.hirotask.core.infra.Database
-import com.github.hirotask.core.domain.repository.ZONPlayerStatusRepository
 
 class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerStatusRepository {
 
