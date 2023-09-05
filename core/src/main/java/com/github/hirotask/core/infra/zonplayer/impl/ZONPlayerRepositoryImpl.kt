@@ -5,7 +5,7 @@ import com.github.hirotask.core.domain.ZONPlayerStatus
 import com.github.hirotask.core.exc.InvalidNumberException
 import com.github.hirotask.core.exc.ZONPlayerNotFoundException
 import com.github.hirotask.core.infra.Database
-import com.github.hirotask.core.infra.zonplayer.ZONPlayerRepository
+import com.github.hirotask.core.domain.repository.ZONPlayerRepository
 
 /**
  * ZONPlayerRepositoryの実装クラス

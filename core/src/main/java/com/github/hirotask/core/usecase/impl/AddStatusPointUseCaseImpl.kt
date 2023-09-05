@@ -1,6 +1,6 @@
 package com.github.hirotask.core.usecase.impl
 
-import com.github.hirotask.core.domain.ZONPlayerService
+import com.github.hirotask.core.domain.services.ZONPlayerService
 import com.github.hirotask.core.usecase.AddStatusPointUseCase
 import com.github.hirotask.core.usecase.GetZONPlayerUseCase
 import javax.inject.Inject

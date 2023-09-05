@@ -4,7 +4,7 @@ import com.github.hirotask.core.domain.ZONPlayer
 import com.github.hirotask.core.domain.ZONPlayerStatus
 import com.github.hirotask.core.exc.ZONPlayerStatusNotFoundException
 import com.github.hirotask.core.infra.Database
-import com.github.hirotask.core.infra.zonplayer.ZONPlayerStatusRepository
+import com.github.hirotask.core.domain.repository.ZONPlayerStatusRepository
 
 class ZONPlayerStatusRepositoryImpl(private val database: Database) : ZONPlayerStatusRepository {
 

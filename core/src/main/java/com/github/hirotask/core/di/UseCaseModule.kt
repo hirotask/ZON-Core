@@ -1,6 +1,6 @@
 package com.github.hirotask.core.di
 
-import com.github.hirotask.core.domain.ZONPlayerService
+import com.github.hirotask.core.domain.services.ZONPlayerService
 import com.github.hirotask.core.usecase.AddStatusPointUseCase
 import com.github.hirotask.core.usecase.AddZombieKillsUseCase
 import com.github.hirotask.core.usecase.GetZONPlayerUseCase

@@ -1,7 +1,8 @@
-package com.github.hirotask.core.domain
+package com.github.hirotask.core.domain.services
 
-import com.github.hirotask.core.infra.zonplayer.ZONPlayerRepository
-import com.github.hirotask.core.infra.zonplayer.ZONPlayerStatusRepository
+import com.github.hirotask.core.domain.ZONPlayer
+import com.github.hirotask.core.domain.repository.ZONPlayerRepository
+import com.github.hirotask.core.domain.repository.ZONPlayerStatusRepository
 import javax.inject.Inject
 
 /**

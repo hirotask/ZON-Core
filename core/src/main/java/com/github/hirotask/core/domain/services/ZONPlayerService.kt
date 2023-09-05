@@ -1,4 +1,6 @@
-package com.github.hirotask.core.domain
+package com.github.hirotask.core.domain.services
+
+import com.github.hirotask.core.domain.ZONPlayer
 
 /**
  * ZONPlayerドメインのビジネスロジックに関わるクラス
