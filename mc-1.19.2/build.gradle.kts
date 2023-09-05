@@ -16,8 +16,8 @@ group = "com.github.hirotask.mc"
 version = gitVersion()
 base.archivesName.set("ZON-Kills")
 
-val shadowApi: Configuration by configurations.creating
-configurations["api"].extendsFrom(shadowApi)
+val shadowImplementation: Configuration by configurations.creating
+configurations["implementation"].extendsFrom(shadowImplementation)
 
 val pluginVersion: String by project.ext
 
@@ -30,26 +30,27 @@ repositories {
 }
 
 dependencies {
-    shadowApi(project(":core"))
+    shadowImplementation(project(":core"))
     implementation(kotlin("stdlib-jdk8"))
     annotationProcessor("com.google.dagger:dagger-compiler:2.46.1")
     kapt("com.google.dagger:dagger-compiler:2.46.1")
     compileOnly(spigot(version = pluginVersion))
-    api("com.github.sya-ri:EasySpigotAPI:2.4.0") {
+    shadowImplementation("com.github.sya-ri:EasySpigotAPI:2.4.0") {
         exclude(group = "org.spigotmc", module = "spigot-api")
     }
 }
 
 spigot {
+    name = "ZON-Kills"
     version = gitVersion()
     apiVersion = "1." + pluginVersion.split(".")[1]
+//    depends = listOf("EasySpigotAPI")
     authors = listOf("hirotask")
-    depends = listOf("kotlin-stdlib", "kotlin-reflect", "EasySpigotAPI")
-    load = Load.STARTUP
+    excludeLibraries = listOf("com.github.hirotask.core:core:1.0.0", "com.github.sya-ri:EasySpigotAPI:2.4.0")
 }
 
 tasks.withType<ShadowJar> {
-    configurations = listOf(shadowApi)
+    configurations = listOf(shadowImplementation)
     archiveClassifier.set("")
 }
 
