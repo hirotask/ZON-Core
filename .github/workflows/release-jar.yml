@@ -20,7 +20,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
       - name: Build Document
-        run: ./gradlew dokkaHtml
+        run: ./gradlew dokkaHtmlMultiModule
       - name: Get The Version
         id: version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
@@ -39,4 +39,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/dokkaHtmlOutput
+          publish_dir: ./build/dokkaHtmlMultiModuleOutput
