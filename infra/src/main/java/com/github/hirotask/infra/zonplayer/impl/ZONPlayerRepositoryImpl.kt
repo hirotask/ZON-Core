@@ -1,4 +1,4 @@
-package com.github.hirotask.core.infra.zonplayer.impl
+package com.github.hirotask.infra.zonplayer.impl
 
 import com.github.hirotask.core.domain.ZONPlayer
 import com.github.hirotask.core.domain.ZONPlayerStatus

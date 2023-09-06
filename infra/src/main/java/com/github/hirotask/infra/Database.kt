@@ -1,4 +1,4 @@
-package com.github.hirotask.core.infra
+package com.github.hirotask.infra
 
 import java.sql.Connection
 import java.sql.DriverManager
