@@ -4,8 +4,7 @@ import kr.entree.spigradle.data.Load
 import kr.entree.spigradle.kotlin.*
 
 plugins {
-    kotlin("jvm")
-    id("org.jmailen.kotlinter")
+    id("build-logic.primitive.kotlin")
     id("build-logic.primitive.dagger")
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("kr.entree.spigradle") version "2.4.3"

@@ -3,8 +3,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-    kotlin("jvm")
-    id("org.jmailen.kotlinter")
+    id("build-logic.primitive.kotlin")
     id("build-logic.primitive.dagger")
 }
 
