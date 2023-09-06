@@ -1,8 +1,8 @@
 package com.github.hirotask.kills.di
 
 import com.github.hirotask.core.di.DomainServiceModule
-import com.github.hirotask.core.di.RepositoryModule
 import com.github.hirotask.core.di.UseCaseModule
+import com.github.hirotask.infra.di.RepositoryModule
 import com.github.hirotask.kills.Main
 import dagger.Component
 import javax.inject.Singleton
