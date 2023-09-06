@@ -3,6 +3,9 @@ set DOCKER_BUILDKIT=0
 set COMPOSE_DOCKER_CLI_BUILD=0
 
 call rd /s /q build
+call rd /s /q core\build
+call rd /s /q infra\build
+call rd /s /q mc-1.19.2\build
 
 call gradlew build || goto :onerror
 

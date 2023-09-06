@@ -2,6 +2,10 @@ build_image() {
   set -e
 
   rm -r build/libs || true
+  rm -r core/build/libs || true
+  rm -r infra/build/libs || true
+  rm -r mc-1.19.2/build/libs || true
+
 
   ## ソースコードからSkillMasterをビルド
   ./gradlew build
