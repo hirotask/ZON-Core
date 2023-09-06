@@ -55,7 +55,3 @@ tasks.withType<ShadowJar> {
 tasks.named("build") {
     dependsOn("shadowJar")
 }
-
-kapt {
-    generateStubs = true
-}
