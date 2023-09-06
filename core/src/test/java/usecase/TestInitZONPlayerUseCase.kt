@@ -36,7 +36,7 @@ class TestInitZONPlayerUseCase {
         val playerName = "hoge"
         val playerUUID = "hoge"
         every { zonPlayerService.getZONPlayer(any(), any()) } throws ZONPlayerNotFoundException()
-        every { zonPlayerService.addZONPlayer(any(),any()) } returns 1
+        every { zonPlayerService.addZONPlayer(any(), any()) } returns 1
         val result = usecase.invoke(playerName, playerUUID)
 
         assert(!result)

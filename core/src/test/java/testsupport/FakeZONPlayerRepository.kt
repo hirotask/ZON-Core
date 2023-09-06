@@ -4,7 +4,7 @@ import com.github.hirotask.core.domain.ZONPlayer
 import com.github.hirotask.core.domain.ZONPlayerStatus
 import com.github.hirotask.core.domain.repository.ZONPlayerRepository
 
-class FakeZONPlayerRepository: ZONPlayerRepository {
+class FakeZONPlayerRepository : ZONPlayerRepository {
     override fun updatePlayerName(zonPlayer: ZONPlayer, uuid: String): Int {
         return 1
     }
@@ -28,7 +28,7 @@ class FakeZONPlayerRepository: ZONPlayerRepository {
     }
 
     override fun getZONPlayer(playerName: String, playerUUID: String): ZONPlayer {
-        val status = ZONPlayerStatus(1,1,1,1,1)
+        val status = ZONPlayerStatus(1, 1, 1, 1, 1)
         return ZONPlayer(playerName, playerUUID, 1, 1, status)
     }
 

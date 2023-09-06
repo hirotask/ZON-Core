@@ -27,7 +27,7 @@ class TestAddZombieKillsUseCase {
         val playerUUID = "hoge"
         val value = 10
         val zonplayer = zonPlayerFactory.createZONPlayer(playerName, playerUUID)
-        every { zonPlayerUseCase.invoke(any(),any()) } returns zonplayer
+        every { zonPlayerUseCase.invoke(any(), any()) } returns zonplayer
         every { zonPlayerService.addZombieKills(any(), any()) } returns (zonplayer.zombieKillCount + value)
         val result = usecase.invoke(playerName, playerUUID, value)
 

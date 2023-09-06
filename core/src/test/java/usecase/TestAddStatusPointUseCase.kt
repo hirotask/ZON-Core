@@ -28,11 +28,10 @@ class TestAddStatusPointUseCase {
         val playerUUID = "hoge"
         val value = 10
         val zonplayer = zonPlayerFactory.createZONPlayer(playerName, playerUUID)
-        every { zonPlayerUseCase.invoke(any(),any()) } returns zonplayer
+        every { zonPlayerUseCase.invoke(any(), any()) } returns zonplayer
         every { zonPlayerService.addStatusPoint(any(), any()) } returns (zonplayer.statusPoint + value)
         val result = usecase.invoke(playerName, playerUUID, value)
 
         assert(result == zonplayer.zombieKillCount + value)
     }
-
 }

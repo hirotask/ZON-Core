@@ -29,5 +29,4 @@ class TestGetZONPlayerUseCase {
 
         assert(result == zonplayer)
     }
-
 }

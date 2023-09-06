@@ -4,9 +4,9 @@ import com.github.hirotask.core.domain.ZONPlayer
 import com.github.hirotask.core.domain.ZONPlayerStatus
 import com.github.hirotask.core.domain.repository.ZONPlayerStatusRepository
 
-class FakeZONPlayerStatusRepository: ZONPlayerStatusRepository {
+class FakeZONPlayerStatusRepository : ZONPlayerStatusRepository {
     override fun getZONPlayerStatus(zonPlayer: ZONPlayer): ZONPlayerStatus {
-        return ZONPlayerStatus(1,1,1,1,1)
+        return ZONPlayerStatus(1, 1, 1, 1, 1)
     }
 
     override fun getHP(zonPlayer: ZONPlayer): Int {
