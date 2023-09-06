@@ -10,6 +10,7 @@ class KotlinPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.jvm")
                 apply("org.jmailen.kotlinter")
             }
+
         }
     }
 }
