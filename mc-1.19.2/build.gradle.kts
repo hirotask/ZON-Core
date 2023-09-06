@@ -33,7 +33,7 @@ dependencies {
     shadowImplementation(project(":infra"))
     implementation(kotlin("stdlib-jdk8"))
     compileOnly(spigot(version = pluginVersion))
-    implementation("com.github.sya-ri:EasySpigotAPI:2.4.0") {
+    shadowImplementation("com.github.sya-ri:EasySpigotAPI:2.4.0") {
         exclude(group = "org.spigotmc", module = "spigot-api")
     }
 }
@@ -42,7 +42,7 @@ spigot {
     name = "ZON-Kills"
     version = gitVersion()
     apiVersion = "1." + pluginVersion.split(".")[1]
-    depends = listOf("EasySpigotAPI")
+//    depends = listOf("EasySpigotAPI")
     authors = listOf("hirotask")
     excludeLibraries = listOf(
         "com.github.hirotask.core:core:${gitVersion()}",
