@@ -14,9 +14,9 @@ class DaggerPlugin : Plugin<Project> {
                 apply("kotlin-kapt")
             }
             dependencies {
-                add("implementation","com.google.dagger:dagger:${Versions.daggerVersion}")
-                add("annotationProcessor", "com.google.dagger:dagger-compiler:${Versions.daggerVersion}")
-                add("kapt", "com.google.dagger:dagger-compiler:${Versions.daggerVersion}")
+                add("implementation","com.google.dagger:dagger:${Versions.Dependency.daggerVersion}")
+                add("annotationProcessor", "com.google.dagger:dagger-compiler:${Versions.Dependency.daggerVersion}")
+                add("kapt", "com.google.dagger:dagger-compiler:${Versions.Dependency.daggerVersion}")
             }
             extensions.configure<KaptExtension> {
                 generateStubs = true
