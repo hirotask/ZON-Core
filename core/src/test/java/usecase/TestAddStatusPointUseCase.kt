@@ -2,7 +2,7 @@ package usecase
 
 import com.github.hirotask.core.domain.services.ZONPlayerService
 import com.github.hirotask.core.usecase.GetZONPlayerUseCase
-import com.github.hirotask.core.usecase.impl.AddZombieKillsUseCaseImpl
+import com.github.hirotask.core.usecase.impl.AddStatusPointUseCaseImpl
 import io.mockk.clearMocks
 import io.mockk.every
 import io.mockk.mockk
@@ -14,7 +14,7 @@ class TestAddStatusPointUseCase {
 
     private val zonPlayerService: ZONPlayerService = mockk()
     private val zonPlayerUseCase: GetZONPlayerUseCase = mockk()
-    private val usecase = AddZombieKillsUseCaseImpl(zonPlayerService, zonPlayerUseCase)
+    private val usecase = AddStatusPointUseCaseImpl(zonPlayerService, zonPlayerUseCase)
     private val zonPlayerFactory = FakeZONPlayerFactory()
 
     @BeforeEach
@@ -29,7 +29,7 @@ class TestAddStatusPointUseCase {
         val value = 10
         val zonplayer = zonPlayerFactory.createZONPlayer(playerName, playerUUID)
         every { zonPlayerUseCase.invoke(any(),any()) } returns zonplayer
-        every { zonPlayerService.addZombieKills(any(), any()) } returns (zonplayer.zombieKillCount + value)
+        every { zonPlayerService.addStatusPoint(any(), any()) } returns (zonplayer.statusPoint + value)
         val result = usecase.invoke(playerName, playerUUID, value)
 
         assert(result == zonplayer.zombieKillCount + value)
