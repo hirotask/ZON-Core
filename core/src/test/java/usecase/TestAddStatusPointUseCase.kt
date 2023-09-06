@@ -1,22 +1,21 @@
 package usecase
 
-import com.github.hirotask.core.domain.ZONPlayer
-import com.github.hirotask.core.domain.ZONPlayerStatus
 import com.github.hirotask.core.domain.services.ZONPlayerService
 import com.github.hirotask.core.usecase.GetZONPlayerUseCase
-import com.github.hirotask.core.usecase.impl.AddStatusPointUseCaseImpl
+import com.github.hirotask.core.usecase.impl.AddZombieKillsUseCaseImpl
 import io.mockk.clearMocks
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.verify
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import testsupport.FakeZONPlayerFactory
 
 class TestAddStatusPointUseCase {
 
     private val zonPlayerService: ZONPlayerService = mockk()
     private val zonPlayerUseCase: GetZONPlayerUseCase = mockk()
-    private val usecase = AddStatusPointUseCaseImpl(zonPlayerService, zonPlayerUseCase)
+    private val usecase = AddZombieKillsUseCaseImpl(zonPlayerService, zonPlayerUseCase)
+    private val zonPlayerFactory = FakeZONPlayerFactory()
 
     @BeforeEach
     fun setUp() {
@@ -28,21 +27,12 @@ class TestAddStatusPointUseCase {
         val playerName = "hoge"
         val playerUUID = "hoge"
         val value = 10
-        val zonplayer = createZONPlayer(playerName, playerUUID)
+        val zonplayer = zonPlayerFactory.createZONPlayer(playerName, playerUUID)
         every { zonPlayerUseCase.invoke(any(),any()) } returns zonplayer
-        every { zonPlayerService.addStatusPoint(any(), any()) } returns (zonplayer.statusPoint + value)
+        every { zonPlayerService.addZombieKills(any(), any()) } returns (zonplayer.zombieKillCount + value)
         val result = usecase.invoke(playerName, playerUUID, value)
 
-        assert(result == zonplayer.statusPoint + value)
-    }
-
-    private fun createZONPlayer(playerName: String, playerUUID: String): ZONPlayer {
-        val status = createZONPlayerStatus()
-        return ZONPlayer(playerName,playerUUID,1,1,status)
-    }
-
-    private fun createZONPlayerStatus() : ZONPlayerStatus {
-        return ZONPlayerStatus(1,1,1,1,1)
+        assert(result == zonplayer.zombieKillCount + value)
     }
 
 }

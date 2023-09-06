@@ -6,6 +6,7 @@ import com.github.hirotask.core.domain.repository.ZONPlayerRepository
 import com.github.hirotask.core.domain.repository.ZONPlayerStatusRepository
 import com.github.hirotask.core.domain.services.ZONPlayerServiceImpl
 import org.junit.jupiter.api.Test
+import testsupport.FakeZONPlayerFactory
 import testsupport.FakeZONPlayerRepository
 import testsupport.FakeZONPlayerStatusRepository
 
@@ -13,6 +14,7 @@ class TestZONPlayerService {
     private val zonPlayerRepository: ZONPlayerRepository = FakeZONPlayerRepository()
     private val zonPlayerStatusRepository: ZONPlayerStatusRepository = FakeZONPlayerStatusRepository()
     private val zonPlayerServiceImpl = ZONPlayerServiceImpl(zonPlayerRepository, zonPlayerStatusRepository)
+    private val zonPlayerFactory = FakeZONPlayerFactory()
 
     @Test
     fun test_addZONPlayer() {
@@ -33,7 +35,7 @@ class TestZONPlayerService {
     @Test
     fun test_addZombieKills() {
         val amount = 1
-        val zonPlayer = createZONPlayer("hoge","hoge")
+        val zonPlayer = zonPlayerFactory.createZONPlayer("hoge","hoge")
         val expected = zonPlayer.zombieKillCount + amount
         val testResult = zonPlayerServiceImpl.addZombieKills(zonPlayer, amount)
         assert(testResult == expected)
@@ -43,7 +45,7 @@ class TestZONPlayerService {
     @Test
     fun test_addStatusPoint() {
         val amount = 1
-        val zonPlayer = createZONPlayer("huga","huga")
+        val zonPlayer = zonPlayerFactory.createZONPlayer("huga","huga")
         val expected = zonPlayer.statusPoint + amount
         val testResult = zonPlayerServiceImpl.addStatusPoint(zonPlayer, amount)
         assert(testResult == expected)
@@ -53,7 +55,7 @@ class TestZONPlayerService {
     @Test
     fun test_addHP() {
         val amount = 1
-        val zonPlayer = createZONPlayer("huga","huga")
+        val zonPlayer = zonPlayerFactory.createZONPlayer("huga","huga")
         val expected = zonPlayer.zonplayerStatus.hp + amount
         val testResult = zonPlayerServiceImpl.addHP(zonPlayer, amount)
         assert(testResult == expected)
@@ -63,7 +65,7 @@ class TestZONPlayerService {
     @Test
     fun test_addHPRegen() {
         val amount = 1
-        val zonPlayer = createZONPlayer("huga","huga")
+        val zonPlayer = zonPlayerFactory.createZONPlayer("huga","huga")
         val expected = zonPlayer.zonplayerStatus.hpRegen + amount
         val testResult = zonPlayerServiceImpl.addHPRegen(zonPlayer, amount)
         assert(testResult == expected)
@@ -73,7 +75,7 @@ class TestZONPlayerService {
     @Test
     fun test_addMP() {
         val amount = 1
-        val zonPlayer = createZONPlayer("huga","huga")
+        val zonPlayer = zonPlayerFactory.createZONPlayer("huga","huga")
         val expected = zonPlayer.zonplayerStatus.mp + amount
         val testResult = zonPlayerServiceImpl.addMP(zonPlayer, amount)
         assert(testResult == expected)
@@ -83,7 +85,7 @@ class TestZONPlayerService {
     @Test
     fun test_addMPRegen() {
         val amount = 1
-        val zonPlayer = createZONPlayer("huga","huga")
+        val zonPlayer = zonPlayerFactory.createZONPlayer("huga","huga")
         val expected = zonPlayer.zonplayerStatus.mpRegen + amount
         val testResult = zonPlayerServiceImpl.addMPRegen(zonPlayer, amount)
         assert(testResult == expected)
@@ -93,22 +95,11 @@ class TestZONPlayerService {
     @Test
     fun test_addStrength() {
         val amount = 1
-        val zonPlayer = createZONPlayer("huga","huga")
+        val zonPlayer = zonPlayerFactory.createZONPlayer("huga","huga")
         val expected = zonPlayer.zonplayerStatus.strength + amount
         val testResult = zonPlayerServiceImpl.addStrength(zonPlayer, amount)
         assert(testResult == expected)
         assert(zonPlayer.zonplayerStatus.strength == expected)
     }
-
-
-    private fun createZONPlayer(playerName: String, playerUUID: String): ZONPlayer {
-        val status = createZONPlayerStatus()
-        return ZONPlayer(playerName,playerUUID,1,1,status)
-    }
-
-    private fun createZONPlayerStatus() : ZONPlayerStatus{
-        return ZONPlayerStatus(1,1,1,1,1)
-    }
-
 
 }
