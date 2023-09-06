@@ -6,21 +6,12 @@
 ## 開発環境
 - [Intellij IDEA](https://www.jetbrains.com/idea/) などの統合開発環境
 - Docker, Docker-Compose
-- Kotlin 1.6.10
+- Kotlin 1.7.10
 - JDK 17
 - Gradle 7.3.3
 - Paper 1.19.2
 
-## 前提プラグイン
-- [EasySpigotAPI-2.4.0](https://github.com/sya-ri/EasySpigotAPI/releases/tag/v2.4.0)
-- kotlin-stdlib-1.7.10
-- kotlin-reflect-1.7.10
-
 ## テストサーバーの起動方法
-
-### テストサーバーの起動(DBを使用しない場合) `buildAndLaunchServer`
-
-`:25565` でテストサーバーを起動します。
 
 ### テストサーバーの起動 `./prepare-docker.sh` または `./prepare-docker.bat`
 

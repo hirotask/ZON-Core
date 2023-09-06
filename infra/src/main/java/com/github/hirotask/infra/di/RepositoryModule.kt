@@ -1,10 +1,10 @@
-package com.github.hirotask.core.di
+package com.github.hirotask.infra.di
 
 import com.github.hirotask.core.domain.repository.ZONPlayerRepository
 import com.github.hirotask.core.domain.repository.ZONPlayerStatusRepository
-import com.github.hirotask.core.infra.Database
-import com.github.hirotask.core.infra.zonplayer.impl.ZONPlayerRepositoryImpl
-import com.github.hirotask.core.infra.zonplayer.impl.ZONPlayerStatusRepositoryImpl
+import com.github.hirotask.infra.Database
+import com.github.hirotask.infra.zonplayer.impl.ZONPlayerRepositoryImpl
+import com.github.hirotask.infra.zonplayer.impl.ZONPlayerStatusRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

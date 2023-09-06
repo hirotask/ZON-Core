@@ -1,11 +1,11 @@
-package com.github.hirotask.core.infra.zonplayer.impl
+package com.github.hirotask.infra.zonplayer.impl
 
 import com.github.hirotask.core.domain.ZONPlayer
 import com.github.hirotask.core.domain.ZONPlayerStatus
 import com.github.hirotask.core.domain.repository.ZONPlayerRepository
 import com.github.hirotask.core.exc.InvalidNumberException
 import com.github.hirotask.core.exc.ZONPlayerNotFoundException
-import com.github.hirotask.core.infra.Database
+import com.github.hirotask.infra.Database
 
 /**
  * ZONPlayerRepositoryの実装クラス

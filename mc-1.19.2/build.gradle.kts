@@ -31,6 +31,7 @@ repositories {
 
 dependencies {
     shadowImplementation(project(":core"))
+    shadowImplementation(project(":infra"))
     implementation(kotlin("stdlib-jdk8"))
     annotationProcessor("com.google.dagger:dagger-compiler:2.46.1")
     kapt("com.google.dagger:dagger-compiler:2.46.1")
