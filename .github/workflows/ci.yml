@@ -13,6 +13,6 @@ jobs:
           java-version: 17
           cache: gradle
       - name: Validate with Gradle
-        run: ./gradlew test
+        run: ./gradlew check
       - name: Build with Gradle
         run: ./gradlew build
