@@ -1,3 +1,4 @@
+import groovy.lang.Closure
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
@@ -6,8 +7,9 @@ plugins {
     id("build-logic.primitive.dagger")
 }
 
+val gitVersion: Closure<String> by extra
 group = "com.github.hirotask.infra"
-version = "1.0.0"
+version = gitVersion()
 
 repositories {
     mavenCentral()
