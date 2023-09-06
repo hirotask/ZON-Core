@@ -6,10 +6,11 @@ com.github.hirotask.core.domain
 com.github.hirotask.core.domain.repository
 com.github.hirotask.core.domain.services
 com.github.hirotask.core.exc
-com.github.hirotask.core.infra
-com.github.hirotask.core.infra.zonplayer.impl
 com.github.hirotask.core.usecase
 com.github.hirotask.core.usecase.impl
+module:infra
+com.github.hirotask.infra
+com.github.hirotask.infra.zonplayer.impl
 module:mc-1.19.2
 com.github.hirotask.kills
 com.github.hirotask.kills.event
