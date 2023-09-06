@@ -12,9 +12,9 @@ class DaggerPlugin : Plugin<Project> {
                 apply("kotlin-kapt")
             }
             dependencies {
-                this.add("implementation","com.google.dagger:dagger:${Versions.daggerVersion}")
-                this.add("annotationProcessor", "com.google.dagger:dagger-compiler:${Versions.daggerVersion}")
-                this.add("kapt", "com.google.dagger:dagger-compiler:${Versions.daggerVersion}")
+                add("implementation","com.google.dagger:dagger:${Versions.daggerVersion}")
+                add("annotationProcessor", "com.google.dagger:dagger-compiler:${Versions.daggerVersion}")
+                add("kapt", "com.google.dagger:dagger-compiler:${Versions.daggerVersion}")
             }
         }
     }
