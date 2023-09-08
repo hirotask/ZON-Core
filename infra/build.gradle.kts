@@ -8,6 +8,7 @@ plugins {
 }
 
 val gitVersion: Closure<String> by extra
+
 group = "com.github.hirotask.infra"
 version = gitVersion()
 
@@ -16,11 +17,8 @@ repositories {
 }
 
 dependencies {
-    implementation(project(mapOf("path" to ":core")))
-    api("org.mariadb.jdbc:mariadb-java-client:${Versions.Dependency.mariaDBClientVersion}")
-    testImplementation(platform("org.junit:junit-bom:${Versions.Dependency.junitVersion}"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("io.mockk:mockk:${Versions.Dependency.mockkVersion}")
+    implementation(project(":core"))
+    api("org.mariadb.jdbc:mariadb-java-client:2.4.4")
 }
 
 tasks.test {

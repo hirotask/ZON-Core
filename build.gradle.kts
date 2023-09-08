@@ -1,9 +1,10 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import groovy.lang.Closure
 
 plugins {
-    id("build-logic.primitive.kotlin")
-    id("com.palantir.git-version") version "0.12.3" apply false
+    id("build-logic.primitive.kotlin") version "unspecified"
     id("org.jetbrains.dokka") version "1.8.20"
+    id("org.jmailen.kotlinter") version "3.8.0"
+    id("com.palantir.git-version") version "0.15.0"
 }
 
 allprojects {
@@ -13,18 +14,13 @@ allprojects {
 }
 
 subprojects {
-    apply(plugin = "com.palantir.git-version")
+
+
     apply(plugin = "org.jetbrains.dokka")
+    apply(plugin = "com.palantir.git-version")
+    apply(plugin = "org.jmailen.kotlinter")
 }
 
-tasks.getByName<org.jetbrains.dokka.gradle.DokkaMultiModuleTask>("dokkaHtmlMultiModule") {
-    outputDirectory.set(buildDir.resolve("dokkaHtmlMultiModuleOutput"))
-}
 
-val compileKotlin: KotlinCompile by tasks
-compileKotlin.kotlinOptions.jvmTarget = "17"
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
+
