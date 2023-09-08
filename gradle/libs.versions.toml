@@ -5,14 +5,15 @@ mockk = "1.13.7"
 kotlin = "1.7.10"
 kotlin-kapt = "1.8.20"
 kotlinter = "3.8.0"
-git-version = "0.12.3"
+git-version = "0.15.0"
 dokka = "1.8.20"
 
 [libraries]
+kotlin-gradle = {module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin"}
 dagger = {module = "com.google.dagger:dagger", version.ref = "dagger"}
 dagger-compiler = {module = "com.google.dagger:dagger-compiler", version.ref = "dagger"}
-junit-bom = {module = "org.junit:junit-bom", version.ref = "junit"}
-junit-jupiter = {module = "org.junit.jupiter:junit-jupiter", version.ref = "junit"}
+junit-bom = {module= "org.junit:junit-bom", version.ref = "junit"}
+junit-jupiter = {module = "org.junit.jupiter:junit-jupiter"}
 mockk = {module = "io.mockk:mockk", version.ref = "mockk"}
 
 [plugins]

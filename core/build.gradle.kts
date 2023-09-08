@@ -7,19 +7,16 @@ plugins {
     id("build-logic.primitive.dagger")
 }
 
-val gitVersion: Closure<String> by extra
-
 group = "com.github.hirotask.core"
-version = gitVersion()
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:${Versions.Dependency.junitVersion}"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("io.mockk:mockk:${Versions.Dependency.mockkVersion}")
+    testApi(platform("org.junit:junit-bom:${libs.versions.junit.get()}"))
+    testApi("org.junit.jupiter:junit-jupiter")
+    testApi(libs.mockk)
 }
 
 tasks.test {

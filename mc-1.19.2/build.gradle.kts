@@ -6,6 +6,7 @@ import kr.entree.spigradle.kotlin.*
 plugins {
     id("build-logic.primitive.kotlin")
     id("build-logic.primitive.dagger")
+    id("com.palantir.git-version") version "2.0.0"
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("kr.entree.spigradle") version "2.4.3"
 }
@@ -45,8 +46,8 @@ spigot {
 //    depends = listOf("EasySpigotAPI")
     authors = listOf("hirotask")
     excludeLibraries = listOf(
-        "com.github.hirotask.core:core:${gitVersion()}",
-        "com.github.hirotask.infra:infra:${gitVersion()}",
+//        "com.github.hirotask.core:core",
+//        "com.github.hirotask.infra:infra",
         "com.github.sya-ri:EasySpigotAPI:2.4.0"
     )
 }

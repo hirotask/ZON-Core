@@ -6,10 +6,12 @@ pluginManagement {
 }
 dependencyResolutionManagement {
     repositories {
-        google()
         mavenCentral()
     }
+    versionCatalogs {
+        create("libs") {
+            from(files("../gradle/libs.versions.toml"))
+        }
+    }
 }
-rootProject.name = "ZON-Core"
-include("core", "mc-1.19.2","infra")
-includeBuild("build-logic")
+rootProject.name = "build-logic"

@@ -1,5 +1,6 @@
-package com.github.hirotask.primitive
+package com.github.hirotask.buildlogic.primitive
 
+import com.github.hirotask.buildlogic.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -14,9 +15,9 @@ class DaggerPlugin : Plugin<Project> {
                 apply("kotlin-kapt")
             }
             dependencies {
-                add("implementation","com.google.dagger:dagger:${Versions.Dependency.daggerVersion}")
-                add("annotationProcessor", "com.google.dagger:dagger-compiler:${Versions.Dependency.daggerVersion}")
-                add("kapt", "com.google.dagger:dagger-compiler:${Versions.Dependency.daggerVersion}")
+                add("implementation",libs.findLibrary("dagger").get())
+                add("annotationProcessor", libs.findLibrary("dagger-compiler").get())
+                add("kapt", libs.findLibrary("dagger-compiler").get())
             }
             extensions.configure<KaptExtension> {
                 generateStubs = true
