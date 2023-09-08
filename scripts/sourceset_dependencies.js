@@ -1,1 +1,0 @@
-sourceset_dependencies = '{":core:dokkaHtmlPartial/main":[],":infra:dokkaHtmlPartial/main":[],":mc-1.19.2:dokkaHtmlPartial/main":[]}'
