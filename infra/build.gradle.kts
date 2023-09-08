@@ -7,7 +7,10 @@ plugins {
     id("build-logic.primitive.dagger")
 }
 
+val gitVersion: Closure<String> by extra
+
 group = "com.github.hirotask.infra"
+version = gitVersion()
 
 repositories {
     mavenCentral()

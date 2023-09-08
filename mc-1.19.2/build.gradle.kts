@@ -45,8 +45,8 @@ spigot {
 //    depends = listOf("EasySpigotAPI")
     authors = listOf("hirotask")
     excludeLibraries = listOf(
-        "com.github.hirotask.core:core:unspecified",
-        "com.github.hirotask.infra:infra:unspecified",
+        "com.github.hirotask.core:core:${gitVersion()}",
+        "com.github.hirotask.infra:infra:${gitVersion()}",
         "com.github.sya-ri:EasySpigotAPI:2.4.0"
     )
 }

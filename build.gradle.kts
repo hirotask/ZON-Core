@@ -1,3 +1,5 @@
+import groovy.lang.Closure
+
 plugins {
     id("build-logic.primitive.kotlin") version "unspecified"
     id("org.jetbrains.dokka") version "1.8.20"
@@ -12,6 +14,8 @@ allprojects {
 }
 
 subprojects {
+
+
     apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "com.palantir.git-version")
     apply(plugin = "org.jmailen.kotlinter")
