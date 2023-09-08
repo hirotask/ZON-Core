@@ -4,9 +4,6 @@ junit = "5.9.1"
 mockk = "1.13.7"
 kotlin = "1.7.10"
 kotlin-kapt = "1.8.20"
-kotlinter = "3.8.0"
-git-version = "0.15.0"
-dokka = "1.8.20"
 
 [libraries]
 kotlin-gradle = {module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin"}
@@ -19,6 +16,3 @@ mockk = {module = "io.mockk:mockk", version.ref = "mockk"}
 [plugins]
 kotlin-jvm = {id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
 kotlin-kapt = {id = "kotlin-kapt", version.ref = "kotlin-kapt"}
-kotlinter = {id = "org.jmailen.kotlinter", version.ref = "kotlinter"}
-git-version = {id = "com.palantir.git-version", version.ref = "git-version"}
-dokka = {id = "org.jetbrains.dokka", version.ref = "dokka"}
